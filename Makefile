@@ -1,6 +1,6 @@
 # Makefile
 
-all: clean fix
+all: clean fix demo
 
 clean:
 	rm -fr bin

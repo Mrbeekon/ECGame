@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{39E8E155-29D3-4070-9AB7-4A3A0D0186ED}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>.\WinBuild.bat</NMakeBuildCommandLine>
+    <NMakeOutput>
+    </NMakeOutput>
+    <NMakeCleanCommandLine>.\WinClean.bat</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>.\WinRebuild.bat</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>
+    </NMakeIncludeSearchPath>
+    <NMakeAssemblySearchPath>
+    </NMakeAssemblySearchPath>
+    <OutDir>.\bin\</OutDir>
+    <IntDir>.\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>mingw32-make.exe</NMakeBuildCommandLine>
+    <NMakeOutput>ECGame.exe</NMakeOutput>
+    <NMakeCleanCommandLine>mingw32-make.exe clean all</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>mingw32-make.exe rebuild all</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\MinGW\lib\gcc\mingw32\4.7.2\include\c++;C:\MinGW\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeAssemblySearchPath>C:\MinGW\lib\gcc\mingw32\4.7.2;C:\MinGW\lib;$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <BuildLog>
+      <Path>.\BuildLog.log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="bin\sdl2-config" />
+    <None Include="bin\SDL2.dll" />
+    <None Include="CONTRIBUTORS" />
+    <None Include="LICENSE" />
+    <None Include="Makefile" />
+    <None Include="README" />
+    <None Include="WinBuild.bat" />
+    <None Include="WinClean.bat" />
+    <None Include="WinRebuild.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ECGame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\SDL\begin_code.h" />
+    <ClInclude Include="include\SDL\close_code.h" />
+    <ClInclude Include="include\SDL\SDL.h" />
+    <ClInclude Include="include\SDL\SDL_active.h" />
+    <ClInclude Include="include\SDL\SDL_audio.h" />
+    <ClInclude Include="include\SDL\SDL_byteorder.h" />
+    <ClInclude Include="include\SDL\SDL_cdrom.h" />
+    <ClInclude Include="include\SDL\SDL_config.h" />
+    <ClInclude Include="include\SDL\SDL_config_win32.h" />
+    <ClInclude Include="include\SDL\SDL_copying.h" />
+    <ClInclude Include="include\SDL\SDL_cpuinfo.h" />
+    <ClInclude Include="include\SDL\SDL_endian.h" />
+    <ClInclude Include="include\SDL\SDL_error.h" />
+    <ClInclude Include="include\SDL\SDL_events.h" />
+    <ClInclude Include="include\SDL\SDL_getenv.h" />
+    <ClInclude Include="include\SDL\SDL_joystick.h" />
+    <ClInclude Include="include\SDL\SDL_keyboard.h" />
+    <ClInclude Include="include\SDL\SDL_keysym.h" />
+    <ClInclude Include="include\SDL\SDL_loadso.h" />
+    <ClInclude Include="include\SDL\SDL_main.h" />
+    <ClInclude Include="include\SDL\SDL_mouse.h" />
+    <ClInclude Include="include\SDL\SDL_mutex.h" />
+    <ClInclude Include="include\SDL\SDL_name.h" />
+    <ClInclude Include="include\SDL\SDL_opengl.h" />
+    <ClInclude Include="include\SDL\SDL_platform.h" />
+    <ClInclude Include="include\SDL\SDL_quit.h" />
+    <ClInclude Include="include\SDL\SDL_rwops.h" />
+    <ClInclude Include="include\SDL\SDL_stdinc.h" />
+    <ClInclude Include="include\SDL\SDL_syswm.h" />
+    <ClInclude Include="include\SDL\SDL_thread.h" />
+    <ClInclude Include="include\SDL\SDL_timer.h" />
+    <ClInclude Include="include\SDL\SDL_types.h" />
+    <ClInclude Include="include\SDL\SDL_version.h" />
+    <ClInclude Include="include\SDL\SDL_video.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

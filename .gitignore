@@ -1,6 +1,12 @@
 # Compiled Binary Directory
 bin/
 
+# Compiled Intermediate Directory
+obj/
+
+# Compiler Log Files
+*.log
+
 # Compiled Object files
 *.slo
 *.lo

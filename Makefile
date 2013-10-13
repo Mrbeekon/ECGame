@@ -16,7 +16,7 @@ ECGame.exe:
 rebuild-win: clean fix ECGame.exe
 all-win: rebuild-win
 
-# All other builds. For Linux, OSX, Unix and any other POSIX OS'S.
+# All other builds. For Linux, OSX, Unix and any other POSIX OS.
 ECGame:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL -static-libstdc++
 rebuild: clean fix ECGame

@@ -3,7 +3,7 @@
   <ItemGroup>
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <Extensions>cpp;c;cc;cxx;asm;asmx;</Extensions>
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
@@ -19,17 +19,11 @@
     <None Include="bin\SDL2.dll" />
     <None Include="Makefile" />
     <None Include="LICENSE" />
-    <None Include="WinBuild.bat">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="WinClean.bat">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="WinRebuild.bat">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="README" />
     <None Include="CONTRIBUTORS" />
+    <None Include="WinBuild.bat" />
+    <None Include="WinClean.bat" />
+    <None Include="WinRebuild.bat" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ECGame.cpp">

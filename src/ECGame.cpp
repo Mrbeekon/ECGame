@@ -9,9 +9,12 @@ int main(int argc, char** argv)
     SDL_Init(SDL_INIT_EVERYTHING);
     bool running = true;
     unsigned int tick = 0;
-
+    
     Screen* screen = new Screen(WIDTH, HEIGHT);
+    InMan* inm = new InMan();
     Random* rand = new Random();
+        
+    int col = rand->Next();
 
     while(running) {
         tick = SDL_GetTicks();
@@ -23,14 +26,24 @@ int main(int argc, char** argv)
                 running = false;
                 break;
             case SDL_KEYDOWN:
-                if (event.key.keysym.sym == SDLK_ESCAPE)
-                    running = false;
+                inm->SetKeyDown(event.key.keysym.sym);
+                break;
+            case SDL_KEYUP:
+                inm->SetKeyUp(event.key.keysym.sym);
                 break;
             }
         }
 
+        if (inm->GetKey(SDLK_ESCAPE))
+            running = false;
+        if (inm->GetKey(SDLK_SPACE))
+            col = rand->Next();
+
         screen->Clear(0);
-        screen->DrawRectangle(WIDTH / 8, HEIGHT / 8, WIDTH / 8 * 6, HEIGHT / 8 * 6, 0x8888, 0xffff, 4);
+        const int SIZE = HEIGHT / 8;
+        for (int i = 0; i < HEIGHT; i += SIZE)
+            screen->DrawRectangle(WIDTH / 2 + (int)(sin(tick / 360.0 + HEIGHT / 360.0 * i) * (WIDTH / 2.0) - SIZE / 2), i, 
+                                  SIZE, SIZE, col, 0, 0);
 
         SDL_Flip(screen->GetSurface());
         if(1000 / FPS > SDL_GetTicks() - tick) {

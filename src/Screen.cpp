@@ -31,6 +31,11 @@ void Screen::SetPixel(int x, int y, int c)
     SetPixel(x, y, INTRGB(c));
 }
 
+int Screen::GetPixel(int x, int y)
+{
+    return 0; // TODO: Work out how to get the colour of a pixel currently on the screen
+}
+
 void Screen::Clear(int c)
 {
     for (int i = 0; i < width * height; i++) {

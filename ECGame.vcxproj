@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="include\Colour.h" />
     <ClInclude Include="include\InMan.h" />
+    <ClInclude Include="include\InputMan.h" />
     <ClInclude Include="include\Random.h" />
     <ClInclude Include="include\Screen.h" />
     <ClInclude Include="include\SDL\begin_code.h" />
@@ -55,6 +56,7 @@
     <ClCompile Include="src\Colour.cpp" />
     <ClCompile Include="src\ECGame.cpp" />
     <ClCompile Include="src\InMan.cpp" />
+    <ClCompile Include="src\InputMan.cpp" />
     <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Screen.cpp" />
   </ItemGroup>

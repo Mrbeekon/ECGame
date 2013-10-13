@@ -1,16 +1,10 @@
-#include <SDL/SDL.h>
-#include <iostream>
-#include <cmath>
-#include "Random.h"
-#include "Screen.h"
-using namespace std;
+#include "stdafx.h"
 
 int main(int argc, char** argv)
 {
     const int FPS = 60, 
               WIDTH = 800, 
               HEIGHT = 600;
-    const double PI = 3.1415926535897;
 
     SDL_Init(SDL_INIT_EVERYTHING);
     bool running = true;

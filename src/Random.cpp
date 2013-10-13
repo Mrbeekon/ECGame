@@ -1,8 +1,8 @@
 #include "Random.h"
 
-Random::Random(void) /* C Random number generator initialised on constructor call */
+Random::Random(void)
 {
-    srand(time(NULL));
+    srand(time(NULL)); // Initialise C's random number generator upon initialisation. Default seed it time.
 }
     
 Random::Random(unsigned int seed)
@@ -10,10 +10,17 @@ Random::Random(unsigned int seed)
     srand(seed);
 }
 
-int Random::Next(void) /* rand() only returns a 16-bit integer, which means a random 
-                        * colour via rand() could only be some mix of blue and green */
+int Random::Next(void)
 {
-    return rand() | rand() << 16;
+    return rand() | rand() << 16; // rand() only returns a 16-bit integer (which is a bit rubbish)
+
+    /* The reason we don't do:
+     *
+     * int r = rand();
+     * return r | r << 16;
+     *
+     * is because otherwise 'r & 0xffff' would always equal to 'r >> 16 & 0xffff', which isn't very random.
+     */
 }
 
 int Random::Next(int max)

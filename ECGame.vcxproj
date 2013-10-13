@@ -12,10 +12,50 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Random.h" />
+    <ClInclude Include="include\Screen.h" />
+    <ClInclude Include="include\SDL\begin_code.h" />
+    <ClInclude Include="include\SDL\close_code.h" />
+    <ClInclude Include="include\SDL\SDL.h" />
+    <ClInclude Include="include\SDL\SDL_active.h" />
+    <ClInclude Include="include\SDL\SDL_audio.h" />
+    <ClInclude Include="include\SDL\SDL_byteorder.h" />
+    <ClInclude Include="include\SDL\SDL_cdrom.h" />
+    <ClInclude Include="include\SDL\SDL_config.h" />
+    <ClInclude Include="include\SDL\SDL_config_win32.h" />
+    <ClInclude Include="include\SDL\SDL_copying.h" />
+    <ClInclude Include="include\SDL\SDL_cpuinfo.h" />
+    <ClInclude Include="include\SDL\SDL_endian.h" />
+    <ClInclude Include="include\SDL\SDL_error.h" />
+    <ClInclude Include="include\SDL\SDL_events.h" />
+    <ClInclude Include="include\SDL\SDL_getenv.h" />
+    <ClInclude Include="include\SDL\SDL_joystick.h" />
+    <ClInclude Include="include\SDL\SDL_keyboard.h" />
+    <ClInclude Include="include\SDL\SDL_keysym.h" />
+    <ClInclude Include="include\SDL\SDL_loadso.h" />
+    <ClInclude Include="include\SDL\SDL_main.h" />
+    <ClInclude Include="include\SDL\SDL_mouse.h" />
+    <ClInclude Include="include\SDL\SDL_mutex.h" />
+    <ClInclude Include="include\SDL\SDL_name.h" />
+    <ClInclude Include="include\SDL\SDL_opengl.h" />
+    <ClInclude Include="include\SDL\SDL_platform.h" />
+    <ClInclude Include="include\SDL\SDL_quit.h" />
+    <ClInclude Include="include\SDL\SDL_rwops.h" />
+    <ClInclude Include="include\SDL\SDL_stdinc.h" />
+    <ClInclude Include="include\SDL\SDL_syswm.h" />
+    <ClInclude Include="include\SDL\SDL_thread.h" />
+    <ClInclude Include="include\SDL\SDL_timer.h" />
+    <ClInclude Include="include\SDL\SDL_types.h" />
+    <ClInclude Include="include\SDL\SDL_version.h" />
+    <ClInclude Include="include\SDL\SDL_video.h" />
+    <ClInclude Include="include\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ECGame.cpp" />
     <ClCompile Include="src\Random.cpp" />
+    <ClCompile Include="src\Screen.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FBDC33F3-208E-4B38-8061-FE7B9C9BDB7E}</ProjectGuid>
@@ -52,7 +92,7 @@
     <NMakeBuildCommandLine>mingw32-make ECGame.exe</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>mingw32-make rebuild-win</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>C:\MinGW\mingw32\lib\gcc\mingw32\4.8.1\include\c++;C:\MinGW\lib\gcc\mingw32\4.8.1\include\c++;.\include\</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>.\include\;</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>ECGame.exe</NMakeOutput>

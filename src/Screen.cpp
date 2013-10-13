@@ -1,6 +1,4 @@
-#include "Screen.h"
-
-int width, height;
+#include "screen.h"
 
 Screen::Screen(int w, int h) 
 {
@@ -20,7 +18,7 @@ SDL_Surface* Screen::GetSurface(void)
     return surface;
 }
 
-void Screen::SetPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b)
+void Screen::SetPixel(int x, int y, byte r, byte g, byte b)
 {
     unsigned int* pixel = (unsigned int*)(surface->pixels) + x + y * width;
     *pixel = SDL_MapRGB(surface->format, r, g, b);
@@ -41,9 +39,8 @@ void Screen::Clear(int c)
     }
 }
     
-void Screen::DrawRectangle(int x, int y, int w, int h, int fc, int bc, int bt) /* 'fc' is fill colour, 
-                                                                        * 'bc' border colour, and
-                                                                        * 'bt' border thickness. */
+// fc: fill colour, bc: border colour, bt: border thickness
+void Screen::DrawRectangle(int x, int y, int w, int h, int fc, int bc, int bt)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
@@ -55,6 +52,7 @@ void Screen::DrawRectangle(int x, int y, int w, int h, int fc, int bc, int bt) /
         }
 }
 
+// r: radius
 void Screen::DrawCircle(int x, int y, int r, int c)
 {
     for (int yy = -r; yy < r; yy++)

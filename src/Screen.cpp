@@ -53,7 +53,8 @@ void Screen::DrawRectangle(int x, int y, int w, int h, int fc, int bc, int bt)
             int c = fc;
             if (yy < bt | yy >= h - bt | xx < bt | xx >= w - bt)
                 c = bc;
-            SetPixel(x + xx, y + yy, c);
+            if (c != RGBTRANSPARENT)
+                SetPixel(x + xx, y + yy, c);
         }
 }
 

@@ -10,6 +10,7 @@ obj/
 # Visual Studio User-Specific Files
 *.suo
 *.vcxproj.user
+*.vcxproj.filters
 *.sdf
 
 # Compiled Object files

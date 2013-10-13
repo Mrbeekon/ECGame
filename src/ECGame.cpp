@@ -29,19 +29,8 @@ int main(int argc, char** argv)
             }
         }
 
-        for (int y = 0; y < HEIGHT; y++)
-            for (int x = 0; x < WIDTH; x++)
-                screen->SetPixel(x, y, x * 255 / WIDTH | y * 255 / HEIGHT << 8);
-
-        double x1 = WIDTH / 2 + sin(tick / 360.0) * HEIGHT / 8 * 3;
-        double y1 = HEIGHT / 2 + cos(tick / 360.0) * HEIGHT / 8 * 3;
-        double x2 = WIDTH / 2 + sin(tick / 360.0 + PI * 2 / 3) * HEIGHT / 8 * 3;
-        double y2 = HEIGHT / 2 + cos(tick / 360.0 + PI * 2 / 3) * HEIGHT / 8 * 3;
-        double x3 = WIDTH / 2 + sin(tick / 360.0 + PI * 4 / 3) * HEIGHT / 8 * 3;
-        double y3 = HEIGHT / 2 + cos(tick / 360.0 + PI * 4 / 3) * HEIGHT / 8 * 3;
-        screen->DrawLine(x1, y1, x2, y2, 0xffffff);
-        screen->DrawLine(x2, y2, x3, y3, 0xffff00);
-        screen->DrawLine(x3, y3, x1, y1, 0xffff00);
+        screen->Clear(0);
+        screen->DrawRectangle(WIDTH / 8, HEIGHT / 8, WIDTH / 8 * 6, HEIGHT / 8 * 6, 0x8888, 0xffff, 4);
 
         SDL_Flip(screen->GetSurface());
         if(1000 / FPS > SDL_GetTicks() - tick) {

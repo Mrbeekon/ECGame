@@ -1,3 +1,5 @@
+### DIRECTORIES ###
+
 # Compiled Binary Directory
 bin/*
 
@@ -6,6 +8,11 @@ obj/*
 
 # SDL Includes
 include/SDL
+
+### FILE EXTENSIONS ###
+
+# Windows Shortcut
+*.lnk
 
 # Compiler Log Files
 *.log

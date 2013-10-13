@@ -39,7 +39,7 @@ int main(int argc, char** argv)
         double y2 = HEIGHT / 2 + cos(tick / 360.0 + PI * 2 / 3) * HEIGHT / 8 * 3;
         double x3 = WIDTH / 2 + sin(tick / 360.0 + PI * 4 / 3) * HEIGHT / 8 * 3;
         double y3 = HEIGHT / 2 + cos(tick / 360.0 + PI * 4 / 3) * HEIGHT / 8 * 3;
-        screen->DrawLine(x1, y1, x2, y2, 0xffff00);
+        screen->DrawLine(x1, y1, x2, y2, 0xffffff);
         screen->DrawLine(x2, y2, x3, y3, 0xffff00);
         screen->DrawLine(x3, y3, x1, y1, 0xffff00);
 
@@ -50,5 +50,5 @@ int main(int argc, char** argv)
     }
 
     SDL_Quit();
-    return 0;
+    return EXIT_SUCCESS;
 }

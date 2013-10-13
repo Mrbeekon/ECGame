@@ -14,8 +14,6 @@ public:
     void DrawCircle(int x, int y, int r, int c);
     void DrawLine(int x0, int y0, int x1, int y1, int c);
     SDL_Surface* GetSurface(void);
-    static int ColFromRGB(byte r, byte g, byte b);
-    static int ColFromARGB(byte a, byte r, byte g, byte b);
 private:	
     SDL_Surface* surface;
 };

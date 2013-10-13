@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Colour.h" />
     <ClInclude Include="include\Random.h" />
     <ClInclude Include="include\Screen.h" />
     <ClInclude Include="include\SDL\begin_code.h" />
@@ -50,6 +51,7 @@
     <ClInclude Include="include\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Colour.cpp" />
     <ClCompile Include="src\ECGame.cpp" />
     <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Screen.cpp" />

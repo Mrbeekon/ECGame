@@ -5,9 +5,11 @@ class Random
 {
 public:
     Random(void);    
-    Random(unsigned int seed);
+    Random(uint seed);
     int Next(void);
     int Next(int max);
     int Next(int min, int max);
     double NextDouble(void);
+private:
+    int _getRandInt();
 };

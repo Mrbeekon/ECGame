@@ -25,10 +25,10 @@ void Screen::SetPixel(int x, int y, byte r, byte g, byte b)
 }
 
 void Screen::SetPixel(int x, int y, int c)
-    {
+{
     if (x < 0 | y < 0 | x >= width | y >= height)
         return;
-    SetPixel(x, y, c >> 16 & 0xff, c >> 8 & 0xff, c & 0xff);
+    SetPixel(x, y, INTRGB(c));
 }
 
 void Screen::Clear(int c)

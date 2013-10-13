@@ -21,7 +21,7 @@ typedef unsigned long long  QWORD;      // A 64-bit word
 
 #include "Random.h"
 #include "Colour.h"
-#include "InMan.h"
+#include "InputMan.h"
 #include "Screen.h"
 
 using namespace std;

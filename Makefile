@@ -1,6 +1,9 @@
 # Makefile
 UNAME := $(shell uname)
 
+# All should be first rule.
+all: rebuild
+
 clean:
 	rm -fr bin
 	rm -fr obj
@@ -20,5 +23,4 @@ all-win: rebuild-win
 ECGame:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL -static-libstdc++
 rebuild: clean fix ECGame
-all: rebuild
 

@@ -9,6 +9,7 @@ obj/
 
 # Visual Studio User-Specific Files
 *.suo
+*.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
 *.sdf
@@ -26,4 +27,6 @@ obj/
 *.lai
 *.la
 *.a
+
+
 

@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    const int FPS = 30, 
+    const int FPS = 60, 
               WIDTH = 800, 
               HEIGHT = 600;
     const double PI = 3.1415926535897;

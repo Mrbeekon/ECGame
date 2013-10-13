@@ -1,4 +1,5 @@
 @echo off
 title Building...
 echo Building...
-mingw32-make build
+cd ..
+make build-win

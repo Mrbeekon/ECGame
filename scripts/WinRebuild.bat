@@ -1,4 +1,5 @@
 @echo off
 title Rebuilding...
 echo Rebuilding...
-mingw32-make rebuild
+cd ..
+make rebuild-win

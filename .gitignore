@@ -1,11 +1,11 @@
 # Compiled Binary Directory
-bin/*.*
+bin/*
 
 # Compiled Intermediate Directory
-obj/*.*
+obj/*
 
 # SDL Includes
-include/SDL/*.*
+include/SDL
 
 # Compiler Log Files
 *.log

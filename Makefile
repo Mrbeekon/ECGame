@@ -11,8 +11,7 @@ clean:
 fix:
 	mkdir bin
 	mkdir obj
-	cp lib/SDL.dll bin/ -r
-	cp lib/libgcc_s_dw2-1.dll bin/ -r
+	cp lib/*.dll bin/
 
 # Windows builds
 ECGame.exe:

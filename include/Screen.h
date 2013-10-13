@@ -1,6 +1,5 @@
 #include <SDL/SDL.h>
 
-
 class Screen
 {
 public:

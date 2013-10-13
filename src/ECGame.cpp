@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     unsigned int tick = 0;
     
     Screen* screen = new Screen(WIDTH, HEIGHT);
-    InMan* inm = new InMan();
+    InputMan* in = new InputMan();
     Random* rand = new Random();
         
     int col = rand->Next();
@@ -26,17 +26,17 @@ int main(int argc, char** argv)
                 running = false;
                 break;
             case SDL_KEYDOWN:
-                inm->SetKeyDown(event.key.keysym.sym);
+                in->SetKeyDown(event.key.keysym.sym);
                 break;
             case SDL_KEYUP:
-                inm->SetKeyUp(event.key.keysym.sym);
+                in->SetKeyUp(event.key.keysym.sym);
                 break;
             }
         }
 
-        if (inm->GetKey(SDLK_ESCAPE))
+        if (in->GetKey(SDLK_ESCAPE))
             running = false;
-        if (inm->GetKey(SDLK_SPACE))
+        if (in->GetKey(SDLK_SPACE))
             col = rand->Next();
 
         screen->Clear(0);

@@ -39,7 +39,7 @@ int main(int argc, char** argv)
         if (in->GetKey(SDLK_SPACE))
             col = rand->Next();
 
-        screen->Clear(0);
+        screen->Clear(~col);
         const int SIZE = HEIGHT / 8;
         for (int i = 0; i < HEIGHT; i += SIZE)
             screen->DrawRectangle(WIDTH / 2 + (int)(sin(tick / 360.0 + HEIGHT / 360.0 * i) * (WIDTH / 2.0) - SIZE / 2), i, 

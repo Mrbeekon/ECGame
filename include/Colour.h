@@ -7,6 +7,11 @@
 // Ditto, with additional alpha channel (0xff000000)
 #define INTARGB(c)  c >> 24 & 0xff, c >> 16 & 0xff, c >> 8 & 0xff, c & 0xff
 
+#define INTA(c)     c >> 24 & 0xff
+#define INTR(c)     c >> 16 & 0xff
+#define INTG(c)     c >> 8 & 0xff
+#define INTB(c)     c & 0xff
+
 // Colour channels within a 32-bit integer
 #define CH_ALPHA    0xff000000
 #define CH_RED      0x00ff0000

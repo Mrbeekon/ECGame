@@ -8,9 +8,7 @@ clean:
 fix:
 	mkdir bin
 	mkdir obj
-	if [ "${UNAME}" = "windows32" ]; then \
-		cp lib/SDL.dll bin/ -r; \
-	fi
+	cp lib/SDL.dll bin/ -r
 
 # Windows builds
 ECGame.exe:

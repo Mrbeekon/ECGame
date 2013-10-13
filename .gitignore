@@ -7,6 +7,11 @@ obj/
 # Compiler Log Files
 *.log
 
+# Visual Studio User-Specific Files
+*.suo
+*.vcxproj.user
+*.sdf
+
 # Compiled Object files
 *.slo
 *.lo

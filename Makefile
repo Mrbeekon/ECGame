@@ -10,7 +10,7 @@ fix:
 	cp lib/SDL.dll bin/ -r
 
 build:
-	g++ src/ECGame.cpp -o bin/ECGame.exe -I include/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++
+	g++ src/*.cpp -o bin/ECGame.exe -I include/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++
 	
 rebuild: clean fix build
 	

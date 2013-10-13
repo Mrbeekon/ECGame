@@ -43,7 +43,7 @@
     <NMakeReBuildCommandLine>.\WinRebuild.bat</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <NMakeIncludeSearchPath>.\include\</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>.\include\;</NMakeIncludeSearchPath>
     <NMakeAssemblySearchPath>
     </NMakeAssemblySearchPath>
     <OutDir>.\bin\</OutDir>
@@ -76,8 +76,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ECGame.cpp" />
+    <ClCompile Include="src\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Random.h" />
     <ClInclude Include="include\SDL\begin_code.h" />
     <ClInclude Include="include\SDL\close_code.h" />
     <ClInclude Include="include\SDL\SDL.h" />

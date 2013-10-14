@@ -6,10 +6,10 @@
 class InputMan
 {
 public:
-    void SetKeyDown(SDLKey k);          // Set the down status SDLKey, k, to true
-    void SetKeyUp(SDLKey k);            // Set the down status SDLKey, k, to false
-    bool GetKey(SDLKey k);              // Returns the down status of SDLKey, k
-    void ReleaseAll();                  // Set the down status of all keys to false
+    void set_key_down(SDLKey k);          // Set the down status SDLKey, k, to true
+    void set_key_up(SDLKey k);            // Set the down status SDLKey, k, to false
+    bool get_key(SDLKey k);              // Returns the down status of SDLKey, k
+    void release_all();                  // Set the down status of all keys to false
 private:
     bool keys[SDLKEYCOUNT];
 };

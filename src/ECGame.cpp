@@ -14,7 +14,7 @@ int main(int argc, char** argv)
     InputMan* in = new InputMan();
     Random* rand = new Random();
         
-    int col = rand->Next();
+    int col = rand->next();
 
     while(running) {
         tick = SDL_GetTicks();
@@ -26,26 +26,26 @@ int main(int argc, char** argv)
                 running = false;
                 break;
             case SDL_KEYDOWN:
-                in->SetKeyDown(event.key.keysym.sym);
+                in->set_key_down(event.key.keysym.sym);
                 break;
             case SDL_KEYUP:
-                in->SetKeyUp(event.key.keysym.sym);
+                in->set_key_up(event.key.keysym.sym);
                 break;
             }
         }
 
-        if (in->GetKey(SDLK_ESCAPE))
+        if (in->get_key(SDLK_ESCAPE))
             running = false;
-        if (in->GetKey(SDLK_SPACE))
-            col = rand->Next();
+        if (in->get_key(SDLK_SPACE))
+            col = rand->next();
 
-        screen->Clear(~col);
+        screen->clear(~col);
         const int SIZE = HEIGHT / 8;
         for (int i = 0; i < HEIGHT; i += SIZE)
-            screen->DrawRectangle(WIDTH / 2 + (int)(sin(tick / 360.0 + HEIGHT / 360.0 * i) * (WIDTH / 2.0) - SIZE / 2), i, 
+            screen->draw_rectangle(WIDTH / 2 + (int)(sin(tick / 360.0 + HEIGHT / 360.0 * i) * (WIDTH / 2.0) - SIZE / 2), i, 
                                   SIZE, SIZE, col, 0, 0);
 
-        SDL_Flip(screen->GetSurface());
+        SDL_Flip(screen->get_surface());
         if(1000 / FPS > SDL_GetTicks() - tick) {
             SDL_Delay(1000 / FPS - (SDL_GetTicks() - tick));
         }

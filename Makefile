@@ -15,7 +15,7 @@ fix:
 
 # Windows builds
 ECGame.exe:
-	g++ src/*.cpp -o bin/ECGame.exe -I include/ -L lib/ -lmingw32 -lSDLmain -lSDL
+	g++ src/*.cpp -o bin/ECGame.exe -I include/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++
 rebuild-win: clean fix ECGame.exe
 all-win: rebuild-win
 

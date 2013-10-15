@@ -59,13 +59,18 @@ void Screen::fill_rectangle(int x, int y, int w, int h, int c)
             set_pixel(x + xx, y + yy, c);
 }
 
-// r: radius
 void Screen::draw_circle(int x, int y, int r, int c)
+{
+    for (double d = 0.0; d < PI * 2.0; d += PI / 180.0)
+        set_pixel(x + r + sin(d) * r, y + r + cos(d) * r, c);
+}
+
+void Screen::fill_circle(int x, int y, int r, int c)
 {
     for (int yy = -r; yy < r; yy++)
         for (int xx = -r; xx < r; xx++)
             if (yy * yy + xx * xx < r * r)
-                set_pixel(x + xx, y + yy, c);
+                set_pixel(x + r + xx, y + r + yy, c);
 }
 
 void Screen::draw_line(int x0, int y0, int x1, int y1, int c)

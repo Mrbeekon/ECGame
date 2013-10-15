@@ -15,12 +15,12 @@ int Random::next(void)
     return _get_rand_int();
 }
 
-int Random::next(int max)
+int Random::next(uint max)
 {
     return next() % (max + 1);
 }
 
-int Random::next(int min, int max)
+int Random::next(uint min, uint max)
 {
     return next() % ((max - min) + 1) + min;
 }

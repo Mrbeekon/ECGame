@@ -1,6 +1,6 @@
 #include "Screen.h"
 
-Screen::Screen(int w, int h) 
+Screen::Screen(uint w, uint h) 
 {
     width = w;
     height = h;

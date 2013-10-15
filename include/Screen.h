@@ -10,7 +10,7 @@ class Screen
 {
 public:
     int width, height;
-    Screen(int w, int h); 
+    Screen(uint w, uint h); 
     ~Screen(void);
     void set_pixel(int x, int y, byte r, byte g, byte b);       // Set the colour of a pixel on the screen, specifying red, green, and blue values
     void set_pixel(int x, int y, int c);                        // Set the colour of a pixel on the screen, using an integer colour

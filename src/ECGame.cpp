@@ -2,13 +2,13 @@
 
 int main(int argc, char** argv)
 {
-    const int FPS = 60, 
-              WIDTH = 800, 
-              HEIGHT = 600;
+    const uint FPS = 60, 
+               WIDTH = 800, 
+               HEIGHT = 600;
 
     SDL_Init(SDL_INIT_EVERYTHING);
     bool running = true;
-    unsigned int tick = 0;
+    uint tick = 0;
     
     Screen* screen = new Screen(WIDTH, HEIGHT);
     InputMan* in = new InputMan();

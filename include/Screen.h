@@ -1,4 +1,7 @@
 #pragma once
+#ifndef SCREEN_H
+#define SCREEN_H
+
 #include "stdafx.h"
 
 #define RGBTRANSPARENT      0xFF00FF    // Used by certain methods to denote transparency, eg: the fill colour on DrawRectangle()
@@ -21,3 +24,6 @@ public:
 private:	
     SDL_Surface* surface;
 };
+
+
+#endif

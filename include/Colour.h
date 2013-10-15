@@ -1,4 +1,7 @@
 #pragma once
+#ifndef COLOUR_H
+#define COLOUR_H
+
 #include "stdafx.h"
 
 // Use in the place of ...byte r, byte g, byte, b... to acquire such values from int c.
@@ -20,3 +23,5 @@
 
 static int RgbCol(byte r, byte g, byte b);          // Gets a colour integer from red, green, and blue byte values
 static int ArgbCol(byte a, byte r, byte g, byte b); // Gets a colour integer from alpha, red, green, and blue byte values
+
+#endif

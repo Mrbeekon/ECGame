@@ -1,4 +1,7 @@
 #pragma once
+#ifndef RANDOM_H
+#define RANDOM_H
+
 #include "stdafx.h"
 
 class Random
@@ -13,3 +16,5 @@ public:
 private:
     int _get_rand_int();
 };
+
+#endif

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef STDAFX_H
+#define STDAFX_H
 
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed byte
@@ -27,3 +29,5 @@ typedef unsigned long long  QWORD;      // A 64-bit word
 #include "Screen.h"
 
 using namespace std;
+
+#endif

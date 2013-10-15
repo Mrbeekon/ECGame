@@ -1,4 +1,7 @@
 #pragma once
+#ifndef INPUTMAN.H
+#define INPUTMAN.H
+
 #include "stdafx.h"
 
 #define SDLKEYCOUNT         SDLK_LAST   // The last entry in in the SDLkey enum, whose value will specify the enum size
@@ -13,3 +16,5 @@ public:
 private:
     bool keys[SDLKEYCOUNT];
 };
+
+#endif

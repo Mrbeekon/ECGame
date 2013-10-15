@@ -1,6 +1,6 @@
 #pragma once
-#ifndef INPUTMAN.H
-#define INPUTMAN.H
+#ifndef INPUTMAN_H
+#define INPUTMAN_H
 
 #include "stdafx.h"
 

@@ -21,7 +21,7 @@
 #define CH_GREEN    0x0000ff00
 #define CH_BLUE     0x000000ff
 
-static int RgbCol(byte r, byte g, byte b);          // Gets a colour integer from red, green, and blue byte values
-static int ArgbCol(byte a, byte r, byte g, byte b); // Gets a colour integer from alpha, red, green, and blue byte values
+static int rgb_col(byte r, byte g, byte b);          // Gets a colour integer from red, green, and blue byte values
+static int argb_col(byte a, byte r, byte g, byte b); // Gets a colour integer from alpha, red, green, and blue byte values
 
 #endif

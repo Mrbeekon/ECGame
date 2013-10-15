@@ -46,18 +46,19 @@ void Screen::clear(int c)
     }
 }
     
-// fc: fill colour, bc: border colour, bt: border thickness
-void Screen::draw_rectangle(int x, int y, int w, int h, int fc, int bc, int bt)
+void Screen::draw_rectangle(int x, int y, int w, int h, int c, int t)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
-        {
-            int c = fc;
-            if (yy < bt | yy >= h - bt | xx < bt | xx >= w - bt)
-                c = bc;
-            if (c != RGBTRANSPARENT)
+            if (yy < t | yy >= h - t | xx < t | xx >= w - t)
                 set_pixel(x + xx, y + yy, c);
-        }
+}
+
+void Screen::fill_rectangle(int x, int y, int w, int h, int c)
+{
+    for (int yy = 0; yy < h; yy++)
+        for (int xx = 0; xx < w; xx++)
+            set_pixel(x + xx, y + yy, c);
 }
 
 // r: radius

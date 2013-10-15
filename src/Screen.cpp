@@ -27,9 +27,7 @@ void Screen::set_pixel(int x, int y, byte r, byte g, byte b)
 void Screen::set_pixel(int x, int y, int c)
 {
     if (x < 0 | y < 0 | x >= width | y >= height)
-    {
         return;
-    }
     set_pixel(x, y, INTRGB(c));
 }
 
@@ -65,15 +63,9 @@ void Screen::fill_rectangle(int x, int y, int w, int h, int c)
 void Screen::draw_circle(int x, int y, int r, int c)
 {
     for (int yy = -r; yy < r; yy++)
-    {
         for (int xx = -r; xx < r; xx++)
-        {
             if (yy * yy + xx * xx < r * r)
-            {
                 set_pixel(x + xx, y + yy, c);
-            }
-        }
-    }
 }
 
 void Screen::draw_line(int x0, int y0, int x1, int y1, int c)
@@ -83,24 +75,20 @@ void Screen::draw_line(int x0, int y0, int x1, int y1, int c)
         sx = x0 < x1 ? 1 : -1,
         sy = y0 < y1 ? 1 : -1,
         err = dx - dy;
-    while (true)
-    {
+    while (true) {
         set_pixel(x0, y0, c);
         if (x0 == x1 && y0 == y1)
             break;
         int e2 = err << 1;
-        if (e2 > -dy)
-        {
+        if (e2 > -dy) {
             err -= dy;
             x0 += sx;
         }
-        if (x0 == x1 && y0 == y1)
-        {
+        if (x0 == x1 && y0 == y1) {
             set_pixel(x0, y0, c);
             break;
         }
-        if (e2 < dx)
-        {
+        if (e2 < dx) {
             err += dx;
             y0 += sy;
         }

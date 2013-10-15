@@ -13,8 +13,6 @@ int main(int argc, char** argv)
     Screen* screen = new Screen(WIDTH, HEIGHT);
     InputMan* in = new InputMan();
     Random* rand = new Random();
-        
-    int col = rand->next();
 
     while(running) {
         tick = SDL_GetTicks();
@@ -36,14 +34,6 @@ int main(int argc, char** argv)
 
         if (in->get_key(SDLK_ESCAPE))
             running = false;
-        if (in->get_key(SDLK_SPACE))
-            col = rand->next();
-
-        screen->clear(~col);
-        const int SIZE = HEIGHT / 8;
-        for (int i = 0; i < HEIGHT; i += SIZE)
-            screen->draw_rectangle(WIDTH / 2 + (int)(sin(tick / 360.0 + HEIGHT / 360.0 * i) * (WIDTH / 2.0) - SIZE / 2), i, 
-                                  SIZE, SIZE, col, 0, 0);
 
         SDL_Flip(screen->get_surface());
         if(1000 / FPS > SDL_GetTicks() - tick) {

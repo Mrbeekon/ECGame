@@ -14,7 +14,7 @@ public:
     int next(int min, int max);     // Returns the next random integer, with a specified range
     double next_double(void);       // Returns the next random double
 private:
-    int _get_rand_int();
+    int _get_rand_int();            // Function to acquire a 32-bit random
 };
 
 #endif

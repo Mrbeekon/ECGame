@@ -11,8 +11,8 @@ set -e
 PROJECTS_DIR="~/Projects"
 
 # Repo vars
-GIT_REPO_URL = "https://github.com/Exeter-College-Game-Development/ECGame.git"
-GIT_REPO_NAME = "ECGame"
+GIT_REPO_URL="https://github.com/Exeter-College-Game-Development/ECGame.git"
+GIT_REPO_NAME="ECGame"
 
 main(){
     echo "We need your permission to install the tools?"

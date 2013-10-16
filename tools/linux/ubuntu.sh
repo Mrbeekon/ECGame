@@ -15,7 +15,7 @@ GIT_REPO_URL="https://github.com/Exeter-College-Game-Development/ECGame.git"
 GIT_REPO_NAME="ECGame"
 
 main(){
-    sudo echo "We need your permission to install the tools."
+    sudo echo
     inst
 
     mkdir_project
@@ -28,7 +28,7 @@ inst(){
     animation &
     pid=$!
     
-    # Function is run under `sudo` so
+    # Function is run after a `sudo` so
     # password is not asked again.
     # Also stdout is redirected to null.
     sudo apt-get install build-essential git libsdl1.2-dev -y > /dev/null

@@ -86,29 +86,17 @@ IMGS=(
 " )
 REFRESH="0.5"
 
+# need multi-space strings
+IFS='%'
+
 # count lines of first ascii picture in array
 LINES_PER_IMG=$(( $(echo $IMGS[0] | sed 's/\\n/\n/g' | wc -l) + 1 ))
 
 # tput $1 LINES_PER_IMG times, used for cuu1(cursor up) cud1(cursor down)
 tput_loop() { for((x=0; x < $LINES_PER_IMG; x++)); do tput $1; done; }
 
-sigtrap(){
-    # make cursor visible again
-    tput cvvis
-
-    # reset cursor
-    tput_loop "cud1"
-
-    echo "caught signal SIGINT(CTRL+C), quitting ..."
-    exit 1
-}
-
 animation_running=1
 animation(){
-    # ^C abort, script cleanup
-    trap sigtrap INT
-    # hide the cursor
-    tput civis
     # main loop, pretty self explanatory
     while [ $animation_running ]; do for x in "${IMGS[@]}"; do
         clear

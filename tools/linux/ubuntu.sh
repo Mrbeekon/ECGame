@@ -26,6 +26,7 @@ inst(){
     echo "installing...."
     # Play animation in background
     animation &
+    pid=$!
     
     # Function is run under `sudo` so
     # password is not asked again.
@@ -34,6 +35,7 @@ inst(){
     
     # stop animation
     animation_running=0
+    kill $pid
 }
 
 # Moves and cd's to $PROJECTS_DIR

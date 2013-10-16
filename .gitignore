@@ -7,7 +7,7 @@ bin/*
 obj/*
 
 # SDL Includes
-include/SDL
+#include/SDL
 
 ### FILE EXTENSIONS ###
 

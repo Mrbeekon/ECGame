@@ -22,8 +22,11 @@ main(){
 
     echo "cloning code..."
     git clone $GIT_REPO_URL $GIT_REPO_NAME
+    cd $GIT_REPO_NAME
 
     echo "done."
+
+    echo "ECGAME at " `pwd`
 }
 
 inst(){

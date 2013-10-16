@@ -15,13 +15,14 @@ GIT_REPO_URL="https://github.com/Exeter-College-Game-Development/ECGame.git"
 GIT_REPO_NAME="ECGame"
 
 main(){
-    echo "We need your permission to install the tools?"
-    sudo install_
+    sudo echo "We need your permission to install the tools."
+    inst
+
     mkdir_project
     git clone $GIT_REPO_URL $GIT_REPO_NAME
 }
 
-install_(){
+inst(){
     echo "installing...."
     # Play animation in background
     animation &
@@ -29,7 +30,7 @@ install_(){
     # Function is run under `sudo` so
     # password is not asked again.
     # Also stdout is redirected to null.
-    sudo apt-get install build-essential git libsdl1.2-dev > /dev/null
+    sudo apt-get install build-essential git libsdl1.2-dev -y > /dev/null
     
     # stop animation
     animation_running=0
@@ -85,6 +86,12 @@ IMGS=(
 " )
 REFRESH="0.5"
 
+# count lines of first ascii picture in array
+LINES_PER_IMG=$(( $(echo $IMGS[0] | sed 's/\\n/\n/g' | wc -l) + 1 ))
+
+# tput $1 LINES_PER_IMG times, used for cuu1(cursor up) cud1(cursor down)
+tput_loop() { for((x=0; x < $LINES_PER_IMG; x++)); do tput $1; done; }
+
 sigtrap(){
     # make cursor visible again
     tput cvvis
@@ -104,6 +111,7 @@ animation(){
     tput civis
     # main loop, pretty self explanatory
     while [ $animation_running ]; do for x in "${IMGS[@]}"; do
+        clear
         echo -ne $x
         tput_loop "cuu1"
         sleep $REFRESH
@@ -114,5 +122,5 @@ animation(){
 #
 #
 ###################################
-main()
+main
 

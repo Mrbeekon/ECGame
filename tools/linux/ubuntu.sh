@@ -16,12 +16,12 @@ GIT_REPO_NAME="ECGame"
 
 main(){
     echo "We need your permission to install the tools?"
-    sudo install
+    sudo install_
     mkdir_project
     git clone $GIT_REPO_URL $GIT_REPO_NAME
 }
 
-install(){
+install_(){
     echo "installing...."
     # Play animation in background
     animation &
@@ -91,10 +91,6 @@ sigtrap(){
 
     # reset cursor
     tput_loop "cud1"
-
-    # stop audio
-    #kill `pgrep vlc`
-    #kill `pgrep mplayer` 2&> /dev/null
 
     echo "caught signal SIGINT(CTRL+C), quitting ..."
     exit 1

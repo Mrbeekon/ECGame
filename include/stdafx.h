@@ -23,7 +23,7 @@ typedef unsigned long long  QWORD;      // A 64-bit word
 
 using namespace std;
 
-#include <SDL/SDL.h>
+#include "SDL/SDL.h"
 
 #include "Random.h"
 #include "Colour.h"

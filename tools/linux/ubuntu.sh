@@ -32,7 +32,7 @@ install(){
     sudo apt-get install build-essential git libsdl1.2-dev > /dev/null
     
     # stop animation
-    animation_running = 0
+    animation_running=0
 }
 
 # Moves and cd's to $PROJECTS_DIR
@@ -100,7 +100,7 @@ sigtrap(){
     exit 1
 }
 
-animation_running = 1
+animation_running=1
 animation(){
     # ^C abort, script cleanup
     trap sigtrap INT

@@ -19,7 +19,11 @@ main(){
     inst
 
     mkdir_project
+
+    echo "cloning code..."
     git clone $GIT_REPO_URL $GIT_REPO_NAME
+
+    echo "done."
 }
 
 inst(){
@@ -36,11 +40,14 @@ inst(){
     # stop animation
     animation_running=0
     kill $pid
+    clear
+    echo "installing...."
 }
 
 # Moves and cd's to $PROJECTS_DIR
 mkdir_project(){
-    mkdir $PROJECTS_DIR
+    echo "Making Projects directory ..."
+    mkdir -p $PROJECTS_DIR
     cd $PROJECTS_DIR
 }
 

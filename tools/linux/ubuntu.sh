@@ -29,17 +29,17 @@ main(){
 inst(){
     echo "installing...."
     # Play animation in background
-    animation &
-    pid=$!
+#    animation &
+#    pid=$!
     
     # Function is run after a `sudo` so
     # password is not asked again.
     # Also stdout is redirected to null.
-    sudo apt-get install build-essential git libsdl1.2-dev -y > /dev/null
+    sudo apt-get install build-essential git libsdl1.2-dev -y #> /dev/null
     
     # stop animation
-    animation_running=0
-    kill $pid
+#    animation_running=0
+#    kill $pid
     clear
     echo "installing...."
 }

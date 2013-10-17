@@ -2,7 +2,7 @@
 UNAME := $(shell uname)
 
 # All should be first rule.
-all: rebuild
+all: rebuild run
 
 clean:
 	rm -fr bin
@@ -23,4 +23,5 @@ all-win: rebuild-win
 ECGame:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL
 rebuild: clean fix ECGame
+run: bin/ECGame
 

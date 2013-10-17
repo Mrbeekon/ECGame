@@ -38,6 +38,8 @@ int main(int argc, char** argv)
 
         if (in->get_key(SDLK_ESCAPE))
             running = false;
+        if (in->get_key(SDLK_SPACE))
+            screen->fill_circle(rand->next(WIDTH - 100), rand->next(HEIGHT - 100), rand->next(50), rand->next());
 
         SDL_Flip(screen->get_surface());
         if(1000 / FPS > SDL_GetTicks() - tick) {

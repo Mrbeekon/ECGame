@@ -1,4 +1,8 @@
-#include "stdafx.h"
+#include "SDL/SDL.h"
+#include "c_types.h"
+#include "Screen.h"
+#include "InputMan.h"
+#include "Random.h"
 
 int main(int argc, char** argv)
 {

@@ -20,17 +20,21 @@ main(){
 
     mkdir_project
 
-    echo "cloning code..."
+    echo "Cloning code...."
     git clone $GIT_REPO_URL $GIT_REPO_NAME
     cd $GIT_REPO_NAME
 
+    clear
+    echo "Installing.... Success!"
+    echo "Making Projects directory.... Success!"
+    echo "Cloning code.... Success!"
     echo "done."
 
-    echo "ECGAME at " `pwd`
+    echo "ECGAME at" `pwd`
 }
 
 inst(){
-    echo "installing...."
+    echo "Installing...."
     # Play animation in background
 #    animation &
 #    pid=$!
@@ -44,14 +48,18 @@ inst(){
 #    animation_running=0
 #    kill $pid
     clear
-    echo "installing...."
+    echo "Installing.... Success!"
 }
 
 # Moves and cd's to $PROJECTS_DIR
 mkdir_project(){
-    echo "Making Projects directory ..."
+    echo "Making Projects directory...."
     mkdir -p $PROJECTS_DIR
     cd $PROJECTS_DIR
+    
+    clear
+    echo "Installing.... Success!"
+    echo "Making Projects directory.... Success!"
 }
 
 

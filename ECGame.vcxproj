@@ -37,6 +37,7 @@
     <ClInclude Include="include\SDL\SDL_keysym.h" />
     <ClInclude Include="include\SDL\SDL_loadso.h" />
     <ClInclude Include="include\SDL\SDL_main.h" />
+    <ClInclude Include="include\SDL\SDL_mixer.h" />
     <ClInclude Include="include\SDL\SDL_mouse.h" />
     <ClInclude Include="include\SDL\SDL_mutex.h" />
     <ClInclude Include="include\SDL\SDL_name.h" />

@@ -23,5 +23,6 @@ all-win: rebuild-win
 ECGame:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL
 rebuild: clean fix ECGame
-run: bin/ECGame
+run:
+	bin/ECGame
 

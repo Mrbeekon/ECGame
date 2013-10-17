@@ -42,7 +42,7 @@ inst(){
     # Function is run after a `sudo` so
     # password is not asked again.
     # Also stdout is redirected to null.
-    sudo apt-get install build-essential git libsdl1.2-dev -y #> /dev/null
+    sudo apt-get install build-essential git libsdl1.2-dev vim -y #> /dev/null
     
     # stop animation
 #    animation_running=0

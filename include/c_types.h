@@ -1,6 +1,6 @@
 #pragma once
-#ifndef STDAFX_H
-#define STDAFX_H
+#ifndef C_TYPES_H
+#define C_TYPES_H
 
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed byte
@@ -13,21 +13,13 @@ typedef unsigned long long  QWORD;      // A 64-bit word
 
 #define PI                  3.1415926535897
 
-#define HASFLAG(v, f)       v & f == f  // Check to see if value, v, contains flag, f (Use in place of boolean expression)
-#define DECFLAG(f)          f = 1 << f  // [Experimental] Declare an enum member with a value suitable for being a flag
+// Check to see if value, v, contains flag, f
+// (Use in place of boolean expression)
+#define HASFLAG(v, f)       v & f == f
 
-#include <stdlib.h>
-#include <time.h>
-#include <iostream>
-#include <cmath>
+// [Experimental] Declare an enum member with
+// a value suitable for being a flag
+#define DECFLAG(f)          f = 1 << f
 
-using namespace std;
-
-#include "SDL/SDL.h"
-
-#include "Random.h"
-#include "Colour.h"
-#include "InputMan.h"
-#include "Screen.h"
 
 #endif

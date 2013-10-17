@@ -2,17 +2,27 @@
 #ifndef INPUTMAN_H
 #define INPUTMAN_H
 
-#include "stdafx.h"
+#include "SDL/SDL.h"
+#include "c_types.h"
 
-#define SDLKEYCOUNT         SDLK_LAST   // The last entry in in the SDLkey enum, whose value will specify the enum size
+// The last entry in in the SDLkey enum, whose value will specify the enum size
+#define SDLKEYCOUNT         SDLK_LAST
 
 class InputMan
 {
 public:
-    void set_key_down(SDLKey k);          // Set the down status SDLKey, k, to true
-    void set_key_up(SDLKey k);            // Set the down status SDLKey, k, to false
-    bool get_key(SDLKey k);              // Returns the down status of SDLKey, k
-    void release_all();                  // Set the down status of all keys to false
+    // Set the down status SDLKey, k, to true
+    void set_key_down(SDLKey k);
+
+    // Set the down status SDLKey, k, to false
+    void set_key_up(SDLKey k);
+
+    // Returns the down status of SDLKey, k
+    bool get_key(SDLKey k);
+
+    // Set the down status of all keys to false
+    void release_all();
+
 private:
     bool keys[SDLKEYCOUNT];
 };

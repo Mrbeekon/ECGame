@@ -8,7 +8,7 @@
 set -e
 
 # Location to store projects
-PROJECTS_DIR="~/Projects"
+PROJECTS_DIR="$HOME/Projects"
 
 # Repo vars
 GIT_REPO_URL="https://github.com/Exeter-College-Game-Development/ECGame.git"

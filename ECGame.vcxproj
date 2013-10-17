@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Colour.h" />
+    <ClInclude Include="include\c_types.h" />
     <ClInclude Include="include\InMan.h" />
     <ClInclude Include="include\InputMan.h" />
     <ClInclude Include="include\Random.h" />

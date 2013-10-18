@@ -63,8 +63,8 @@
     </NMakePreprocessorDefinitions>
     <OutDir>.\bin\</OutDir>
     <IntDir>.\obj\</IntDir>
-    <NMakeBuildCommandLine>mingw32-make wbuild</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>mingw32-make wrebuild</NMakeReBuildCommandLine>
+    <NMakeBuildCommandLine>mingw32-make build</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mingw32-make rebuild</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
     <NMakeIncludeSearchPath>.\include\; vendor\SDL\windows32\include\;</NMakeIncludeSearchPath>
   </PropertyGroup>

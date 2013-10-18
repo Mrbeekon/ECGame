@@ -30,12 +30,4 @@ obj/*
 *.so
 *.dylib
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-
-# Platform dependent symbolic link
-includes/SDL
-
 

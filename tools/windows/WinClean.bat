@@ -1,3 +1,3 @@
 @echo off
-cd ..
+cd ..\..\
 make clean

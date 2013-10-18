@@ -6,9 +6,6 @@ bin/*
 # Compiled Intermediate Directory
 obj/*
 
-# SDL Includes
-#include/SDL
-
 ### FILE EXTENSIONS ###
 
 # Windows Shortcut

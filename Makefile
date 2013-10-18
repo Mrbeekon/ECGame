@@ -3,38 +3,37 @@
 # Get OS
 UNAME := $(shell uname)
 
-all: rebuild run
+CXX := g++
+CXX_FLAGS := -I include/ -L lib/ -lSDLmain -lSDL
+CXX_FLAGS += -I vendor/SDL/${UNAME}/include
+SRC := src/*.cpp
 
-### ENVIRONMENT MANAGEMENT ###
+ifeq ($(UNAME),windows32)
+	CXX_FLAGS += -lmingw32 -lSDLmain -static-libstdc++ -static-libgcc
+	TARGET := ECGame.exe
+else
+	TARGET := ECGame
+endif
 
+all: build run
+
+rebuild: all
+	
 clean:
-	rm -fr bin obj include/SDL
+	rm -fr bin include/SDL
 
 fix:
 	mkdir bin
-	mkdir obj
 	-cp lib/${UNAME}/* bin/
 
 SDL:
 	cp -r vendor/SDL/${UNAME} include/SDL
 
-ECGame:
-	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL
+${TARGET}:
+	${CXX} ${SRC} -o bin/${TARGET} ${CXX_FLAGS}
 
-rebuild: clean fix ECGame
 
-build: ECGame
+build: ${TARGET}
 
 run:
-	bin/ECGame
-
-### WINDOWS ###
-ECGame.exe:
-	g++ src/*.cpp -o bin/ECGame.exe -I include/  -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++ -static-libgcc
-
-wrebuild: clean fix ECGame.exe
-
-wbuild: ECGame.exe
-
-wrun:
-	bin/ECGame.exe
+	bin/${TARGET}

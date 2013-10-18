@@ -17,7 +17,7 @@ fix:
 ### WINDOWS ###
 
 ECGame.exe:
-	g++ src/*.cpp -o bin/ECGame.exe -I include/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++ -static-libgcc
+	g++ src/*.cpp -o bin/ECGame.exe -I include/ -I incwin/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++ -static-libgcc
 
 wrebuild: clean fix ECGame.exe
 
@@ -29,7 +29,7 @@ wrun:
 ### LINUX\NON-WINDOWS ###
 
 ECGame:
-	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL
+	g++ src/*.cpp -o bin/ECGame -I include/ -I inclinux/ -L lib/ -lSDLmain -lSDL
 
 lrebuild: clean fix ECGame
 

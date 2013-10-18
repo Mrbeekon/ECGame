@@ -48,7 +48,11 @@ ifeq ($(UNAME),windows32)
 	ECHO_N := ${ECHO}
 	ECHO_E := ${ECHO}
 
+	# Windows specific fix command.
+	# Dlls are needed to be copied
+	# into bin.
 	FIX := cp lib/${UNAME}/*.dll bin/
+
 else # Linux/etc
 	# No extension needed.
 	TARGET := ECGame
@@ -71,6 +75,9 @@ else # Linux/etc
 	ECHO_N := ${ECHO} -n
 	ECHO_E := ${ECHO} -e
 
+	# Linux specific fix command.
+	# Actually nothing needed so
+	# just echoes into null.
 	FIX := ${ECHO} > ${NULL}
 endif
 

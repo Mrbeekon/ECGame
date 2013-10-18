@@ -63,10 +63,10 @@
     </NMakePreprocessorDefinitions>
     <OutDir>.\bin\</OutDir>
     <IntDir>.\obj\</IntDir>
-    <NMakeBuildCommandLine>mingw32-make ECGame.exe</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>mingw32-make rebuild-win</NMakeReBuildCommandLine>
+    <NMakeBuildCommandLine>mingw32-make wbuild</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mingw32-make wrebuild</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
-    <NMakeIncludeSearchPath>.\include\;</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>.\include\; vendor\SDL\windows32\include\;</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>ECGame.exe</NMakeOutput>

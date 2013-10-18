@@ -5,7 +5,7 @@ UNAME := $(shell uname)
 
 all: rebuild run
 
-### ENVIRONMENT MANAGEMENT ###
+### LINUX ###
 
 clean:
 	rm -fr bin obj include/SDL
@@ -18,7 +18,9 @@ fix:
 SDL:
 	cp -r vendor/SDL/${UNAME} include/SDL
 
-ECGame:
+### LINUX ###
+
+ECGamr:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL
 
 rebuild: clean fix ECGame
@@ -29,12 +31,13 @@ run:
 	bin/ECGame
 
 ### WINDOWS ###
-ECGame.exe:
-	g++ src/*.cpp -o bin/ECGame.exe -I include/  -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++ -static-libgcc
 
-wrebuild: clean fix ECGame.exe
+wECGame:
+	g++ src/*.cpp -o bin/ECGame.exe -I include/ -I vendor/SDL/windows32/include/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++ -static-libgcc
 
-wbuild: ECGame.exe
+wrebuild: clean fix wECGame
+
+wbuild: wECGame
 
 wrun:
 	bin/ECGame.exe

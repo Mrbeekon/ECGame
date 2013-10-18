@@ -16,6 +16,25 @@ LIB := lib/
 CXX := g++
 CXX_FLAGS := -I ${INCLUDE} -L ${LIB}
 
+# Color definitions. 
+NO_COLOR := \x1b[0m
+OK_COLOR := \x1b[32;01m
+ERROR_COLOR := \x1b[31;01m
+WARN_COLOR := \x1b[33;01m
+
+OK_STRING := "$(OK_COLOR)[OK]$(NO_COLOR)"
+ERROR_STRING := "$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
+WARN_STRING := "$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
+
+# Echoes
+ECHO := echo
+ECHO_N := ${ECHO} -n
+ECHO_E := ${ECHO} -e
+
+# Fix command.
+# Actually nothing needed as
+# OS specific.
+FIX := ${ECHO} > ${NULL}
 
 
 # if windows:
@@ -59,26 +78,6 @@ else # Linux/etc
 
 	# Linux NULL
 	NULL := /dev/null
-
-	# Color definitions. 
-	NO_COLOR := \x1b[0m
-	OK_COLOR := \x1b[32;01m
-	ERROR_COLOR := \x1b[31;01m
-	WARN_COLOR := \x1b[33;01m
-
-	OK_STRING := "$(OK_COLOR)[OK]$(NO_COLOR)"
-	ERROR_STRING := "$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
-	WARN_STRING := "$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
-
-	# Echoes
-	ECHO := echo
-	ECHO_N := ${ECHO} -n
-	ECHO_E := ${ECHO} -e
-
-	# Linux specific fix command.
-	# Actually nothing needed so
-	# just echoes into null.
-	FIX := ${ECHO} > ${NULL}
 endif
 
 # Add SDL to compilers flags

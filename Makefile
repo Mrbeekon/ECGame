@@ -30,27 +30,50 @@ ifeq ($(UNAME),windows32)
 	# Target needs .exe extension
 	TARGET := ECGame.exe
 
+	# Windows NULL
 	NULL := NUL
+
+	# Color definitions. 
+	NO_COLOR=
+	OK_COLOR=
+	ERROR_COLOR=
+	WARN_COLOR=
+
+	OK_STRING=
+	ERROR_STRING=
+	WARN_STRING=
+
+	# Echoes
+	ECHO=echo
+	ECHO_N=${ECHO}
+	ECHO_E=${ECHO}
 else # Linux/etc
 	# No extension needed.
 	TARGET := ECGame
+
+	# Linux NULL
 	NULL := /dev/null
+
+	# Color definitions. 
+	NO_COLOR=\x1b[0m
+	OK_COLOR=\x1b[32;01m
+	ERROR_COLOR=\x1b[31;01m
+	WARN_COLOR=\x1b[33;01m
+
+	OK_STRING="$(OK_COLOR)[OK]$(NO_COLOR)"
+	ERROR_STRING="$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
+	WARN_STRING="$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
+
+	# Echoes
+	ECHO=echo
+	ECHO_N=${ECHO} -n
+	ECHO_E=${ECHO} -e
 endif
 
 # Add SDL to compilers flags
 CXX_FLAGS += -lSDLmain -lSDL
 CXX_FLAGS += -I vendor/SDL/${UNAME}/include
 
-
-# Color definitions. 
-NO_COLOR=\x1b[0m
-OK_COLOR=\x1b[32;01m
-ERROR_COLOR=\x1b[31;01m
-WARN_COLOR=\x1b[33;01m
-
-OK_STRING="$(OK_COLOR)[OK]$(NO_COLOR)"
-ERROR_STRING="$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
-WARN_STRING="$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
 
 all: build run
 
@@ -61,25 +84,25 @@ build: clean fix ${TARGET}
 
 
 clean:
-	@echo -n "Cleaning... "
+	@${ECHO_N} "Cleaning... "
 	@rm -fr bin
-	@echo -e ${OK_STRING}
+	@${ECHO_E} ${OK_STRING}
 
 
 fix:
-	@echo -n "Fixing... "
+	@${ECHO_N} "Fixing... "
 	@mkdir bin
 	@-cp lib/${UNAME}/* bin/  > ${NULL} 2>&1 | true  && true
-	@echo -e ${OK_STRING}
+	@${ECHO_E} ${OK_STRING}
 
 
 ${TARGET}:
-	@echo -n "Building ${TARGET}... "
+	@${ECHO_N} "Building ${TARGET}... "
 	@${CXX} ${SRC} -o bin/${TARGET} ${CXX_FLAGS}
-	@echo -e ${OK_STRING}
+	@${ECHO_E} ${OK_STRING}
 
 
 run:
-	@echo "Running ${TARGET}... "
+	@${ECHO} "Running ${TARGET}... "
 	@bin/${TARGET}
-	@echo -e ${OK_STRING}
+	@${ECHO_E} ${OK_STRING}

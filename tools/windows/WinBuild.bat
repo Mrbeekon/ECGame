@@ -1,3 +1,3 @@
 @echo off
 cd ..
-make wbuild
+make build

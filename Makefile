@@ -1,5 +1,7 @@
 # Makefile
 
+SHELL := /bin/bash
+
 # Get OS
 UNAME := $(shell uname)
 
@@ -13,6 +15,7 @@ LIB := lib/
 # C++ compiler and basic flags
 CXX := g++
 CXX_FLAGS := -I ${INCLUDE} -L ${LIB}
+
 
 
 # if windows:
@@ -35,6 +38,17 @@ endif
 CXX_FLAGS += -lSDLmain -lSDL
 CXX_FLAGS += -I vendor/SDL/${UNAME}/include
 
+
+# Color definitions. 
+NO_COLOR=\x1b[0m
+OK_COLOR=\x1b[32;01m
+ERROR_COLOR=\x1b[31;01m
+WARN_COLOR=\x1b[33;01m
+
+OK_STRING="$(OK_COLOR)[OK]$(NO_COLOR)"
+ERROR_STRING="$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
+WARN_STRING="$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
+
 all: build run
 
 # For VS support
@@ -44,16 +58,25 @@ build: clean fix ${TARGET}
 
 
 clean:
-	rm -fr bin
+	@echo -n "Cleaning ... "
+	@rm -fr bin
+	@echo -e ${OK_STRING}
+
 
 fix:
-	mkdir bin
-	-cp lib/${UNAME}/* bin/
+	@echo -n "Fixing ... "
+	@mkdir bin
+	@-cp lib/${UNAME}/* bin/  > /dev/null 2>&1 | true  && true
+	@echo -e ${OK_STRING}
 
 
 ${TARGET}:
-	${CXX} ${SRC} -o bin/${TARGET} ${CXX_FLAGS}
+	@echo -n "Building ${TARGET} ... "
+	@${CXX} ${SRC} -o bin/${TARGET} ${CXX_FLAGS}
+	@echo -e ${OK_STRING}
 
 
 run:
-	bin/${TARGET}
+	@echo "Running ${TARGET} ... "
+	@bin/${TARGET}
+	@echo -e ${OK_STRING}

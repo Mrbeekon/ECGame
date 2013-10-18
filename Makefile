@@ -40,7 +40,7 @@ all: build run
 # For VS support
 rebuild: build
 
-build: fix clean ${TARGET}
+build: clean fix ${TARGET}
 
 
 clean:

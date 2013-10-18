@@ -1,5 +1,3 @@
 @echo off
-title Rebuilding...
-echo Rebuilding...
 cd ..
-make rebuild-win
+make wrebuild

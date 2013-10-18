@@ -1,8 +1,9 @@
 # Makefile
 UNAME := $(shell uname)
 
-# All should be first rule.
-all: rebuild run
+all: lrebuild lrun
+
+### ENVIRONMENT MANAGEMENT ###
 
 clean:
 	rm -fr bin
@@ -13,16 +14,26 @@ fix:
 	mkdir obj
 	cp lib/*.dll bin/
 
-# Windows builds
+### WINDOWS ###
+
 ECGame.exe:
 	g++ src/*.cpp -o bin/ECGame.exe -I include/ -L lib/ -lmingw32 -lSDLmain -lSDL -static-libstdc++ -static-libgcc
-rebuild-win: clean fix ECGame.exe
-all-win: rebuild-win
 
-# All other builds. For Linux, OSX, Unix and any other POSIX OS.
+wrebuild: clean fix ECGame.exe
+
+wbuild: ECGame.exe
+
+wrun:
+	bin/ECGame.exe
+
+### LINUX\NON-WINDOWS ###
+
 ECGame:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL
-rebuild: clean fix ECGame
-run:
-	bin/ECGame
 
+lrebuild: clean fix ECGame
+
+lbuild: ECGame
+
+lrun:
+	bin/ECGame

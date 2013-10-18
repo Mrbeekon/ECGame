@@ -1,5 +1,3 @@
 @echo off
-title Building...
-echo Building...
 cd ..
-make build-win
+make wbuild

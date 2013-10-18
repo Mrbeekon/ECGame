@@ -29,9 +29,12 @@ ifeq ($(UNAME),windows32)
 
 	# Target needs .exe extension
 	TARGET := ECGame.exe
+
+	NULL := NUL
 else # Linux/etc
 	# No extension needed.
 	TARGET := ECGame
+	NULL := /dev/null
 endif
 
 # Add SDL to compilers flags
@@ -66,7 +69,7 @@ clean:
 fix:
 	@echo -n "Fixing... "
 	@mkdir bin
-	@-cp lib/${UNAME}/* bin/  > /dev/null 2>&1 | true  && true
+	@-cp lib/${UNAME}/* bin/  > ${NULL} 2>&1 | true  && true
 	@echo -e ${OK_STRING}
 
 

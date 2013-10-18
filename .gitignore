@@ -34,3 +34,8 @@ obj/*
 *.lai
 *.la
 *.a
+
+# Platform dependent symbolic link
+includes/SDL
+
+

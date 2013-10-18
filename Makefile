@@ -34,19 +34,21 @@ ifeq ($(UNAME),windows32)
 	NULL := NUL
 
 	# Color definitions. 
-	NO_COLOR=
-	OK_COLOR=
-	ERROR_COLOR=
-	WARN_COLOR=
+	NO_COLOR := 
+	OK_COLOR := 
+	ERROR_COLOR := 
+	WARN_COLOR := 
 
-	OK_STRING=
-	ERROR_STRING=
-	WARN_STRING=
+	OK_STRING := 
+	ERROR_STRING := 
+	WARN_STRING := 
 
 	# Echoes
-	ECHO=echo
-	ECHO_N=${ECHO}
-	ECHO_E=${ECHO}
+	ECHO := echo
+	ECHO_N := ${ECHO}
+	ECHO_E := ${ECHO}
+
+	FIX := cp lib/${UNAME}/*.dll bin/
 else # Linux/etc
 	# No extension needed.
 	TARGET := ECGame
@@ -55,19 +57,21 @@ else # Linux/etc
 	NULL := /dev/null
 
 	# Color definitions. 
-	NO_COLOR=\x1b[0m
-	OK_COLOR=\x1b[32;01m
-	ERROR_COLOR=\x1b[31;01m
-	WARN_COLOR=\x1b[33;01m
+	NO_COLOR := \x1b[0m
+	OK_COLOR := \x1b[32;01m
+	ERROR_COLOR := \x1b[31;01m
+	WARN_COLOR := \x1b[33;01m
 
-	OK_STRING="$(OK_COLOR)[OK]$(NO_COLOR)"
-	ERROR_STRING="$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
-	WARN_STRING="$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
+	OK_STRING := "$(OK_COLOR)[OK]$(NO_COLOR)"
+	ERROR_STRING := "$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
+	WARN_STRING := "$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
 
 	# Echoes
-	ECHO=echo
-	ECHO_N=${ECHO} -n
-	ECHO_E=${ECHO} -e
+	ECHO := echo
+	ECHO_N := ${ECHO} -n
+	ECHO_E := ${ECHO} -e
+
+	FIX := ${ECHO} > ${NULL}
 endif
 
 # Add SDL to compilers flags
@@ -92,7 +96,7 @@ clean:
 fix:
 	@${ECHO_N} "Fixing... "
 	@mkdir bin
-	@-cp lib/${UNAME}/* bin/  > ${NULL} 2>&1 | true  && true
+	@${FIX}
 	@${ECHO_E} ${OK_STRING}
 
 

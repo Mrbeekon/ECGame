@@ -58,25 +58,25 @@ build: clean fix ${TARGET}
 
 
 clean:
-	@echo -n "Cleaning ... "
+	@echo -n "Cleaning... "
 	@rm -fr bin
 	@echo -e ${OK_STRING}
 
 
 fix:
-	@echo -n "Fixing ... "
+	@echo -n "Fixing... "
 	@mkdir bin
 	@-cp lib/${UNAME}/* bin/  > /dev/null 2>&1 | true  && true
 	@echo -e ${OK_STRING}
 
 
 ${TARGET}:
-	@echo -n "Building ${TARGET} ... "
+	@echo -n "Building ${TARGET}... "
 	@${CXX} ${SRC} -o bin/${TARGET} ${CXX_FLAGS}
 	@echo -e ${OK_STRING}
 
 
 run:
-	@echo "Running ${TARGET} ... "
+	@echo "Running ${TARGET}... "
 	@bin/${TARGET}
 	@echo -e ${OK_STRING}

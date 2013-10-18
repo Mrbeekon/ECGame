@@ -13,9 +13,10 @@ clean:
 fix:
 	mkdir bin
 	mkdir obj
-	ln -s vendor/SDL/${UNAME} include/SDL
 	-cp lib/${UNAME}/* bin/
 
+SDL:
+	cp -r vendor/SDL/${UNAME} include/SDL
 
 ECGame:
 	g++ src/*.cpp -o bin/ECGame -I include/ -L lib/ -lSDLmain -lSDL

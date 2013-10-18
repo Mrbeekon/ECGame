@@ -14,10 +14,6 @@ LIB := lib/
 CXX := g++
 CXX_FLAGS := -I ${INCLUDE} -L ${LIB}
 
-# Add SDL to compilers flags
-CXX_FLAGS += -lSDLmain -lSDL
-CXX_FLAGS += -I vendor/SDL/${UNAME}/include
-
 
 # if windows:
 ifeq ($(UNAME),windows32)
@@ -34,6 +30,10 @@ else # Linux/etc
 	# No extension needed.
 	TARGET := ECGame
 endif
+
+# Add SDL to compilers flags
+CXX_FLAGS += -lSDLmain -lSDL
+CXX_FLAGS += -I vendor/SDL/${UNAME}/include
 
 all: build run
 

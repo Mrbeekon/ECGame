@@ -53,8 +53,8 @@ ifeq ($(UNAME),windows32)
 	CXX_FLAGS += -static-libstdc++
 	CXX_FLAGS += -static-libgcc
 
-	# Target needs .exe extension (No file extension dot though)
-	TARGET := ECGame.exe
+	# Target needs .exe extension
+	TARGET := ${TARGET}.exe
 
 	# Windows NULL
 	NULL := NUL

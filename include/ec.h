@@ -22,4 +22,6 @@ typedef unsigned long long  QWORD;      // A 64-bit word
 
 #include "SDL/SDL.h"
 
+using namespace std;
+
 #endif

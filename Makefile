@@ -16,6 +16,12 @@ LIB := lib/
 CXX := g++
 CXX_FLAGS := -I ${INCLUDE} -L ${LIB}
 
+# Name of output binary.
+TARGET := ECGame
+
+# General NULL
+NULL := /dev/null
+
 # Color definitions. 
 NO_COLOR := \x1b[0m
 OK_COLOR := \x1b[32;01m
@@ -47,7 +53,7 @@ ifeq ($(UNAME),windows32)
 	CXX_FLAGS += -static-libgcc
 
 	# Target needs .exe extension
-	TARGET := ECGame.exe
+	TARGET +=.exe
 
 	# Windows NULL
 	NULL := NUL
@@ -72,12 +78,6 @@ ifeq ($(UNAME),windows32)
 	# into bin.
 	FIX := cp lib/${UNAME}/*.dll bin/
 
-else # Linux/etc
-	# No extension needed.
-	TARGET := ECGame
-
-	# Linux NULL
-	NULL := /dev/null
 endif
 
 # Add SDL to compilers flags

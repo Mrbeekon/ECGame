@@ -53,8 +53,15 @@ ifeq ($(UNAME),windows32)
 	CXX_FLAGS += -static-libstdc++
 	CXX_FLAGS += -static-libgcc
 
-	# Target needs .exe extension
-	TARGET +=.exe
+	# Target needs .exe extension (No file extension dot though)
+	TARGET += exe
+
+	# By default, make concatenates strings with a space between.
+	# We don't want this, so we replace the space with the file extension dot.
+	space :=
+	space +=
+	target := $(subst $(space),.,$(TARGET))
+	TARGET := $(target)
 
 	# Windows NULL
 	NULL := NUL

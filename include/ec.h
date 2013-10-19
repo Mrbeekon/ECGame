@@ -14,7 +14,10 @@ typedef ushort              WORD;       // A 16-bit Word
 typedef uint                DWORD;      // A 32-bit Word
 typedef unsigned long long  QWORD;      // A 64-bit Word
 
-#define PI                  3.1415926535897
+#define PI          3.1415926535897
+
+#define DEFWIDTH    800
+#define DEFHEIGHT   600
 
 // Only put global includes here.
 // No headers from inludes/ should be here.
@@ -27,5 +30,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 #include "SDL/SDL.h"
 
 using namespace std;
+
+void Stop();
 
 #endif

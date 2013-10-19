@@ -9,22 +9,22 @@
 
 // Use in the place of a series of 3 parameters to acquire r, g, and b
 // values from an integer colour, c.
-#define INTRGB(c)   c >> 16 & 0xff, c >> 8 & 0xff, c & 0xff
+#define INTRGB(c)   (c >> 16 & 0xff), (c >> 8 & 0xff), (c & 0xff)
 
 // Use in the place of a series of 3 parameters to acquire a, r, g, and b
 // values from an integer colour, c.
-#define INTARGB(c)  c >> 24 & 0xff, c >> 16 & 0xff, c >> 8 & 0xff, c & 0xff
+#define INTARGB(c)  (c >> 24 & 0xff), (c >> 16 & 0xff), (c >> 8 & 0xff), (c & 0xff)
 
 // Acquire a particular channel value from an integer
-#define INTA(c)     c >> 24 & 0xff
-#define INTR(c)     c >> 16 & 0xff
-#define INTG(c)     c >> 8 & 0xff
-#define INTB(c)     c & 0xff
+#define INTA(c)     (c >> 24 & 0xff)
+#define INTR(c)     (c >> 16 & 0xff)
+#define INTG(c)     (c >> 8 & 0xff)
+#define INTB(c)     (c & 0xff)
 
 // Acquire an integer from rgb channel values
-#define RGBINT(r, g, b)     r << 16 | g << 8 | b
+#define RGBINT(r, g, b)     (r << 16 | g << 8 | b)
 // Acquire an integer from argb channel values
-#define ARGBINT(a, r, g, b) a << 24 | r << 16 | g << 8 | b
+#define ARGBINT(a, r, g, b) (a << 24 | r << 16 | g << 8 | b)
 
 // Colour channels within a 32-bit integer
 #define CH_A        0xff000000

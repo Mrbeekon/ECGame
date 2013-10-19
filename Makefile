@@ -33,6 +33,12 @@ OK_STRING := "$(OK_COLOUR)[OK]$(NO_COLOUR)"
 ERROR_STRING := "$(ERROR_COLOUR)[ERRORS]$(NO_COLOUR)"
 WARN_STRING := "$(WARN_COLOUR)[WARNINGS]$(NO_COLOUR)"
 
+# Task Info Strings
+CLEAN_STRING := "Cleaning..."
+FIX_STRING := "Fixing..."
+BUILD_STRING := "Building ${TARGET}..."
+RUN_STRING := "Running ${TARGET}..."
+
 # Echoes
 ECHO := echo
 ECHO_N := ${ECHO} -n
@@ -66,9 +72,15 @@ ifeq ($(UNAME),windows32)
 	WARN_COLOUR :=
 
 	# Status messages
-	OK_STRING := "[OK]"
-	ERROR_STRING := "[ERRORS]"
-	WARN_STRING := "[WARNINGS]"
+	OK_STRING := [OK]
+	ERROR_STRING := [ERRORS]
+	WARN_STRING := [WARNINGS]
+
+	# Task Info Strings
+	CLEAN_STRING := | SET /P var=Cleaning...
+	FIX_STRING := | SET /P var=Fixing...
+	BUILD_STRING := | SET /P var=Building ${TARGET}...
+	RUN_STRING := | SET /P var=Running ${TARGET}...
 
 	# Echoes
 	ECHO := echo
@@ -96,25 +108,25 @@ build: clean fix ${TARGET}
 
 
 clean:
-	@${ECHO_N} "Cleaning... "
+	@${ECHO_N} ${CLEAN_STRING}
 	@rm -fr bin
 	@${ECHO_E} ${OK_STRING}
 
 
 fix:
-	@${ECHO_N} "Fixing... "
+	@${ECHO_N} ${FIX_STRING}
 	@mkdir bin
 	@${FIX}
 	@${ECHO_E} ${OK_STRING}
 
 
 ${TARGET}:
-	@${ECHO_N} "Building ${TARGET}... "
+	@${ECHO_N} ${BUILD_STRING}
 	@${CXX} ${SRC} -o bin/${TARGET} ${CXX_FLAGS}
 	@${ECHO_E} ${OK_STRING}
 
 
 run:
-	@${ECHO} "Running ${TARGET}... "
+	@${ECHO} ${RUN_STRING}
 	@bin/${TARGET}
 	@${ECHO_E} ${OK_STRING}

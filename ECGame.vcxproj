@@ -15,7 +15,7 @@
     <ClInclude Include="include\InMan.h" />
     <ClInclude Include="include\InputMan.h" />
     <ClInclude Include="include\Random.h" />
-    <ClInclude Include="include\Screen.h" />
+    <ClInclude Include="include\Graphics.h" />
     <ClInclude Include="include\SDL\SDL_mixer.h" />
     <ClInclude Include="include\stdafx.h" />
   </ItemGroup>
@@ -24,7 +24,7 @@
     <ClCompile Include="src\InMan.cpp" />
     <ClCompile Include="src\InputMan.cpp" />
     <ClCompile Include="src\Random.cpp" />
-    <ClCompile Include="src\Screen.cpp" />
+    <ClCompile Include="src\Graphics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

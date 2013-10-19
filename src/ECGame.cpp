@@ -1,8 +1,13 @@
 #include "ec.h"
 
-#include "Screen.h"
+#include "Graphics.h"
 #include "InputMan.h"
 #include "Random.h"
+
+void Render(Graphics* g)
+{
+    g->clear(0x88);
+}
 
 int main(int argc, char** argv)
 {
@@ -13,8 +18,11 @@ int main(int argc, char** argv)
     SDL_Init(SDL_INIT_EVERYTHING);
     bool running = true;
     uint tick = 0;
-    
-    Screen* screen = new Screen(WIDTH, HEIGHT);
+
+    SDL_Surface* surface = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_SWSURFACE);
+        
+    Bitmap* screen = new Bitmap(WIDTH, HEIGHT, surface->pixels);
+
     InputMan* in = new InputMan();
     Random* rand = new Random();
 
@@ -36,12 +44,8 @@ int main(int argc, char** argv)
             }
         }
 
-        if (in->get_key(SDLK_ESCAPE))
-            running = false;
-        if (in->get_key(SDLK_SPACE))
-            screen->fill_circle(rand->next(WIDTH - 100), rand->next(HEIGHT - 100), rand->next(50), rand->next());
-
-        SDL_Flip(screen->get_surface());
+        Render(screen->create_graphics());
+        SDL_Flip(surface);
         if(1000 / FPS > SDL_GetTicks() - tick) {
             SDL_Delay(1000 / FPS - (SDL_GetTicks() - tick));
         }

@@ -32,13 +32,29 @@
 #define CH_G        0x0000ff00
 #define CH_B        0x000000ff
 
-class Screen
+class Graphics;
+
+class Bitmap
 {
 public:
-    int width, height;
+    uint width, height;
 
-    Screen(uint w, uint h); 
-    ~Screen(void);
+    Bitmap(uint width, uint height);
+    Bitmap(uint width, uint height, void* pixels);
+    ~Bitmap(void);
+
+    void* get_pixels(void);
+
+    Graphics* create_graphics();
+private:
+    void* pixels;
+};
+
+class Graphics
+{
+public:
+    Graphics(Bitmap* b); 
+    ~Graphics(void);
 
     // Set the colour of a pixel on the screen
     // specifying red, green, and blue values
@@ -69,11 +85,8 @@ public:
 
     // Draw a line between (x0, y0) and (x1, y1)
     void draw_line(int x0, int y0, int x1, int y1, int c);
-
-    // Returns a pointer to the SDL_Surface
-    SDL_Surface* get_surface(void);
-private:	
-    SDL_Surface* surface;
+private:
+    Bitmap* bitmap;
 };
 
 #endif

@@ -44,7 +44,11 @@ int main(int argc, char** argv)
             }
         }
 
+        if (in->get_key(SDLK_ESCAPE))
+            running = false;
+
         Render(screen->create_graphics());
+
         SDL_Flip(surface);
         if(1000 / FPS > SDL_GetTicks() - tick) {
             SDL_Delay(1000 / FPS - (SDL_GetTicks() - tick));

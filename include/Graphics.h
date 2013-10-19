@@ -43,18 +43,20 @@ public:
     Bitmap(uint width, uint height, void* pixels);
     ~Bitmap(void);
 
+    // Get the pixels of the bitmap
     void* get_pixels(void);
 
+    // Create a Graphics object for this bitmap
     Graphics* create_graphics();
 private:
     void* pixels;
+    Graphics * graphics;
 };
 
 class Graphics
 {
 public:
     Graphics(Bitmap* b); 
-    ~Graphics(void);
 
     // Set the colour of a pixel on the screen
     // specifying red, green, and blue values
@@ -85,6 +87,8 @@ public:
 
     // Draw a line between (x0, y0) and (x1, y1)
     void draw_line(int x0, int y0, int x1, int y1, int c);
+
+    void draw_bitmap(int x, int y, Bitmap* b);
 private:
     Bitmap* bitmap;
 };

@@ -7,6 +7,7 @@ Bitmap::Bitmap(uint width, uint height)
     this->width = width;
     this->height = height;
     this->pixels = (void*)(new int[width * height]);
+    this->create_graphics()->clear(0);
 }
 
 Bitmap::Bitmap(uint width, uint height, void* pixels)
@@ -18,6 +19,7 @@ Bitmap::Bitmap(uint width, uint height, void* pixels)
 
 Bitmap::~Bitmap(void)
 {
+    delete graphics;
 }
 
 void* Bitmap::get_pixels(void)
@@ -27,7 +29,10 @@ void* Bitmap::get_pixels(void)
 
 Graphics* Bitmap::create_graphics()
 {
-    return new Graphics(this);
+    if (graphics != NULL)
+        delete graphics;
+    graphics = new Graphics(this);
+    return graphics;
 }
 
 /*** Graphics ***/
@@ -36,9 +41,6 @@ Graphics::Graphics(Bitmap* b)
 {
     bitmap = b;
 }
-
-Graphics::~Graphics(void)
-{ }
 
 void Graphics::set_pixel(int x, int y, byte r, byte g, byte b)
 {
@@ -120,4 +122,13 @@ void Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
             y0 += sy;
         }
     }
+}
+
+void Graphics::draw_bitmap(int x, int y, Bitmap* b)
+{
+    for (int yy = 0; yy < b->height; yy++)
+        for (int xx = 0; xx < b->width; xx++) {
+            int* p = (int*)(b->get_pixels()) + xx + yy * b->width;
+            set_pixel(x + xx, y + yy, *p);
+        }
 }

@@ -1,5 +1,5 @@
-#include "SDL/SDL.h"
-#include "c_types.h"
+#include "ec.h"
+
 #include "Screen.h"
 #include "InputMan.h"
 #include "Random.h"
@@ -18,12 +18,12 @@ int main(int argc, char** argv)
     InputMan* in = new InputMan();
     Random* rand = new Random();
 
-    while(running) {
+    while (running) {
         tick = SDL_GetTicks();
 
         SDL_Event event;
-        while(SDL_PollEvent(&event)) {
-            switch(event.type) {
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
             case SDL_QUIT:
                 running = false;
                 break;

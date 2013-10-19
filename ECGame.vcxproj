@@ -11,8 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Colour.h" />
-    <ClInclude Include="include\c_types.h" />
+    <ClInclude Include="include\ec.h" />
     <ClInclude Include="include\InMan.h" />
     <ClInclude Include="include\InputMan.h" />
     <ClInclude Include="include\Random.h" />
@@ -21,7 +20,6 @@
     <ClInclude Include="include\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Colour.cpp" />
     <ClCompile Include="src\ECGame.cpp" />
     <ClCompile Include="src\InMan.cpp" />
     <ClCompile Include="src\InputMan.cpp" />

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef C_TYPES_H
-#define C_TYPES_H
+#ifndef EC_H
+#define EC_H
 
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed byte
@@ -13,13 +13,13 @@ typedef unsigned long long  QWORD;      // A 64-bit word
 
 #define PI                  3.1415926535897
 
-// Check to see if value, v, contains flag, f
-// (Use in place of boolean expression)
-#define HASFLAG(v, f)       v & f == f
+// Only put global includes here.
+// No headers from inludes/ should be here.
+#include <iostream>
+#include <cmath>
+#include <stdlib.h>
+#include <time.h>
 
-// [Experimental] Declare an enum member with
-// a value suitable for being a flag
-#define DECFLAG(f)          f = 1 << f
-
+#include "SDL/SDL.h"
 
 #endif

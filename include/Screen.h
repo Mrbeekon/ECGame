@@ -4,14 +4,14 @@
 
 #include "ec.h"
 
-// Used by certain methods to denote transparency
+// Colour to denote transparency without alpha byte
 #define RGBTRANSPARENT   0xFF00FF
 
-// Use in the place of ...byte r, byte g, byte, b... to acquire such values
-// from int c.
+// Use in the place of a series of 3 parameters to acquire r, g, and b
+// values from an integer colour, c.
 #define INTRGB(c)   c >> 16 & 0xff, c >> 8 & 0xff, c & 0xff
 
-// Ditto, with additional alpha channel (0xff000000)
+// Ditto, with additional alpha channel
 #define INTARGB(c)  c >> 24 & 0xff, c >> 16 & 0xff, c >> 8 & 0xff, c & 0xff
 
 #define INTA(c)     c >> 24 & 0xff
@@ -20,13 +20,14 @@
 #define INTB(c)     c & 0xff
 
 // Colour channels within a 32-bit integer
-#define CH_ALPHA    0xff000000
-#define CH_RED      0x00ff0000
-#define CH_GREEN    0x0000ff00
-#define CH_BLUE     0x000000ff
+#define CH_A        0xff000000
+#define CH_R        0x00ff0000
+#define CH_G        0x0000ff00
+#define CH_B        0x000000ff
 
 // Gets a colour integer from red, green, and blue byte values
 static int rgb_col(byte r, byte g, byte b);
+
 // Gets a colour integer from alpha, red, green, and blue byte values
 static int argb_col(byte a, byte r, byte g, byte b);
 
@@ -34,6 +35,7 @@ class Screen
 {
 public:
     int width, height;
+
     Screen(uint w, uint h); 
     ~Screen(void);
 
@@ -42,6 +44,8 @@ public:
     void set_pixel(int x, int y, byte r, byte g, byte b);
 
     // Set the colour of a pixel on the screen, using an integer colour
+    // Unlike set_pixel(int, int, byte, byte, byte), this has checks to
+    // ensure that the pixel is set within the bounds of the screen.
     void set_pixel(int x, int y, int c);
 
     // Returns the integer colour of a pixel on the screen

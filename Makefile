@@ -22,15 +22,16 @@ TARGET := ECGame
 # General NULL
 NULL := /dev/null
 
-# Color definitions. 
-NO_COLOR := \x1b[0m
-OK_COLOR := \x1b[32;01m
-ERROR_COLOR := \x1b[31;01m
-WARN_COLOR := \x1b[33;01m
+# Colour definitions.
+NO_COLOUR := \x1b[0m
+OK_COLOUR := \x1b[32;01m
+ERROR_COLOUR := \x1b[31;01m
+WARN_COLOUR := \x1b[33;01m
 
-OK_STRING := "$(OK_COLOR)[OK]$(NO_COLOR)"
-ERROR_STRING := "$(ERROR_COLOR)[ERRORS]$(NO_COLOR)"
-WARN_STRING := "$(WARN_COLOR)[WARNINGS]$(NO_COLOR)"
+# Status messages
+OK_STRING := "$(OK_COLOUR)[OK]$(NO_COLOUR)"
+ERROR_STRING := "$(ERROR_COLOUR)[ERRORS]$(NO_COLOUR)"
+WARN_STRING := "$(WARN_COLOUR)[WARNINGS]$(NO_COLOUR)"
 
 # Echoes
 ECHO := echo
@@ -48,7 +49,7 @@ ifeq ($(UNAME),windows32)
 	# Add MinGW Library
 	CXX_FLAGS += -lmingw32
 
-	# Statically Link
+	# Statically link
 	CXX_FLAGS += -static-libstdc++
 	CXX_FLAGS += -static-libgcc
 
@@ -58,15 +59,16 @@ ifeq ($(UNAME),windows32)
 	# Windows NULL
 	NULL := NUL
 
-	# Color definitions. 
-	NO_COLOR := 
-	OK_COLOR := 
-	ERROR_COLOR := 
-	WARN_COLOR := 
+	# Colour definitions.
+	NO_COLOUR :=
+	OK_COLOUR :=
+	ERROR_COLOUR :=
+	WARN_COLOUR :=
 
-	OK_STRING := 
-	ERROR_STRING := 
-	WARN_STRING := 
+	# Status messages
+	OK_STRING := "[OK]"
+	ERROR_STRING := "[ERRORS]"
+	WARN_STRING := "[WARNINGS]"
 
 	# Echoes
 	ECHO := echo

@@ -1,6 +1,9 @@
 #pragma once
 #ifndef EC_H
 #define EC_H
+#ifndef __cplusplus__
+#define __cplusplus__
+#endif
 
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed Byte
@@ -17,6 +20,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 // No headers from inludes/ should be here.
 #include <iostream>
 #include <cmath>
+#include <string>
 #include <stdlib.h>
 #include <time.h>
 

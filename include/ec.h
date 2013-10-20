@@ -5,6 +5,7 @@
 #define __cplusplus__
 #endif
 
+/* Type Definitions */
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed Byte
 typedef unsigned short      ushort;     // Unsigned Short
@@ -16,8 +17,11 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 
 #define PI          3.1415926535897
 
-#define DEFWIDTH    800
-#define DEFHEIGHT   600
+#define DEFWIDTH    1024
+#define DEFHEIGHT   768
+#define FPS         60
+
+#define TITLE       "ECGame"
 
 // Only put global includes here.
 // No headers from inludes/ should be here.
@@ -29,8 +33,10 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 
 #include "SDL/SDL.h"
 
+/* Global Namespace Usings */
 using namespace std;
 
+/* Global Function Prototypes */
 void Stop();
 
 #endif

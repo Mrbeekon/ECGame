@@ -1,4 +1,4 @@
-#include "Raycast.hpp"
+#include "RayCast.hpp"
 
 RayCast::RayCast()
 { 

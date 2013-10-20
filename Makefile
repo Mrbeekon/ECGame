@@ -51,6 +51,7 @@ FIX := ${ECHO} > ${NULL}
 
 ifneq (,$(findstringMINGW32_NT-,$(UNAME)))
     $(UNAME) := windows32
+endif
 
 # if windows:
 ifeq ($(UNAME),windows32)

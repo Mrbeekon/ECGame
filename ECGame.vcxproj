@@ -19,6 +19,7 @@
     <ClInclude Include="include\Graphics.h" />
     <ClInclude Include="include\SDL\SDL_mixer.h" />
     <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="include\RayCast.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="src\InputMan.cpp" />
     <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
+    <ClCompile Include="src\RayCast.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

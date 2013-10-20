@@ -2,8 +2,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "ec.h"
-#include "Graphics.h"
+#include "ec.hpp"
+#include "Graphics.hpp"
 
 class RayCast
 {

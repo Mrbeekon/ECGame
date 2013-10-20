@@ -16,6 +16,9 @@ LIB := lib/
 CXX := g++
 CXX_FLAGS := -I ${INCLUDE} -L ${LIB}
 
+# C++ Standard
+CXX_FLAGS += -std=c++11
+
 # Name of output binary.
 TARGET := ECGame
 

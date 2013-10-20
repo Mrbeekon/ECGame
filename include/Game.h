@@ -20,8 +20,8 @@ private:
     bool running;
     SDL_Surface*    surface;
     Bitmap*         screen;
-    void Render(int tick, Graphics* g);
-    void Tick(int tick);
+    void Render(ulong tick, Graphics* g);
+    void Tick(ulong tick);
     void Run();
 };
 

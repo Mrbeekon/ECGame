@@ -32,12 +32,13 @@ void Game::Stop()
     running = false;
 }
 
-void Game::Render(int tick, Graphics* g)
+void Game::Render(ulong tick, Graphics* g)
 {
-    g->clear(0x88);
+    if (tick % 60 == 0)
+        g->clear(rnd->next());
 }
 
-void Game::Tick(int tick)
+void Game::Tick(ulong tick)
 {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -60,18 +61,20 @@ void Game::Tick(int tick)
 
 void Game::Run()
 {
-    uint ticks = 0;
+    uint last = 0;
+    ulong tick = 0;
 
     while (running) {
-        ticks = SDL_GetTicks();
+        last = SDL_GetTicks();
 
-        Tick(ticks);
+        Tick(tick);
+        tick++;
 
-        Render(ticks, screen->create_graphics());
+        Render(tick, screen->create_graphics());
         SDL_Flip(surface);
 
-        if(1000 / FPS > SDL_GetTicks() - ticks) {
-            SDL_Delay(1000 / FPS - (SDL_GetTicks() - ticks));
+        if(1000 / FPS > SDL_GetTicks() - last) {
+            SDL_Delay(1000 / FPS - (SDL_GetTicks() - last));
         }
     }
     SDL_Quit();

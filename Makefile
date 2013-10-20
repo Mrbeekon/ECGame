@@ -49,10 +49,6 @@ ECHO_E := ${ECHO} -e
 # OS specific.
 FIX := ${ECHO} > ${NULL}
 
-ifneq (,$(findstring MINGW32_NT-,$(UNAME)))
-    $(UNAME) := windows32
-endif
-
 # if windows:
 ifeq ($(UNAME),windows32)
 	# Add MinGW Library

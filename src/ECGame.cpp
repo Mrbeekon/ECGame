@@ -20,13 +20,13 @@ void Stop()
     running = false;
 }
 
-void Render(Graphics* g)
+void Render(int tick, Graphics* g)
 {
-    g->clear(rnd->next());
 }
 
-void Tick()
+void Tick(int tick)
 {
+    cout << tick;
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
@@ -54,9 +54,9 @@ void Run()
     while (running) {
         ticks = SDL_GetTicks();
 
-        Tick();
+        Tick(ticks);
 
-        Render(screen->create_graphics());
+        Render(ticks, screen->create_graphics());
         SDL_Flip(surface);
 
         if(1000 / FPS > SDL_GetTicks() - ticks) {
@@ -70,6 +70,7 @@ void Start()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     surface = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_SWSURFACE);
+    SDL_WM_SetCaption("Test100", NULL);
     in = new InputMan();
     rnd = new Random();
     running = true;

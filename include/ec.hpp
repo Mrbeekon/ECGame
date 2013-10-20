@@ -24,7 +24,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 #define TITLE       "ECGame"
 
 // Only put global includes here.
-// No headers from inludes/ should be here.
+// No headers from include/ should be here.
 #include <iostream>
 #include <cmath>
 #include <string>

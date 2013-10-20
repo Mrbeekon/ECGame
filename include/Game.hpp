@@ -2,10 +2,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "ec.h"
-#include "InputMan.h"
-#include "Random.h"
-#include "Graphics.h"
+#include "ec.hpp"
+#include "InputMan.hpp"
+#include "Random.hpp"
+#include "Graphics.hpp"
 
 class Game
 {

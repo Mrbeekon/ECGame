@@ -1,4 +1,4 @@
-#include "InputMan.h"
+#include "InputMan.hpp"
 
 // TODO: Make keys into structs with a way of tracking cool down. Implement CHANGABLE controls.
 

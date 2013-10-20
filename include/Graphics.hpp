@@ -2,7 +2,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include "ec.h"
+#include "ec.hpp"
 
 // Colour to denote transparency without alpha byte
 #define RGBTRANSPARENT   0xFF00FF

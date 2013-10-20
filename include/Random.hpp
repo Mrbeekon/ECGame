@@ -2,7 +2,7 @@
 #ifndef RANDOM_H
 #define RANDOM_H
 
-#include "ec.h"
+#include "ec.hpp"
 
 class Random
 {

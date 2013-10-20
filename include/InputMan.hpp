@@ -2,7 +2,7 @@
 #ifndef INPUTMAN_H
 #define INPUTMAN_H
 
-#include "ec.h"
+#include "ec.hpp"
 
 // The last entry in in the SDLkey enum, whose value will specify the enum size
 #define SDLKEYCOUNT         SDLK_LAST

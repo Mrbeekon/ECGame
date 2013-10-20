@@ -1,39 +1,4 @@
-#include "Graphics.h"
-
-/*** Bitmap ***/
-
-Bitmap::Bitmap(uint width, uint height)
-{
-    this->width = width;
-    this->height = height;
-    this->pixels = (void*)(new int[width * height]);
-    this->create_graphics()->clear(0);
-}
-
-Bitmap::Bitmap(uint width, uint height, void* pixels)
-{
-    this->width = width;
-    this->height = height;
-    this->pixels = pixels;
-}
-
-Bitmap::~Bitmap(void)
-{
-    delete graphics;
-}
-
-void* Bitmap::get_pixels(void)
-{
-    return pixels;
-}
-
-Graphics* Bitmap::create_graphics()
-{
-    if (graphics != NULL)
-        delete graphics;
-    graphics = new Graphics(this);
-    return graphics;
-}
+#include "Graphics.hpp"
 
 /*** Graphics ***/
 
@@ -132,3 +97,39 @@ void Graphics::draw_bitmap(int x, int y, Bitmap* b)
             set_pixel(x + xx, y + yy, *p);
         }
 }
+
+/*** Bitmap ***/
+
+Bitmap::Bitmap(uint width, uint height)
+{
+    this->width = width;
+    this->height = height;
+    this->pixels = (void*)(new int[width * height]);
+    this->create_graphics()->clear(0);
+}
+
+Bitmap::Bitmap(uint width, uint height, void* pixels)
+{
+    this->width = width;
+    this->height = height;
+    this->pixels = pixels;
+}
+
+Bitmap::~Bitmap(void)
+{
+    delete graphics;
+}
+
+void* Bitmap::get_pixels(void)
+{
+    return pixels;
+}
+
+Graphics* Bitmap::create_graphics()
+{
+    if (graphics != NULL)
+        delete graphics;
+    graphics = new Graphics(this);
+    return graphics;
+}
+

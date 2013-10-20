@@ -11,15 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\ec.h" />
-    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\ec.hpp" />
+    <ClInclude Include="include\Game.hpp" />
+    <ClInclude Include="include\Graphics.hpp" />
     <ClInclude Include="include\InMan.h" />
-    <ClInclude Include="include\InputMan.h" />
-    <ClInclude Include="include\Random.h" />
-    <ClInclude Include="include\Graphics.h" />
+    <ClInclude Include="include\InputMan.hpp" />
+    <ClInclude Include="include\Random.hpp" />
     <ClInclude Include="include\SDL\SDL_mixer.h" />
     <ClInclude Include="include\stdafx.h" />
-    <ClInclude Include="include\RayCast.h" />
+    <ClInclude Include="include\RayCast.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />

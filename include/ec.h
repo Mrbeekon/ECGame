@@ -46,7 +46,4 @@ struct TickAtt
     uint last;
 };
 
-/* Global Namespace Usings */
-using namespace std;
-
 #endif

@@ -23,6 +23,14 @@ public:
         rnd = new Random();
     }
 
+    ~Game()
+    {
+        delete surface;
+        delete screen;
+        delete in;
+        delete rnd;
+    }
+
     void Start()
     {
         SDL_Init(SDL_INIT_EVERYTHING);

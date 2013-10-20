@@ -15,6 +15,8 @@ typedef ushort              WORD;       // A 16-bit Word
 typedef uint                DWORD;      // A 32-bit Word
 typedef unsigned long long  QWORD;      // A 64-bit Word
 
+/* Definitions */
+
 #define PI          3.1415926535897
 
 #define DEFWIDTH    1024
@@ -33,6 +35,16 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 #include <time.h>
 
 #include "SDL/SDL.h"
+
+/* Other Types */
+// Tick Attributes
+struct TickAtt
+{
+    // The current tick. Never resets, so also a measure of up-time.
+    ulong tick;
+    // Time (in milliseconds) since the last tick. (Roughly 1000 / FPS)
+    uint last;
+};
 
 /* Global Namespace Usings */
 using namespace std;

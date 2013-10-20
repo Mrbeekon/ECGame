@@ -28,6 +28,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <vector>
 #include <stdlib.h>
 #include <time.h>
 
@@ -35,8 +36,5 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 
 /* Global Namespace Usings */
 using namespace std;
-
-/* Global Function Prototypes */
-void Stop();
 
 #endif

@@ -34,6 +34,7 @@ void Game::Stop()
 
 void Game::Render(Graphics* g)
 {
+    g->clear(0)->draw_line(0, 0, DEFWIDTH, DEFHEIGHT, 0xffff00)->draw_line(0, DEFHEIGHT, DEFWIDTH, 0, 0xffff)->destroy();
 }
 
 void Game::Tick(TickAtt ta)

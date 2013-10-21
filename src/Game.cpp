@@ -2,8 +2,8 @@
 
 Game::Game()
 {
-    int width = DEFWIDTH,
-        height = DEFHEIGHT;
+    width = DEFWIDTH;
+    height = DEFHEIGHT;
     surface = SDL_SetVideoMode(width, height, 32, SDL_SWSURFACE);
     screen = new Bitmap(width, height, surface->pixels);
     in = new InputMan();
@@ -34,7 +34,7 @@ void Game::Stop()
 
 void Game::Render(Graphics* g)
 {
-    g->clear(0)->draw_line(0, 0, DEFWIDTH, DEFHEIGHT, 0xffff00)->draw_line(0, DEFHEIGHT, DEFWIDTH, 0, 0xffff)->destroy();
+    g->clear(0)->draw_line(0, 0, width, height, 0xffff00)->draw_line(0, height, width, 0, 0xffff)->destroy();
 }
 
 void Game::Tick(TickAtt ta)

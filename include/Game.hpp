@@ -17,6 +17,7 @@ public:
     void Start();
     void Stop();
 private:
+    int width, height;
     bool running;
     SDL_Surface*    surface;
     Bitmap*         screen;

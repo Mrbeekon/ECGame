@@ -50,7 +50,7 @@ public:
     Graphics* create_graphics();
 private:
     void* pixels;
-    Graphics * graphics;
+    Graphics* graphics;
 };
 
 class Graphics

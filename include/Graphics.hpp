@@ -93,4 +93,27 @@ private:
     Bitmap* bitmap;
 };
 
+/* Static Global Functions */
+
+// Return the additional blend of two colours
+static int col_add(int c1, int c2);
+
+// The first colour becomes the additional blend of the two colours
+static void col_add(int* c1, int c2);
+
+// Returns the alpha blend of two colours, with a blend degree of 50%
+static int col_blh(int c1, int c2);
+
+// The first colour becomes the alpha blend of the two colours, 
+// with a blend degree of 50%
+static void col_blh(int* c1, int c2);
+
+// Returns the alpha blend of two colours, with a
+// specified degree of blending
+static int col_bl(int c1, int c2, byte a);
+
+// The first colour becomes the alpha blend of the
+// two colours, with a specified degree of blending
+static void col_bl(int* c1, int c2, byte a);
+
 #endif

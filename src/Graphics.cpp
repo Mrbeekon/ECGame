@@ -1,5 +1,40 @@
 #include "Graphics.hpp"
 
+/*** Bitmap ***/
+
+Bitmap::Bitmap(uint width, uint height)
+{
+    this->width = width;
+    this->height = height;
+    this->pixels = (void*)(new int[width * height]);
+    this->create_graphics()->clear(0);
+}
+
+Bitmap::Bitmap(uint width, uint height, void* pixels)
+{
+    this->width = width;
+    this->height = height;
+    this->pixels = pixels;
+}
+
+Bitmap::~Bitmap(void)
+{
+    delete graphics;
+}
+
+void* Bitmap::get_pixels(void)
+{
+    return pixels;
+}
+
+Graphics* Bitmap::create_graphics()
+{
+    if (graphics != NULL)
+        delete graphics;
+    graphics = new Graphics(this);
+    return graphics;
+}
+
 /*** Graphics ***/
 
 Graphics::Graphics(Bitmap* b) 
@@ -98,38 +133,44 @@ void Graphics::draw_bitmap(int x, int y, Bitmap* b)
         }
 }
 
-/*** Bitmap ***/
+/* Static Global Functions */
 
-Bitmap::Bitmap(uint width, uint height)
+static int col_add(int c1, int c2)
 {
-    this->width = width;
-    this->height = height;
-    this->pixels = (void*)(new int[width * height]);
-    this->create_graphics()->clear(0);
+    int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
+    return c | ((c >> 8) & 0x010101) * 0xFF;
 }
 
-Bitmap::Bitmap(uint width, uint height, void* pixels)
+static void col_add(int* c1, int c2)
 {
-    this->width = width;
-    this->height = height;
-    this->pixels = pixels;
+    int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
+    *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
 }
 
-Bitmap::~Bitmap(void)
+static int col_blh(int c1, int c2)
 {
-    delete graphics;
+    return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
 }
 
-void* Bitmap::get_pixels(void)
+static void col_blh(int* c1, int c2)
 {
-    return pixels;
+    *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
 }
 
-Graphics* Bitmap::create_graphics()
+static int col_bl(int c1, int c2, byte a)
 {
-    if (graphics != NULL)
-        delete graphics;
-    graphics = new Graphics(this);
-    return graphics;
+    uint cc1 = (uint)c1;
+    uint cc2 = (uint)c2;
+    int uf = 256 - a;
+    return (int)((((c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
+                (((c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
 }
 
+static void col_bl(int* c1, int c2, byte a)
+{
+    uint cc1 = (uint)*c1;
+    uint cc2 = (uint)c2;
+    int uf = 256 - a;
+    *c1 = (int)((((*c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
+               (((*c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+}

@@ -60,35 +60,36 @@ public:
 
     // Set the colour of a pixel on the screen
     // specifying red, green, and blue values
-    void set_pixel(int x, int y, byte r, byte g, byte b);
+    Graphics* set_pixel(int x, int y, byte r, byte g, byte b);
 
     // Set the colour of a pixel on the screen, using an integer colour
     // Unlike set_pixel(int, int, byte, byte, byte), this has checks to
     // ensure that the pixel is set within the bounds of the screen.
-    void set_pixel(int x, int y, int c);
+    Graphics* set_pixel(int x, int y, int c);
 
     // Returns the integer colour of a pixel on the screen
     int get_pixel(int x, int y);
 
     // Clear the screen with a solid colour
-    void clear(int c);
+    Graphics* clear(int c);
 
     // Draws the outline of a rectangle
-    void draw_rectangle(int x, int y, int w, int h, int c, int t);
+    Graphics* draw_rectangle(int x, int y, int w, int h, int c, int t);
 
     // Fills in a rectangular area
-    void fill_rectangle(int x, int y, int w, int h, int c);
+    Graphics* fill_rectangle(int x, int y, int w, int h, int c);
 
     // Draw the outline of a circle with radius r
-    void draw_circle(int x, int y, int r, int c);
+    Graphics* draw_circle(int x, int y, int r, int c);
 
     // Draw a filled circle with radius r
-    void fill_circle(int x, int y, int r, int c);
+    Graphics* fill_circle(int x, int y, int r, int c);
 
     // Draw a line between (x0, y0) and (x1, y1)
-    void draw_line(int x0, int y0, int x1, int y1, int c);
+    Graphics* draw_line(int x0, int y0, int x1, int y1, int c);
 
-    void draw_bitmap(int x, int y, Bitmap* b);
+    // Draw a bitmap
+    Graphics* draw_bitmap(int x, int y, Bitmap* b);
 private:
     Bitmap* bitmap;
 };

@@ -42,17 +42,19 @@ Graphics::Graphics(Bitmap* b)
     bitmap = b;
 }
 
-void Graphics::set_pixel(int x, int y, byte r, byte g, byte b)
+Graphics* Graphics::set_pixel(int x, int y, byte r, byte g, byte b)
 {
     int* p = (int*)(bitmap->get_pixels()) + x + y * bitmap->width;
     *p = RGBINT(r, g, b);
+    return this;
 }
 
-void Graphics::set_pixel(int x, int y, int c)
+Graphics* Graphics::set_pixel(int x, int y, int c)
 {
     if (x < 0 | y < 0 | x >= bitmap->width | y >= bitmap->height)
-        return;
+        return this;
     set_pixel(x, y, INTRGB(c));
+    return this;
 }
 
 int Graphics::get_pixel(int x, int y)
@@ -60,44 +62,49 @@ int Graphics::get_pixel(int x, int y)
     return (int)((int*)(bitmap->get_pixels()))[x + y * bitmap->width];
 }
 
-void Graphics::clear(int c)
+Graphics* Graphics::clear(int c)
 {
     for (int i = 0; i < bitmap->width * bitmap->height; i++) {
         int* p = (int*)(bitmap->get_pixels()) + i;
         *p = c;
     }
+    return this;
 }
     
-void Graphics::draw_rectangle(int x, int y, int w, int h, int c, int t)
+Graphics* Graphics::draw_rectangle(int x, int y, int w, int h, int c, int t)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
             if (yy < t | yy >= h - t | xx < t | xx >= w - t)
                 set_pixel(x + xx, y + yy, c);
+    return this;
 }
 
-void Graphics::fill_rectangle(int x, int y, int w, int h, int c)
+Graphics* Graphics::fill_rectangle(int x, int y, int w, int h, int c)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
             set_pixel(x + xx, y + yy, c);
+    return this;
 }
 
-void Graphics::draw_circle(int x, int y, int r, int c)
+Graphics* Graphics::draw_circle(int x, int y, int r, int c)
 {
     for (double d = 0.0; d < PI * 2.0; d += PI / 180.0)
         set_pixel(x + r + sin(d) * r, y + r + cos(d) * r, c);
+    return this;
 }
 
-void Graphics::fill_circle(int x, int y, int r, int c)
+Graphics* Graphics::fill_circle(int x, int y, int r, int c)
 {
     for (int yy = -r; yy < r; yy++)
         for (int xx = -r; xx < r; xx++)
             if (yy * yy + xx * xx < r * r)
                 set_pixel(x + r + xx, y + r + yy, c);
+    return this;
 }
 
-void Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
+Graphics* Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
 {
     int dx = abs(x1 - x0),
         dy = abs(y1 - y0),
@@ -122,15 +129,17 @@ void Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
             y0 += sy;
         }
     }
+    return this;
 }
 
-void Graphics::draw_bitmap(int x, int y, Bitmap* b)
+Graphics* Graphics::draw_bitmap(int x, int y, Bitmap* b)
 {
     for (int yy = 0; yy < b->height; yy++)
         for (int xx = 0; xx < b->width; xx++) {
             int* p = (int*)(b->get_pixels()) + xx + yy * b->width;
             set_pixel(x + xx, y + yy, *p);
         }
+    return this;
 }
 
 /* Static Global Functions */

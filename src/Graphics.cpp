@@ -27,7 +27,7 @@ void* Bitmap::get_pixels(void)
     return pixels;
 }
 
-Graphics* Bitmap::create_graphics()
+Graphics* Bitmap::create_graphics(void)
 {
     if (graphics != NULL)
         delete graphics;
@@ -140,6 +140,11 @@ Graphics* Graphics::draw_bitmap(int x, int y, Bitmap* b)
             set_pixel(x + xx, y + yy, *p);
         }
     return this;
+}
+
+void Graphics::destroy(void)
+{
+    delete this;
 }
 
 /* Static Global Functions */

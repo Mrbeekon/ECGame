@@ -47,7 +47,7 @@ public:
     void* get_pixels(void);
 
     // Create a Graphics object for this bitmap
-    Graphics* create_graphics();
+    Graphics* create_graphics(void);
 private:
     void* pixels;
     Graphics* graphics;
@@ -90,6 +90,9 @@ public:
 
     // Draw a bitmap
     Graphics* draw_bitmap(int x, int y, Bitmap* b);
+
+    // Destroys this graphics object
+    void destroy(void);
 private:
     Bitmap* bitmap;
 };

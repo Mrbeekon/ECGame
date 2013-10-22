@@ -17,11 +17,6 @@ Bitmap::Bitmap(uint width, uint height, void* pixels)
     this->pixels = pixels;
 }
 
-Bitmap::~Bitmap(void)
-{
-    delete graphics;
-}
-
 void* Bitmap::get_pixels(void)
 {
     return pixels;
@@ -29,10 +24,7 @@ void* Bitmap::get_pixels(void)
 
 Graphics* Bitmap::create_graphics(void)
 {
-    if (graphics != NULL)
-        delete graphics;
-    graphics = new Graphics(this);
-    return graphics;
+    return new Graphics(this);
 }
 
 /*** Graphics ***/

@@ -41,7 +41,6 @@ public:
 
     Bitmap(uint width, uint height);
     Bitmap(uint width, uint height, void* pixels);
-    ~Bitmap(void);
 
     // Get the pixels of the bitmap
     void* get_pixels(void);
@@ -50,7 +49,6 @@ public:
     Graphics* create_graphics(void);
 private:
     void* pixels;
-    Graphics* graphics;
 };
 
 class Graphics

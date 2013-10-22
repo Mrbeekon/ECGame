@@ -5,7 +5,7 @@ Game::Game()
     width = DEFWIDTH;
     height = DEFHEIGHT;
     surface = SDL_SetVideoMode(width, height, 32, SDL_SWSURFACE);
-    screen = new Bitmap(width, height, surface->pixels);
+    screen = new Bitmap(width, height);
     in = new InputMan();
     rnd = new Random();
 }
@@ -69,6 +69,10 @@ void Game::Run()
         ticks.tick++;
 
         Render(screen->create_graphics());
+
+        SDL_LockSurface(surface);
+        memcpy(surface->pixels, screen->get_pixels(), (width * height) << 2);
+        SDL_UnlockSurface(surface);
         SDL_Flip(surface);
 
         if(1000 / FPS > SDL_GetTicks() - ticks.last) {

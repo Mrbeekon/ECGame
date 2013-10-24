@@ -10,20 +10,20 @@
 class Game
 {
 public:
-    InputMan*       in;
-    Random*         rnd;
+    InputMan* in;
+    Random* rnd;
     Game();
     ~Game();
-    void Start();
-    void Stop();
+    void start();
+    void stop();
 private:
     int width, height;
     bool running;
-    SDL_Surface*    surface;
-    Bitmap*         screen;
-    void Render(Graphics* g);
-    void Tick(TickAtt ta);
-    void Run();
+    SDL_Surface* surface;
+    Bitmap* screen;
+    void _render(Graphics* g);
+    void _tick(TickAtt ta);
+    void _run();
 };
 
 #endif

@@ -18,26 +18,26 @@ Game::~Game()
     delete rnd;
 }
 
-void Game::Start()
+void Game::start()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_WM_SetCaption(TITLE, NULL);
 
     running = true;
-    Run();
+    _run();
 }
 
-void Game::Stop()
+void Game::stop()
 {
     running = false;
 }
 
-void Game::Render(Graphics* g)
+void Game::_render(Graphics* g)
 {
     g->clear(0)->draw_line(0, 0, width, height, 0xffff00)->draw_line(0, height, width, 0, 0xffff)->destroy();
 }
 
-void Game::Tick(TickAtt ta)
+void Game::_tick(TickAtt ta)
 {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -58,17 +58,17 @@ void Game::Tick(TickAtt ta)
         running = false;
 }
 
-void Game::Run()
+void Game::_run()
 {
     TickAtt ticks;
 
     while (running) {
         ticks.last = SDL_GetTicks();
 
-        Tick(ticks);
+        _tick(ticks);
         ticks.tick++;
 
-        Render(screen->create_graphics());
+        _render(screen->create_graphics());
 
         SDL_LockSurface(surface);
         memcpy(surface->pixels, screen->get_pixels(), (width * height) << 2);
@@ -85,6 +85,6 @@ void Game::Run()
 int main(int argc, char** argv)
 {
     Game* g = new Game();
-    g->Start();
+    g->start();
     return EXIT_SUCCESS;
 }

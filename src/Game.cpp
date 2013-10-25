@@ -4,6 +4,7 @@ Game::Game()
 {
     width = DEFWIDTH;
     height = DEFHEIGHT;
+    uptime = 0;
     surface = SDL_SetVideoMode(width, height, 32, SDL_SWSURFACE);
     screen = new Bitmap(width, height);
     in = new InputMan();
@@ -34,7 +35,7 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->clear(0)->draw_line(0, 0, width, height, 0xffff00)->draw_line(0, height, width, 0, 0xffff)->destroy();
+    g->clear(0);
 }
 
 void Game::_tick(TickAtt ta)
@@ -67,6 +68,7 @@ void Game::_run()
 
         _tick(ticks);
         ticks.tick++;
+        uptime++;
 
         _render(screen->create_graphics());
 

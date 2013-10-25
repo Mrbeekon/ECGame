@@ -18,6 +18,7 @@ public:
     void stop();
 private:
     int width, height;
+    unsigned long long uptime;
     bool running;
     SDL_Surface* surface;
     Bitmap* screen;

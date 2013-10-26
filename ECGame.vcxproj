@@ -14,20 +14,14 @@
     <ClInclude Include="include\ec.hpp" />
     <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Graphics.hpp" />
-    <ClInclude Include="include\InMan.h" />
     <ClInclude Include="include\InputMan.hpp" />
     <ClInclude Include="include\Random.hpp" />
-    <ClInclude Include="include\SDL\SDL_mixer.h" />
-    <ClInclude Include="include\stdafx.h" />
-    <ClInclude Include="include\RayCast.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\InMan.cpp" />
     <ClCompile Include="src\InputMan.cpp" />
     <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
-    <ClCompile Include="src\RayCast.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

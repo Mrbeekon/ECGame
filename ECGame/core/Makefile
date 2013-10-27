@@ -122,22 +122,23 @@ build: clean fix ${TARGET}
 
 clean:
 	@${ECHO_N} ${CLEAN_STRING}
-	@rm -fr bin
+	@rm -fr bin objs *.so
 	@${ECHO_E} ${OK_STRING}
 
 
 fix:
 	@${ECHO_N} ${FIX_STRING}
 	@mkdir bin
+	@mkdir objs
 	@${FIX}
 	@${ECHO_E} ${OK_STRING}
 
 
 ${TARGET}:
 	@${ECHO_N} ${BUILD_STRING}
-	@${CXX} ${CXX_INCS} ${CXX_FLAGS}  -c src/${TARGET}.cpp -o ${TARGET}.o -fPIC
+	@${CXX} ${CXX_INCS} ${CXX_FLAGS}  -c src/${TARGET}.cpp -o objs/${TARGET}.o -fPIC
 
-	@${CXX} -shared -Wl,--export-dynamic ${TARGET}.o ${CXX_LIBS} -o ${SHARED_OBJ}
+	@${CXX} -shared -Wl,--export-dynamic objs/${TARGET}.o ${CXX_LIBS} -o ${SHARED_OBJ}
 	@${ECHO_E} ${OK_STRING}
 
 

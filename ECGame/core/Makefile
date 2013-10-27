@@ -1,7 +1,7 @@
 # Makefile
 
 # Name of output binary.
-TARGET := ECGame
+TARGET := screen
 
 SHELL := /bin/bash
 

@@ -2,7 +2,9 @@
 
 Random::Random(void)
 {
-    srand(time(NULL)); // Initialise C's random number generator upon initialisation. Default seed is time.
+    // Initialise C's random number generator upon initialisation.
+    // Default xseed is time.
+    srand(time(NULL));
 }
     
 Random::Random(uint seed)
@@ -40,8 +42,10 @@ int Random::_get_rand_int()
     /* The reason we don't do:
      *      int r = rand();
      *      return r & 0xff | r & 0xff << 8 | r & 0xff << 16 | r & 0xff << 24;
-     * is because otherwise 'r & 0xff' would always be equal to 'r >> 16 & 0xff' etc, which isn't very random.
+     * is because otherwise 'r & 0xff'
+     * would always be equal to 'r >> 16 & 0xff' etc, which isn't very random.
      *
-     * Therefore, whenever Random::next() is called, it's actually an itteration of four randoms (may be necessary to know).
+     * Therefore, whenever Random::next() is called, it's actually an
+     * itteration of four randoms (may be necessary to know).
      */
 }

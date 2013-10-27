@@ -206,8 +206,9 @@ static int col_bl(int c1, int c2, byte a)
     uint cc1 = (uint)c1;
     uint cc2 = (uint)c2;
     int uf = 256 - a;
-    return (int)((((c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
-                (((c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+    return (int)
+            ((((c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
 }
 
 static void col_bl(int* c1, int c2, byte a)
@@ -215,6 +216,7 @@ static void col_bl(int* c1, int c2, byte a)
     uint cc1 = (uint)*c1;
     uint cc2 = (uint)c2;
     int uf = 256 - a;
-    *c1 = (int)((((*c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
-               (((*c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+    *c1 = (int)
+            ((((*c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((*c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
 }

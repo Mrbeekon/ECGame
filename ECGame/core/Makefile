@@ -103,6 +103,7 @@ endif
 CXX_LIBS += -lSDLmain -lSDL
 CXX_INCS += -I vendor/SDL/${UNAME}/include
 
+# Python stuff
 CXX_INCS += -I /usr/include/python2.7
 CXX_LIBS += -L /usr/lib/python2.1/config -lpython2.7
 

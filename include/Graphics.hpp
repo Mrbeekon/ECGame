@@ -90,7 +90,7 @@ public:
     // Draw a bitmap
     Graphics* draw_bitmap(int x, int y, Bitmap* b);
 
-    Graphics* draw_string(int x, int y, char* str[], int c);
+    Graphics* draw_string(int x, int y, const char* str, int c);
 
     // Destroys this graphics object
     void destroy(void);

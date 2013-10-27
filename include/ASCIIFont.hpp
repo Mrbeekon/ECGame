@@ -3,7 +3,8 @@
 #define ASCIIFONT_H
 
 // ASCII contains 95 printable characters
-const unsigned short F8x12[12 * 95] = {
+// Starting ASCII index is 32
+const unsigned char F8x12[12 * 95] = {
 /*--     --*/
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 /*-- !  --*/

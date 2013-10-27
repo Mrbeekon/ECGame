@@ -35,7 +35,7 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->clear(0);
+    g->clear(0x88)->draw_string(20, 10, "Hello, World!", 0xffff00)->destroy();
 }
 
 void Game::_tick(TickAtt ta)

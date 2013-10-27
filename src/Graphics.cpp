@@ -134,6 +134,12 @@ Graphics* Graphics::draw_bitmap(int x, int y, Bitmap* b)
     return this;
 }
 
+
+Graphics* Graphics::draw_string(int x, int y, char* str[], int c)
+{
+    return this;
+}
+
 void Graphics::destroy(void)
 {
     delete this;

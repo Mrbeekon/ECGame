@@ -3,6 +3,7 @@
 #define SCREEN_H
 
 #include "ec.hpp"
+#include "ASCIIFont.hpp"
 
 // Colour to denote transparency without alpha byte
 #define RGBTRANSPARENT   0xFF00FF
@@ -88,6 +89,8 @@ public:
 
     // Draw a bitmap
     Graphics* draw_bitmap(int x, int y, Bitmap* b);
+
+    Graphics* draw_string(int x, int y, char* str[], int c);
 
     // Destroys this graphics object
     void destroy(void);

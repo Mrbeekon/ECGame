@@ -4,9 +4,6 @@
 
 #include "ec.hpp"
 
-// The last entry in in the SDLkey enum, whose value will specify the enum size
-#define SDLKEYCOUNT         SDLK_LAST
-
 class InputMan
 {
 public:
@@ -21,9 +18,9 @@ public:
 
     // Set the down status of all keys to false
     void release_all();
-
+    
 private:
-    bool keys[SDLKEYCOUNT];
+    bool keys[SDLK_LAST];
 };
 
 #endif

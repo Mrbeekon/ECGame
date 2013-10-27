@@ -19,6 +19,6 @@ bool InputMan::get_key(SDLKey k)
 
 void InputMan::release_all()
 {
-    for (int i = 0; i < SDLKEYCOUNT; i++)
+    for (int i = 0; i < SDLK_LAST; i++)
         keys[i] = false;
 }

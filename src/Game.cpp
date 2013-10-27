@@ -40,17 +40,14 @@ void Game::_render(Graphics* g)
 
 void Game::_tick(TickAtt ta)
 {
-    SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        switch (event.type) {
+    SDL_Event e;
+    while (SDL_PollEvent(&e)) {
+        switch (e.type) {
         case SDL_QUIT:
             running = false;
             break;
-        case SDL_KEYDOWN:
-            in->set_key_down(event.key.keysym.sym);
-            break;
-        case SDL_KEYUP:
-            in->set_key_up(event.key.keysym.sym);
+        default:
+            in->event_proc(e);
             break;
         }
     }

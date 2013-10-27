@@ -19,6 +19,7 @@ public:
     // Set the down status of all keys to false
     void release_all();
     
+    // Process input-related events from the SDL_Event
     void event_proc(SDL_Event e);
 private:
     bool keys[SDLK_LAST];

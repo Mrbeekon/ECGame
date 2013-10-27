@@ -24,6 +24,7 @@
 
 // Acquire an integer from rgb channel values
 #define RGBINT(r, g, b)     ((r) << 16 | (g) << 8 | (b))
+
 // Acquire an integer from argb channel values
 #define ARGBINT(a, r, g, b) ((a) << 24 | (r) << 16 | (g) << 8 | (b))
 

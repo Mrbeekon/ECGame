@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ASCIIFont.hpp" />
     <ClInclude Include="include\ec.hpp" />
     <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Graphics.hpp" />

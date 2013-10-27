@@ -35,14 +35,14 @@
 class Screen
 {
 public:
-    int width, height;
+    int width, height, fps;
 
-    Screen(uint w, uint h); 
+    Screen(uint w, uint h, uint f); 
     ~Screen(void);
 
     // Set the colour of a pixel on the screen
     // specifying red, green, and blue values
-    void set_pixel(int x, int y, byte r, byte g, byte b);
+    void _set_pixel(int x, int y, byte r, byte g, byte b);
 
     // Set the colour of a pixel on the screen, using an integer colour
     // Unlike set_pixel(int, int, byte, byte, byte), this has checks to
@@ -72,6 +72,10 @@ public:
 
     // Returns a pointer to the SDL_Surface
     SDL_Surface* get_surface(void);
+
+    bool next();
+
+    uint tick;
 private:	
     SDL_Surface* surface;
 };

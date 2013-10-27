@@ -1,10 +1,12 @@
 #include "Screen.h"
 
-Screen::Screen(uint w, uint h) 
+Screen::Screen(uint w, uint h, uint f) 
 {
     width = w;
     height = h;
+    fps = f;
     surface = SDL_SetVideoMode(width, height, 32, SDL_SWSURFACE);
+    tick = 0;
     clear(0);
 }
 
@@ -18,7 +20,7 @@ SDL_Surface* Screen::get_surface(void)
     return surface;
 }
 
-void Screen::set_pixel(int x, int y, byte r, byte g, byte b)
+void Screen::_set_pixel(int x, int y, byte r, byte g, byte b)
 {
     unsigned int* pixel = (unsigned int*)(surface->pixels) + x + y * width;
     *pixel = SDL_MapRGB(surface->format, r, g, b);
@@ -28,7 +30,7 @@ void Screen::set_pixel(int x, int y, int c)
 {
     if (x < 0 | y < 0 | x >= width | y >= height)
         return;
-    set_pixel(x, y, INTRGB(c));
+    _set_pixel(x, y, INTRGB(c));
 }
 
 int Screen::get_pixel(int x, int y)
@@ -100,13 +102,43 @@ void Screen::draw_line(int x0, int y0, int x1, int y1, int c)
     }
 }
 
+bool Screen::next()
+{
+    SDL_Flip(this->get_surface());
+    if(1000 / this->fps > SDL_GetTicks() - tick) {
+        SDL_Delay(1000 / this->fps - (SDL_GetTicks() - tick));
+    }
+
+    tick = SDL_GetTicks();
+
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+            case SDL_QUIT:
+                return false;
+        }
+    }
+
+    return true;
+}
+
+
 #include <boost/python/module.hpp>
 #include <boost/python/class.hpp>
 using namespace boost::python;
 
 // Boost.python definitions to expose classes to Python
 BOOST_PYTHON_MODULE(screen) {
-    boost::python::class_<Screen>("Screen", init<unsigned int, unsigned int>())
+    boost::python::class_<Screen>("Screen", init<unsigned int, unsigned int, unsigned int>())
+        .def("clear", &Screen::clear)
+        .def("set_pixel", &Screen::set_pixel)
+        .def("get_pixel", &Screen::get_pixel)
+        .def("next", &Screen::next)
+        .def("draw_line", &Screen::draw_line)
+        .def("draw_rectangle", &Screen::draw_rectangle)
+        .def("draw_circle", &Screen::draw_circle)
+        .def("fill_rectangle", &Screen::fill_rectangle)
+        .def("fill_circle", &Screen::fill_circle)
     ;
 };
 

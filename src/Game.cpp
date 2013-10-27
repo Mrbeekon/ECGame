@@ -44,7 +44,7 @@ void Game::_tick(TickAtt ta)
     while (SDL_PollEvent(&e)) {
         switch (e.type) {
         case SDL_QUIT:
-            running = false;
+            stop();
             break;
         default:
             in->event_proc(e);
@@ -53,7 +53,7 @@ void Game::_tick(TickAtt ta)
     }
 
     if (in->get_key(SDLK_ESCAPE))
-        running = false;
+        stop();
 }
 
 void Game::_run()

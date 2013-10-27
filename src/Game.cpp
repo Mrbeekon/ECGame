@@ -35,7 +35,10 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->clear(0x88)->draw_string(20, 10, "Hello, World!", 0xffff00)->destroy();
+    for (int y = 0; y < height; y++)
+        for (int x = 0; x < width; x++)
+            g->set_pixel(x, y, RGBINT(y * 255 / height, 0, x * 255 / width));
+    g->draw_string_scaled(0, 0, "Hello, World!", 0xffff00, 5);
 }
 
 void Game::_tick(TickAtt ta)

@@ -1,7 +1,5 @@
 #include "InputMan.hpp"
 
-// TODO: Make keys into structs with a way of tracking cool down. Implement CHANGABLE controls.
-
 void InputMan::set_key_down(SDLKey k)
 {
     keys[k] = true;

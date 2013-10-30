@@ -148,27 +148,13 @@ Graphics* Graphics::draw_bitmap_scaled(int x, int y, Bitmap* b, byte s)
 
 Graphics* Graphics::draw_string(int x, int y, const char* str, int c)
 {
-    for (int i = 0; i < strlen(str); i++)
-        for (int yy = 0; yy < 12; yy++) {
-            byte p = F8x12[(str[i] - 32) * 12 + yy];
-            for (int xx = 0; xx < 8; xx++)
-                if ((p >> (8 - xx)) & 0x1 == 0x1)
-                    set_pixel(x + xx + (i << 3), y + yy, c);
-        }
+    // TODO: This
     return this;
 }
 
 Graphics* Graphics::draw_string_scaled(int x, int y, const char* str, int c, byte s)
 {
-    for (int i = 0; i < strlen(str); i++)
-        for (int yy = 0; yy < 12; yy++) {
-            byte p = F8x12[(str[i] - 32) * 12 + yy];
-            for (int xx = 0; xx < 8; xx++)
-                if ((p >> (8 - xx)) & 0x1 == 0x1)
-                    for (int syy = 0; syy < s; syy++)
-                        for (int sxx = 0; sxx < s; sxx++)
-                            set_pixel(x + (xx + (i << 3)) * s + sxx, y + yy * s + syy, c);
-        }
+    // TODO: This
     return this;
 }
 

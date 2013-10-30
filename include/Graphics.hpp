@@ -3,6 +3,10 @@
 #define SCREEN_H
 
 #include "ec.hpp"
+#include "Bitmap.hpp"
+
+// Forward declare the Bitmap class
+class Bitmap;
 
 // Colour to denote transparency without alpha byte
 #define RGBTRANSPARENT   0xFF00FF
@@ -67,27 +71,17 @@ const int COL[16] = {
 #define COL_YELLOW      COL[14]
 #define COL_WHITE       COL[15]
 
-class Graphics;
-
-class Bitmap
+// Bitmap drawing scale type
+typedef enum
 {
-public:
-    uint width, height;
-
-    Bitmap(uint width, uint height);
-    Bitmap(uint width, uint height, void* pixels);
-
-    // Get the pixels of the bitmap
-    void* get_pixels(void);
-
-    // Create a Graphics object for this bitmap
-    Graphics* create_graphics(void);
-
-    // Destroy the bitmap object
-    void destroy(void);
-private:
-    void* pixels;
-};
+    SCALETYPE_NONE,    // Draws the bitmap in the given region
+    SCALETYPE_TILE,    // Fills the region with a tile arrangement of the drawn bitmap
+    //-[Unimplemented]-//
+    SCALETYPE_CENTRE,  // Centres the bitmap in the given region
+    SCALETYPE_STRETCH, // Stretches the bitmap to fill the region [Unimplemented]
+    SCALETYPE_ZOOM,    // Resize the bitmap to fill the region, maintaining aspect ratio
+    //-----------------//
+} ScaleType;
 
 class Graphics
 {
@@ -98,7 +92,7 @@ public:
     // specifying red, green, and blue values
     void set_pixel(int x, int y, byte r, byte g, byte b);
 
-    // Set the colour of a pixel on the screen, using an integer colour
+    // Set the colour of a pixel on the screen, using an integer colour.
     // Unlike set_pixel(int, int, byte, byte, byte), this has checks to
     // ensure that the pixel is set within the bounds of the screen.
     void set_pixel(int x, int y, int c);
@@ -129,8 +123,11 @@ public:
     // it will be horizontal.
     void draw_line_flat(int x, int y, int l, bool vertical, int c);
 
-    // Draw a bitmap
+    // Draw a bitmap without any form of scaling 
     void draw_bitmap_unscaled(int x, int y, Bitmap* b);
+
+    // Draw a bitmap with the specified scale type
+    void draw_bitmap(int x, int y, int width, int height, Bitmap* b, ScaleType st);
     
     // Draw a string of text to the screen
     void draw_string(int x, int y, const char* str, int c);
@@ -139,6 +136,11 @@ public:
     void destroy(void);
 private:
     Bitmap* bitmap;
+    void _draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b);
+    void _draw_bitmap__scaletype_tile(int x, int y, int width, int height, Bitmap* b);
+    void _draw_bitmap__scaletype_centre(int x, int y, int width, int height, Bitmap* b);
+    void _draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b);
+    void _draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b);
 };
 
 /* Static Global Functions */

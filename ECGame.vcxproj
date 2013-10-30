@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AsciiFont.hpp" />
+    <ClInclude Include="include\Bitmap.hpp" />
     <ClInclude Include="include\ec.hpp" />
     <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Graphics.hpp" />
@@ -18,6 +20,7 @@
     <ClInclude Include="include\Random.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\InputMan.cpp" />
     <ClCompile Include="src\Random.cpp" />

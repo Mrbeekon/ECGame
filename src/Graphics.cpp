@@ -1,96 +1,6 @@
 #include "Graphics.hpp"
-
-const byte ASCIIFONT[12 * 95] = {
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 30, 30, 30, 12, 12, 0, 12, 12,
-    0, 0, 0, 102, 102, 102, 36, 0, 0, 0, 0, 0, 0, 0, 0, 54, 54, 127, 54, 54, 
-    54, 127, 54, 54, 0, 0, 12, 12, 62, 3, 3, 30, 48, 48, 31, 12, 12, 0, 0, 0,
-    0, 35, 51, 24, 12, 6, 51, 49, 0, 0, 0, 14, 27, 27, 14, 95, 123, 51, 59, 
-    110, 0, 0, 0, 12, 12, 12, 6, 0, 0, 0, 0, 0, 0, 0, 0, 48, 24, 12, 6, 6, 6,
-    12, 24, 48, 0, 0, 0, 6, 12, 24, 48, 48, 48, 24, 12, 6, 0, 0, 0, 0, 0, 102,
-    60, 255, 60, 102, 0, 0, 0, 0, 0, 0, 0, 24, 24, 126, 24, 24, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 28, 28, 6, 0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 28, 28, 0, 0, 0, 0, 64, 96, 48, 24, 12, 6, 3, 1,
-    0, 0, 0, 62, 99, 115, 123, 107, 111, 103, 99, 62, 0, 0, 0, 8, 12, 15, 12,
-    12, 12, 12, 12, 63, 0, 0, 0, 30, 51, 51, 48, 24, 12, 6, 51, 63, 0, 0, 0, 
-    30, 51, 48, 48, 28, 48, 48, 51, 30, 0, 0, 0, 48, 56, 60, 54, 51, 127, 48,
-    48, 120, 0, 0, 0, 63, 3, 3, 3, 31, 48, 48, 51, 30, 0, 0, 0, 28, 6, 3, 3, 
-    31, 51, 51, 51, 30, 0, 0, 0, 127, 99, 99, 96, 48, 24, 12, 12, 12, 0, 0, 0,
-    30, 51, 51, 51, 30, 51, 51, 51, 30, 0, 0, 0, 30, 51, 51, 51, 62, 24, 24, 
-    12, 14, 0, 0, 0, 0, 0, 28, 28, 0, 0, 28, 28, 0, 0, 0, 0, 0, 0, 28, 28, 0,
-    0, 28, 28, 24, 12, 0, 0, 48, 24, 12, 6, 3, 6, 12, 24, 48, 0, 0, 0, 0, 0,
-    0, 126, 0, 126, 0, 0, 0, 0, 0, 0, 6, 12, 24, 48, 96, 48, 24, 12, 6, 0, 0,
-    0, 30, 51, 48, 24, 12, 12, 0, 12, 12, 0, 0, 0, 62, 99, 99, 123, 123, 123,
-    3, 3, 62, 0, 0, 0, 12, 30, 51, 51, 51, 63, 51, 51, 51, 0, 0, 0, 63, 102, 
-    102, 102, 62, 102, 102, 102, 63, 0, 0, 0, 60, 102, 99, 3, 3, 3, 99, 102, 
-    60, 0, 0, 0, 31, 54, 102, 102, 102, 102, 102, 54, 31, 0, 0, 0, 127, 70, 6,
-    38, 62, 38, 6, 70, 127, 0, 0, 0, 127, 102, 70, 38, 62, 38, 6, 6, 15, 0, 0,
-    0, 60, 102, 99, 3, 3, 115, 99, 102, 124, 0, 0, 0, 51, 51, 51, 51, 63, 51, 
-    51, 51, 51, 0, 0, 0, 30, 12, 12, 12, 12, 12, 12, 12, 30, 0, 0, 0, 120, 48,
-    48, 48, 48, 51, 51, 51, 30, 0, 0, 0, 103, 102, 54, 54, 30, 54, 54, 102,
-    103, 0, 0, 0, 15, 6, 6, 6, 6, 70, 102, 102, 127, 0, 0, 0, 99, 119, 127, 
-    127, 107, 99, 99, 99, 99, 0, 0, 0, 99, 99, 103, 111, 127, 123, 115, 99, 
-    99, 0, 0, 0, 28, 54, 99, 99, 99, 99, 99, 54, 28, 0, 0, 0, 63, 102, 102, 
-    102, 62, 6, 6, 6, 15, 0, 0, 0, 28, 54, 99, 99, 99, 115, 123, 62, 48, 120,
-    0, 0, 63, 102, 102, 102, 62, 54, 102, 102, 103, 0, 0, 0, 30, 51, 51, 3, 
-    14, 24, 51, 51, 30, 0, 0, 0, 63, 45, 12, 12, 12, 12, 12, 12, 30, 0, 0, 0,
-    51, 51, 51, 51, 51, 51, 51, 51, 30, 0, 0, 0, 51, 51, 51, 51, 51, 51, 51,
-    30, 12, 0, 0, 0, 99, 99, 99, 99, 107, 107, 54, 54, 54, 0, 0, 0, 51, 51, 
-    51, 30, 12, 30, 51, 51, 51, 0, 0, 0, 51, 51, 51, 51, 30, 12, 12, 12, 30,
-    0, 0, 0, 127, 115, 25, 24, 12, 6, 70, 99, 127, 0, 0, 0, 60, 12, 12, 12, 
-    12, 12, 12, 12, 60, 0, 0, 0, 0, 1, 3, 6, 12, 24, 48, 96, 64, 0, 0, 0, 60,
-    48, 48, 48, 48, 48, 48, 48, 60, 0, 0, 8, 28, 54, 99, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 12, 12, 24, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 30, 48, 62, 51, 51, 110, 0, 0, 0, 7, 6, 6, 62, 102,
-    102, 102, 102, 59, 0, 0, 0, 0, 0, 0, 30, 51, 3, 3, 51, 30, 0, 0, 0, 56,
-    48, 48, 62, 51, 51, 51, 51, 110, 0, 0, 0, 0, 0, 0, 30, 51, 63, 3, 51, 30,
-    0, 0, 0, 28, 54, 6, 6, 31, 6, 6, 6, 15, 0, 0, 0, 0, 0, 0, 110, 51, 51,
-    51, 62, 48, 51, 30, 0, 7, 6, 6, 54, 110, 102, 102, 102, 103, 0, 0, 0, 24,
-    24, 0, 30, 24, 24, 24, 24, 126, 0, 0, 0, 48, 48, 0, 60, 48, 48, 48, 48,
-    51, 51, 30, 0, 7, 6, 6, 102, 54, 30, 54, 102, 103, 0, 0, 0, 30, 24, 24, 
-    24, 24, 24, 24, 24, 126, 0, 0, 0, 0, 0, 0, 63, 107, 107, 107, 107, 99, 0,
-    0, 0, 0, 0, 0, 31, 51, 51, 51, 51, 51, 0, 0, 0, 0, 0, 0, 30, 51, 51, 51, 
-    51, 30, 0, 0, 0, 0, 0, 0, 59, 102, 102, 102, 102, 62, 6, 15, 0, 0, 0, 0, 
-    110, 51, 51, 51, 51, 62, 48, 120, 0, 0, 0, 0, 55, 118, 110, 6, 6, 15, 0,
-    0, 0, 0, 0, 0, 30, 51, 6, 24, 51, 30, 0, 0, 0, 0, 4, 6, 63, 6, 6, 6, 54, 
-    28, 0, 0, 0, 0, 0, 0, 51, 51, 51, 51, 51, 110, 0, 0, 0, 0, 0, 0, 51, 51, 
-    51, 51, 30, 12, 0, 0, 0, 0, 0, 0, 99, 99, 107, 107, 54, 54, 0, 0, 0, 0, 0,
-    0, 99, 54, 28, 28, 54, 99, 0, 0, 0, 0, 0, 0, 102, 102, 102, 102, 60, 48,
-    24, 15, 0, 0, 0, 0, 63, 49, 24, 6, 35, 63, 0, 0, 0, 56, 12, 12, 6, 3, 6, 
-    12, 12, 56, 0, 0, 0, 24, 24, 24, 24, 0, 24, 24, 24, 24, 0, 0, 0, 7, 12, 
-    12, 24, 48, 24, 12, 12, 7, 0, 0, 0, 206, 91, 115, 0, 0, 0, 0, 0, 0, 0, 0,
-};
-
-/*** Bitmap ***/
-
-Bitmap::Bitmap(uint width, uint height)
-{
-    this->width = width;
-    this->height = height;
-    this->pixels = (void*)(new int[width * height]);
-    this->create_graphics()->clear(0);
-}
-
-Bitmap::Bitmap(uint width, uint height, void* pixels)
-{
-    this->width = width;
-    this->height = height;
-    this->pixels = pixels;
-}
-
-void* Bitmap::get_pixels(void)
-{
-    return pixels;
-}
-
-Graphics* Bitmap::create_graphics(void)
-{
-    return new Graphics(this);
-}
-
-void Bitmap::destroy(void)
-{
-    delete this;
-}
+#include "AsciiFont.hpp" // Included here so that it isn't included for any
+                         // includers of Graphics.hpp (many)
 
 /*** Graphics ***/
 
@@ -101,20 +11,17 @@ Graphics::Graphics(Bitmap* b)
 
 void Graphics::set_pixel(int x, int y, byte r, byte g, byte b)
 {
-    int* p = (int*)(bitmap->get_pixels()) + x + y * bitmap->width;
-    *p = RGBINT(r, g, b);
+    bitmap->set_pixel(x, y, r, g, b);
 }
 
 void Graphics::set_pixel(int x, int y, int c)
 {
-    if (x < 0 | y < 0 | x >= bitmap->width | y >= bitmap->height)
-        return;
-    set_pixel(x, y, INTRGB(c));
+    bitmap->set_pixel(x, y, c);
 }
 
 int Graphics::get_pixel(int x, int y)
 {
-    return (int)((int*)(bitmap->get_pixels()))[x + y * bitmap->width];
+    return bitmap->get_pixel(x, y);
 }
 
 void Graphics::clear(int c)
@@ -201,6 +108,27 @@ void Graphics::draw_bitmap_unscaled(int x, int y, Bitmap* b)
     }
 }
 
+void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, ScaleType st)
+{
+    switch (st) {
+    case SCALETYPE_NONE: 
+        draw_bitmap_unscaled(x, y, b);
+        break;
+    case SCALETYPE_TILE: 
+        _draw_bitmap__scaletype_tile(x, y, width, height, b);
+        break;
+    case SCALETYPE_CENTRE:
+        _draw_bitmap__scaletype_centre(x, y, width, height, b); 
+        break;
+    case SCALETYPE_STRETCH:
+        _draw_bitmap__scaletype_stretch(x, y, width, height, b);
+        break;
+    case SCALETYPE_ZOOM: 
+        _draw_bitmap__scaletype_zoom(x, y, width, height, b);
+        break;
+    }
+}
+
 void Graphics::draw_string(int x, int y, const char* str, int c)
 {
     // i is the index of the current character in the string,
@@ -231,6 +159,39 @@ void Graphics::draw_string(int x, int y, const char* str, int c)
 void Graphics::destroy(void)
 {
     delete this;
+}
+
+void Graphics::_draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b)
+{
+    for (int yy = 0; yy < height; yy++) {
+        for (int xx = 0; xx < width; xx++) {
+            set_pixel(x + xx, y + yy, b->get_pixel(xx, yy));
+        }
+    }
+}
+
+void Graphics::_draw_bitmap__scaletype_tile(int x, int y, int width, int height, Bitmap* b)
+{
+    for (int yy = 0; yy < height; yy++) {
+        for (int xx = 0; xx < width; xx++) {
+            set_pixel(x + xx, y + yy, b->get_pixel(xx % b->width, yy % b->height));
+        }
+    }
+}
+
+void Graphics::_draw_bitmap__scaletype_centre(int x, int y, int width, int height, Bitmap* b)
+{
+    // Unimplemented
+}
+
+void Graphics::_draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b)
+{
+    // Unimplemented
+}
+
+void Graphics::_draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b)
+{
+    // Unimplemented
 }
 
 /* Static Global Functions */

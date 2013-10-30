@@ -124,6 +124,17 @@ Graphics* Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
     return this;
 }
 
+Graphics* Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c)
+{
+    if (vertical)
+        for (int i = 0; i < l; i++)
+            set_pixel(x, y + i, c);
+    else
+        for (int i = 0; i < l; i++)
+            set_pixel(x + i, y, c);
+    return this;
+}
+
 Graphics* Graphics::draw_bitmap(int x, int y, Bitmap* b)
 {
     for (int yy = 0; yy < b->height; yy++)

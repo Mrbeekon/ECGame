@@ -8,7 +8,7 @@ Game::Game()
     surface = SDL_SetVideoMode(width, height, 32, SDL_SWSURFACE);
     screen = new Bitmap(width, height);
     in = new InputMan();
-    rnd = new Random();
+    rand = new Random();
 }
 
 Game::~Game()
@@ -16,7 +16,7 @@ Game::~Game()
     delete surface;
     delete screen;
     delete in;
-    delete rnd;
+    delete rand;
 }
 
 void Game::start()
@@ -42,7 +42,7 @@ void Game::_render(Graphics* g)
                          "aute irure dolor in reprehenderit in voluptate velit esse \n"
                          "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat \n"
                          "cupidatat non proident, sunt in culpa qui officia deserunt \n"
-                         "mollit anim id est laborum.", 0xffff00);
+                         "mollit anim id est laborum.", rand->next());
     g->destroy();
 }
 

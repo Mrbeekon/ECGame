@@ -11,7 +11,7 @@ class Game
 {
 public:
     InputMan* in;
-    Random* rnd;
+    Random* rand;
     Game();
     ~Game();
     void start();

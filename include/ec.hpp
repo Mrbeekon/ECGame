@@ -25,14 +25,11 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 
 #define TITLE       "ECGame"
 
-// Only put global includes here.
-// No headers from include/ should be here.
+/* Global External Includes */
 #include <iostream>
 #include <cmath>
 #include <string>
 #include <vector>
-#include <stdlib.h>
-#include <time.h>
 
 #include "SDL/SDL.h"
 

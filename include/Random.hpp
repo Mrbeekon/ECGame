@@ -3,6 +3,8 @@
 #define RANDOM_H
 
 #include "ec.hpp"
+#include <stdlib.h>
+#include <time.h>
 
 class Random
 {

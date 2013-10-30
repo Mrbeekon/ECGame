@@ -34,7 +34,7 @@ double Random::next_double(void)
 
 int Random::_get_rand_int()
 {
-    return rand() | rand() << 16;
+    return rand() & 0xff | (rand() & 0xff) << 8 | (rand() & 0xff) << 16 | (rand() & 0xff) << 24;
     
     // rand() only returns a 16-bit integer (which is a bit rubbish).
     // Also, only 15 of those 16 bits are used (hence RAND_MAX = 0x7fff).

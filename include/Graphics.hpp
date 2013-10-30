@@ -90,7 +90,7 @@ public:
 
     // Draw either a horizontal or vertical line of length, l, from point (x, y).
     // Use for speed
-    Graphics* Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c);
+    Graphics* draw_line_flat(int x, int y, int l, bool vertical, int c);
 
     // Draw a bitmap
     Graphics* draw_bitmap(int x, int y, Bitmap* b);

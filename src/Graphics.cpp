@@ -159,7 +159,15 @@ Graphics* Graphics::draw_bitmap_scaled(int x, int y, Bitmap* b, byte s)
 
 Graphics* Graphics::draw_string(int x, int y, const char* str, int c)
 {
-    // TODO: This
+    for (int i = 0; i < strlen(str); i++) {
+        byte b[12];
+        memcpy(b, F8x12 + (str[i] - 32) * 12, 12);
+        for (int yy = 0; yy < 12; yy++) {
+                for (int xx = 0; xx < 8; xx++) {
+                set_pixel(xx + x + (i << 3), yy + y, (b[yy] >> xx) & 0x1 == 0x1 ? c : 0);
+            }
+        }
+    }
     return this;
 }
 

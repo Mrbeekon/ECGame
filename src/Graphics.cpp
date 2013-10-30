@@ -87,6 +87,11 @@ Graphics* Bitmap::create_graphics(void)
     return new Graphics(this);
 }
 
+void Bitmap::destroy(void)
+{
+    delete this;
+}
+
 /*** Graphics ***/
 
 Graphics::Graphics(Bitmap* b) 

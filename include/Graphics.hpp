@@ -51,6 +51,9 @@ public:
 
     // Create a Graphics object for this bitmap
     Graphics* create_graphics(void);
+
+    // Destroy the bitmap object
+    void destroy(void);
 private:
     void* pixels;
 };

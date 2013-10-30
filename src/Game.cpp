@@ -35,10 +35,15 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    for (int y = 0; y < height; y++)
-        for (int x = 0; x < width; x++)
-            g->set_pixel(x, y, RGBINT(y * 255 / height, 0, x * 255 / width));
-    g->draw_string(0, 0, "Hello, World!", 0xffff00);
+    g->draw_string(20, 10, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, \n"
+                         "sed do eiusmod tempor incididunt ut labore et dolore magna \n"
+                         "aliqua. Ut enim ad minim veniam, quis nostrud exercitation \n"
+                         "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis \n"
+                         "aute irure dolor in reprehenderit in voluptate velit esse \n"
+                         "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat \n"
+                         "cupidatat non proident, sunt in culpa qui officia deserunt \n"
+                         "mollit anim id est laborum.", 0xffff00);
+    g->destroy();
 }
 
 void Game::_tick(TickAtt ta)

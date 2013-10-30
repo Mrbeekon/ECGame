@@ -3,7 +3,6 @@
 #define SCREEN_H
 
 #include "ec.hpp"
-#include "ASCIIFont.hpp"
 
 // Colour to denote transparency without alpha byte
 #define RGBTRANSPARENT   0xFF00FF
@@ -33,6 +32,9 @@
 #define CH_R        0x00ff0000
 #define CH_G        0x0000ff00
 #define CH_B        0x000000ff
+
+// Tab size for text rendering
+#define TABSIZE     4
 
 class Graphics;
 
@@ -98,8 +100,6 @@ public:
     Graphics* draw_bitmap_scaled(int x, int y, Bitmap* b, byte s);
     
     Graphics* draw_string(int x, int y, const char* str, int c);
-
-    Graphics* draw_string_scaled(int x, int y, const char* str, int c, byte s);
 
     // Destroys this graphics object
     void destroy(void);

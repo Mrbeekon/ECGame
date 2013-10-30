@@ -125,12 +125,14 @@ public:
     void draw_line(int x0, int y0, int x1, int y1, int c);
 
     // Draw either a horizontal or vertical line of length, l, from point (x, y).
-    // Use for speed
+    // Use for speed. Set 'vertical' as true to draw a horizontal line, otherwise
+    // it will be horizontal.
     void draw_line_flat(int x, int y, int l, bool vertical, int c);
 
     // Draw a bitmap
-    void draw_bitmap(int x, int y, Bitmap* b);
+    void draw_bitmap_unscaled(int x, int y, Bitmap* b);
     
+    // Draw a string of text to the screen
     void draw_string(int x, int y, const char* str, int c);
 
     // Destroys this graphics object

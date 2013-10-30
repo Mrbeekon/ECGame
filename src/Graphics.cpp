@@ -191,7 +191,7 @@ void Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c)
             set_pixel(x + i, y, c);
 }
 
-void Graphics::draw_bitmap(int x, int y, Bitmap* b)
+void Graphics::draw_bitmap_unscaled(int x, int y, Bitmap* b)
 {
     for (int yy = 0; yy < b->height; yy++) {
         for (int xx = 0; xx < b->width; xx++) {

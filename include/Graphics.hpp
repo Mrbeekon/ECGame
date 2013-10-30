@@ -136,10 +136,16 @@ public:
     void destroy(void);
 private:
     Bitmap* bitmap;
+
+    // Not a duplicated of Graphics::draw_bitmap_unscaled -- this allows for clipping
     void _draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b);
+
     void _draw_bitmap__scaletype_tile(int x, int y, int width, int height, Bitmap* b);
+
     void _draw_bitmap__scaletype_centre(int x, int y, int width, int height, Bitmap* b);
+
     void _draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b);
+
     void _draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b);
 };
 

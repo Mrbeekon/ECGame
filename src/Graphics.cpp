@@ -102,8 +102,7 @@ void Graphics::draw_bitmap_unscaled(int x, int y, Bitmap* b)
 {
     for (int yy = 0; yy < b->height; yy++) {
         for (int xx = 0; xx < b->width; xx++) {
-            int* p = (int*)(b->get_pixels()) + xx + yy * b->width;
-            set_pixel(x + xx, y + yy, *p);
+            set_pixel(x + xx, y + yy, b->get_pixel(xx, yy));
         }
     }
 }

@@ -42,7 +42,7 @@ void Game::_render(Graphics* g)
                          "aute irure dolor in reprehenderit in voluptate velit esse \n"
                          "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat \n"
                          "cupidatat non proident, sunt in culpa qui officia deserunt \n"
-                         "mollit anim id est laborum.", rand->next());
+                         "mollit anim id est laborum.", COL_YELLOW);
     g->destroy();
 }
 

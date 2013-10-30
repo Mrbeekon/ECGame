@@ -27,32 +27,45 @@
 // Acquire an integer from argb channel values
 #define ARGBINT(a, r, g, b) ((a) << 24 | (r) << 16 | (g) << 8 | (b))
 
-// Colour channels within a 32-bit integer
-#define CH_A        0xff000000
-#define CH_R        0x00ff0000
-#define CH_G        0x0000ff00
-#define CH_B        0x000000ff
-
 // Tab size for text rendering
 #define TABSIZE     4
 
 // 16 Basic Colours
-#define COL_BLACK       0x000000
-#define COL_DARKBLUE    0x000080
-#define COL_DARKGREEN   0x008000
-#define COL_DARKCYAN    0x008080
-#define COL_DARKRED     0x800000
-#define COL_DARKMAGENTA 0x800080
-#define COL_DARKYELLOW  0x808000
-#define COL_GREY        0xC0C0C0 // <--- These two are meant to be 'backwards'
-#define COL_DARKGREY    0x808080 // <-'
-#define COL_BLUE        0x0000FF
-#define COL_GREEN       0x00FF00
-#define COL_CYAN        0x00FFFF
-#define COL_RED         0xFF0000
-#define COL_MAGENTA     0xFFFF00
-#define COL_YELLOW      0xFFFF00
-#define COL_WHITE       0xFFFFFF
+const int COL[16] = {
+    0x000000, 
+    0x000080, 
+    0x008000, 
+    0x008080, 
+    0x800000, 
+    0x800080, 
+    0x808000, 
+    0xC0C0C0, 
+    0x808080, 
+    0x0000FF, 
+    0x00FF00, 
+    0x00FFFF, 
+    0xFF0000, 
+    0xFFFF00, 
+    0xFFFF00, 
+    0xFFFFFF
+};
+
+#define COL_BLACK       COL[0]
+#define COL_DARKBLUE    COL[1]
+#define COL_DARKGREEN   COL[2]
+#define COL_DARKCYAN    COL[3]
+#define COL_DARKRED     COL[4]
+#define COL_DARKMAGENTA COL[5]
+#define COL_DARKYELLOW  COL[6]
+#define COL_GREY        COL[7] // <--- These two are meant to be 'backwards'
+#define COL_DARKGREY    COL[8] // <-'
+#define COL_BLUE        COL[9]
+#define COL_GREEN       COL[10]
+#define COL_CYAN        COL[11]
+#define COL_RED         COL[12]
+#define COL_MAGENTA     COL[13]
+#define COL_YELLOW      COL[14]
+#define COL_WHITE       COL[15]
 
 class Graphics;
 

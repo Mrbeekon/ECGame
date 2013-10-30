@@ -99,19 +99,17 @@ Graphics::Graphics(Bitmap* b)
     bitmap = b;
 }
 
-Graphics* Graphics::set_pixel(int x, int y, byte r, byte g, byte b)
+void Graphics::set_pixel(int x, int y, byte r, byte g, byte b)
 {
     int* p = (int*)(bitmap->get_pixels()) + x + y * bitmap->width;
     *p = RGBINT(r, g, b);
-    return this;
 }
 
-Graphics* Graphics::set_pixel(int x, int y, int c)
+void Graphics::set_pixel(int x, int y, int c)
 {
     if (x < 0 | y < 0 | x >= bitmap->width | y >= bitmap->height)
-        return this;
+        return;
     set_pixel(x, y, INTRGB(c));
-    return this;
 }
 
 int Graphics::get_pixel(int x, int y)
@@ -119,49 +117,44 @@ int Graphics::get_pixel(int x, int y)
     return (int)((int*)(bitmap->get_pixels()))[x + y * bitmap->width];
 }
 
-Graphics* Graphics::clear(int c)
+void Graphics::clear(int c)
 {
     for (int i = 0; i < bitmap->width * bitmap->height; i++) {
         int* p = (int*)(bitmap->get_pixels()) + i;
         *p = c;
     }
-    return this;
 }
     
-Graphics* Graphics::draw_rectangle(int x, int y, int w, int h, int c, int t)
+void Graphics::draw_rectangle(int x, int y, int w, int h, int c, int t)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
             if (yy < t | yy >= h - t | xx < t | xx >= w - t)
                 set_pixel(x + xx, y + yy, c);
-    return this;
 }
 
-Graphics* Graphics::fill_rectangle(int x, int y, int w, int h, int c)
+void Graphics::fill_rectangle(int x, int y, int w, int h, int c)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
             set_pixel(x + xx, y + yy, c);
-    return this;
 }
 
-Graphics* Graphics::draw_circle(int x, int y, int r, int c)
+void Graphics::draw_circle(int x, int y, int r, int c)
 {
     for (double d = 0.0; d < PI * 2.0; d += PI / 180.0)
         set_pixel(x + r + sin(d) * r, y + r + cos(d) * r, c);
-    return this;
 }
 
-Graphics* Graphics::fill_circle(int x, int y, int r, int c)
+void Graphics::fill_circle(int x, int y, int r, int c)
 {
     for (int yy = -r; yy < r; yy++)
         for (int xx = -r; xx < r; xx++)
             if (yy * yy + xx * xx < r * r)
                 set_pixel(x + r + xx, y + r + yy, c);
-    return this;
 }
 
-Graphics* Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
+void Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
 {
     int dx = abs(x1 - x0),
         dy = abs(y1 - y0),
@@ -186,10 +179,9 @@ Graphics* Graphics::draw_line(int x0, int y0, int x1, int y1, int c)
             y0 += sy;
         }
     }
-    return this;
 }
 
-Graphics* Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c)
+void Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c)
 {
     if (vertical)
         for (int i = 0; i < l; i++)
@@ -197,10 +189,9 @@ Graphics* Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c)
     else
         for (int i = 0; i < l; i++)
             set_pixel(x + i, y, c);
-    return this;
 }
 
-Graphics* Graphics::draw_bitmap(int x, int y, Bitmap* b)
+void Graphics::draw_bitmap(int x, int y, Bitmap* b)
 {
     for (int yy = 0; yy < b->height; yy++) {
         for (int xx = 0; xx < b->width; xx++) {
@@ -208,25 +199,9 @@ Graphics* Graphics::draw_bitmap(int x, int y, Bitmap* b)
             set_pixel(x + xx, y + yy, *p);
         }
     }
-    return this;
 }
 
-Graphics* Graphics::draw_bitmap_scaled(int x, int y, Bitmap* b, byte s)
-{
-    for (int syy = 0; syy < s; syy++) {
-        for (int yy = 0; yy < b->height; yy++) {
-            for (int sxx = 0; sxx < s; sxx++) {
-                for (int xx = 0; xx < b->width; xx++) {
-                    int* p = (int*)(b->get_pixels()) + xx + yy * b->width;
-                    set_pixel(x + sxx + xx * s, y + syy + yy * s, *p);
-                }
-            }
-        }
-    }
-    return this;
-}
-
-Graphics* Graphics::draw_string(int x, int y, const char* str, int c)
+void Graphics::draw_string(int x, int y, const char* str, int c)
 {
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
@@ -251,7 +226,6 @@ Graphics* Graphics::draw_string(int x, int y, const char* str, int c)
             break;
         }
     }
-    return this;
 }
 
 void Graphics::destroy(void)

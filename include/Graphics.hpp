@@ -36,6 +36,24 @@
 // Tab size for text rendering
 #define TABSIZE     4
 
+// 16 Basic Colours
+#define COL_BLACK       0x000000
+#define COL_DARKBLUE    0x000080
+#define COL_DARKGREEN   0x008000
+#define COL_DARKCYAN    0x008080
+#define COL_DARKRED     0x800000
+#define COL_DARKMAGENTA 0x800080
+#define COL_DARKYELLOW  0x808000
+#define COL_GREY        0xC0C0C0 // <--- These two are meant to be 'backwards'
+#define COL_DARKGREY    0x808080 // <-'
+#define COL_BLUE        0x0000FF
+#define COL_GREEN       0x00FF00
+#define COL_CYAN        0x00FFFF
+#define COL_RED         0xFF0000
+#define COL_MAGENTA     0xFFFF00
+#define COL_YELLOW      0xFFFF00
+#define COL_WHITE       0xFFFFFF
+
 class Graphics;
 
 class Bitmap

@@ -193,31 +193,31 @@ void Graphics::_draw_bitmap__scaletype_zoom(int x, int y, int width, int height,
     // Unimplemented
 }
 
-/* Static Global Functions */
+/* Global Functions */
 
-static int col_add(int c1, int c2)
+int col_add(int c1, int c2)
 {
     int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
     return c | ((c >> 8) & 0x010101) * 0xFF;
 }
 
-static void col_add(int* c1, int c2)
+void col_add(int* c1, int c2)
 {
     int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
     *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
 }
 
-static int col_blh(int c1, int c2)
+int col_blh(int c1, int c2)
 {
     return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
 }
 
-static void col_blh(int* c1, int c2)
+void col_blh(int* c1, int c2)
 {
     *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
 }
 
-static int col_bl(int c1, int c2, byte a)
+int col_bl(int c1, int c2, byte a)
 {
     uint cc1 = (uint)c1;
     uint cc2 = (uint)c2;
@@ -227,7 +227,7 @@ static int col_bl(int c1, int c2, byte a)
             (((c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
 }
 
-static void col_bl(int* c1, int c2, byte a)
+void col_bl(int* c1, int c2, byte a)
 {
     uint cc1 = (uint)*c1;
     uint cc2 = (uint)c2;

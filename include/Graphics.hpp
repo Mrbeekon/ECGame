@@ -149,27 +149,27 @@ private:
     void _draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b);
 };
 
-/* Static Global Functions */
+/* Global Functions */
 
 // Return the additional blend of two colours
-static int col_add(int c1, int c2);
+int col_add(int c1, int c2);
 
 // The first colour becomes the additional blend of the two colours
-static void col_add(int* c1, int c2);
+void col_add(int* c1, int c2);
 
 // Returns the alpha blend of two colours, with a blend degree of 50%
-static int col_blh(int c1, int c2);
+int col_blh(int c1, int c2);
 
 // The first colour becomes the alpha blend of the two colours, 
 // with a blend degree of 50%
-static void col_blh(int* c1, int c2);
+void col_blh(int* c1, int c2);
 
 // Returns the alpha blend of two colours, with a
 // specified degree of blending
-static int col_bl(int c1, int c2, byte a);
+int col_bl(int c1, int c2, byte a);
 
 // The first colour becomes the alpha blend of the
 // two colours, with a specified degree of blending
-static void col_bl(int* c1, int c2, byte a);
+void col_bl(int* c1, int c2, byte a);
 
 #endif

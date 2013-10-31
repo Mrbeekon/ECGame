@@ -36,7 +36,7 @@ void Graphics::draw_rectangle(int x, int y, int w, int h, int c, int t)
 {
     for (int yy = 0; yy < h; yy++)
         for (int xx = 0; xx < w; xx++)
-            if (yy < t | yy >= h - t | xx < t | xx >= w - t)
+            if ((yy < t) | (yy >= h - t) | (xx < t) | (xx >= w - t))
                 set_pixel(x + xx, y + yy, c);
 }
 
@@ -147,7 +147,8 @@ void Graphics::draw_string(int x, int y, const char* str, int c)
             memcpy(b, ASCIIFONT + (str[i] - 32) * 12, 12);
             for (int yy = 0; yy < 12; yy++) {
                     for (int xx = 0; xx < 8; xx++) {
-                    set_pixel(xx + x + (j << 3), yy + y + k * 12, (b[yy] >> xx) & 0x1 == 0x1 ? c : 0);
+                    set_pixel(xx + x + (j << 3), yy + y + k * 12, 
+                              ((b[yy] >> xx) & 0x1) == 0x1 ? c : 0);
                 }
             }
             break;
@@ -223,8 +224,8 @@ int col_bl(int c1, int c2, byte a)
     uint cc2 = (uint)c2;
     int uf = 256 - a;
     return (int)
-            ((((c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
 }
 
 void col_bl(int* c1, int c2, byte a)
@@ -233,6 +234,6 @@ void col_bl(int* c1, int c2, byte a)
     uint cc2 = (uint)c2;
     int uf = 256 - a;
     *c1 = (int)
-            ((((*c1 & 0xff00ff) * uf + (c2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((*c1 & 0x00ff00) * uf + (c2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
+            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
 }

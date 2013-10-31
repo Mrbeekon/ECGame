@@ -33,7 +33,7 @@ void Bitmap::set_pixel(int x, int y, byte r, byte g, byte b)
 
 void Bitmap::set_pixel(int x, int y, int c)
 {
-    if (x < 0 | y < 0 | x >= width | y >= height)
+    if ((x < 0) | (y < 0) | (x >= width) | (y >= height))
         return;
     set_pixel(x, y, INTRGB(c));
 }

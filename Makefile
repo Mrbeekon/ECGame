@@ -16,6 +16,9 @@ LIB := lib/
 CXX := g++
 CXX_FLAGS := -I ${INCLUDE} -L ${LIB}
 
+# Turn on Warnings
+CXX_FLAGS += -Wall
+
 # C++ Standard
 CXX_FLAGS += -std=c++11
 

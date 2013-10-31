@@ -2,6 +2,7 @@
 
 # Compiled Binary Directory
 bin/*
+tools/listascii
 
 # Compiled Intermediate Directory
 obj/*

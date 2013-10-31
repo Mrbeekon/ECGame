@@ -4,6 +4,7 @@
 
 #include "ec.hpp"
 
+//  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 const byte ASCIIFONT[12 * 95] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
     0, 12, 30, 30, 30, 12, 12, 0, 12, 12, 0, 0, 

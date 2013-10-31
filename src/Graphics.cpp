@@ -26,7 +26,7 @@ int Graphics::get_pixel(int x, int y)
 
 void Graphics::clear(int c)
 {
-    for (int i = 0; i < bitmap->width * bitmap->height; i++) {
+    for (uint i = 0; i < bitmap->width * bitmap->height; i++) {
         int* p = (int*)(bitmap->get_pixels()) + i;
         *p = c;
     }
@@ -100,8 +100,8 @@ void Graphics::draw_line_flat(int x, int y, int l, bool vertical, int c)
 
 void Graphics::draw_bitmap_unscaled(int x, int y, Bitmap* b)
 {
-    for (int yy = 0; yy < b->height; yy++) {
-        for (int xx = 0; xx < b->width; xx++) {
+    for (uint yy = 0; yy < b->height; yy++) {
+        for (uint xx = 0; xx < b->width; xx++) {
             set_pixel(x + xx, y + yy, b->get_pixel(xx, yy));
         }
     }
@@ -133,7 +133,7 @@ void Graphics::draw_string(int x, int y, const char* str, int c)
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
-    for (int i = 0, j = 0, k = 0; i < strlen(str); i++, j++) {
+    for (uint i = 0, j = 0, k = 0; i < strlen(str); i++, j++) {
         switch (str[i]) {
         case '\n':  // newline
             j = -1; // will be incremented on the next loop cycle

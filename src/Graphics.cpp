@@ -2,8 +2,6 @@
 #include "AsciiFont.hpp" // Included here so that it isn't included for any
                          // includers of Graphics.hpp (many)
 
-/*** Graphics ***/
-
 Graphics::Graphics(Bitmap* b) 
 {
     bitmap = b;
@@ -156,6 +154,8 @@ void Graphics::destroy(void)
     delete this;
 }
 
+/* String Related Functions */
+
 int Graphics::measure_string_longest_line(const char* str)
 {
     // Unimplemented
@@ -178,6 +178,52 @@ int Graphics::measure_string_height(const char* str)
     return measure_string_line_count(str) * 12;
 }
 
+/* Static Functions */
+
+int Graphics::col_add(int c1, int c2)
+{
+    int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
+    return c | ((c >> 8) & 0x010101) * 0xFF;
+}
+
+void Graphics::col_add(int* c1, int c2)
+{
+    int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
+    *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
+}
+
+int Graphics::col_blh(int c1, int c2)
+{
+    return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
+}
+
+void Graphics::col_blh(int* c1, int c2)
+{
+    *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
+}
+
+int Graphics::col_bl(int c1, int c2, byte a)
+{
+    uint cc1 = (uint)c1;
+    uint cc2 = (uint)c2;
+    int uf = 256 - a;
+    return (int)
+            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+}
+
+void Graphics::col_bl(int* c1, int c2, byte a)
+{
+    uint cc1 = (uint)*c1;
+    uint cc2 = (uint)c2;
+    int uf = 256 - a;
+    *c1 = (int)
+            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
+}
+
+/* Private Functions */
+
 void Graphics::_draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b)
 {
     for (int yy = 0; yy < height; yy++) {
@@ -199,48 +245,4 @@ void Graphics::_draw_bitmap__scaletype_tile(int x, int y, int width, int height,
 void Graphics::_draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b)
 {
     // Unimplemented
-}
-
-/* Global Functions */
-
-int col_add(int c1, int c2)
-{
-    int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
-    return c | ((c >> 8) & 0x010101) * 0xFF;
-}
-
-void col_add(int* c1, int c2)
-{
-    int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
-    *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
-}
-
-int col_blh(int c1, int c2)
-{
-    return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
-}
-
-void col_blh(int* c1, int c2)
-{
-    *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
-}
-
-int col_bl(int c1, int c2, byte a)
-{
-    uint cc1 = (uint)c1;
-    uint cc2 = (uint)c2;
-    int uf = 256 - a;
-    return (int)
-            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
-}
-
-void col_bl(int* c1, int c2, byte a)
-{
-    uint cc1 = (uint)*c1;
-    uint cc2 = (uint)c2;
-    int uf = 256 - a;
-    *c1 = (int)
-            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
 }

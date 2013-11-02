@@ -131,7 +131,7 @@ public:
     // Destroys this graphics object
     void destroy(void);
 
-    // String related methods (save draw_string)
+    /* String Related Functions */
     
     // Returns the length of the longest line in a string
     int measure_string_longest_line(const char* str);
@@ -146,6 +146,30 @@ public:
     // Measure the height of the string on screen
     // taking into account escape characters
     int measure_string_height(const char* str);
+
+    /* Static Functions */
+
+    // Return the additional blend of two colours
+    static int col_add(int c1, int c2);
+
+    // The first colour becomes the additional blend of the two colours
+    static void col_add(int* c1, int c2);
+
+    // Returns the alpha blend of two colours, with a blend degree of 50%
+    static int col_blh(int c1, int c2);
+
+    // The first colour becomes the alpha blend of the two colours, 
+    // with a blend degree of 50%
+    static void col_blh(int* c1, int c2);
+
+    // Returns the alpha blend of two colours, with a
+    // specified degree of blending
+    static int col_bl(int c1, int c2, byte a);
+
+    // The first colour becomes the alpha blend of the
+    // two colours, with a specified degree of blending
+    static void col_bl(int* c1, int c2, byte a);
+
 private:
     Bitmap* bitmap;
 
@@ -156,28 +180,5 @@ private:
 
     void _draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b);
 };
-
-/* Global Functions */
-
-// Return the additional blend of two colours
-int col_add(int c1, int c2);
-
-// The first colour becomes the additional blend of the two colours
-void col_add(int* c1, int c2);
-
-// Returns the alpha blend of two colours, with a blend degree of 50%
-int col_blh(int c1, int c2);
-
-// The first colour becomes the alpha blend of the two colours, 
-// with a blend degree of 50%
-void col_blh(int* c1, int c2);
-
-// Returns the alpha blend of two colours, with a
-// specified degree of blending
-int col_bl(int c1, int c2, byte a);
-
-// The first colour becomes the alpha blend of the
-// two colours, with a specified degree of blending
-void col_bl(int* c1, int c2, byte a);
 
 #endif

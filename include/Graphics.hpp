@@ -76,11 +76,7 @@ typedef enum
 {
     SCALETYPE_NONE,    // Draws the bitmap in the given region
     SCALETYPE_TILE,    // Fills the region with a tile arrangement of the drawn bitmap
-    //-[Unimplemented]-//
-    SCALETYPE_CENTRE,  // Centres the bitmap in the given region
     SCALETYPE_STRETCH, // Stretches the bitmap to fill the region [Unimplemented]
-    SCALETYPE_ZOOM,    // Resize the bitmap to fill the region, maintaining aspect ratio
-    //-----------------//
 } ScaleType;
 
 class Graphics
@@ -142,11 +138,7 @@ private:
 
     void _draw_bitmap__scaletype_tile(int x, int y, int width, int height, Bitmap* b);
 
-    void _draw_bitmap__scaletype_centre(int x, int y, int width, int height, Bitmap* b);
-
     void _draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b);
-
-    void _draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b);
 };
 
 /* Global Functions */

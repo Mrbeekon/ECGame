@@ -116,14 +116,8 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
     case SCALETYPE_TILE: 
         _draw_bitmap__scaletype_tile(x, y, width, height, b);
         break;
-    case SCALETYPE_CENTRE:
-        _draw_bitmap__scaletype_centre(x, y, width, height, b); 
-        break;
     case SCALETYPE_STRETCH:
         _draw_bitmap__scaletype_stretch(x, y, width, height, b);
-        break;
-    case SCALETYPE_ZOOM: 
-        _draw_bitmap__scaletype_zoom(x, y, width, height, b);
         break;
     }
 }
@@ -155,7 +149,6 @@ void Graphics::draw_string(int x, int y, const char* str, int c)
             break;
         }
     }    
-    delete b; // Clear up
 }
 
 void Graphics::destroy(void)
@@ -181,17 +174,7 @@ void Graphics::_draw_bitmap__scaletype_tile(int x, int y, int width, int height,
     }
 }
 
-void Graphics::_draw_bitmap__scaletype_centre(int x, int y, int width, int height, Bitmap* b)
-{
-    // Unimplemented
-}
-
 void Graphics::_draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b)
-{
-    // Unimplemented
-}
-
-void Graphics::_draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b)
 {
     // Unimplemented
 }

@@ -156,6 +156,28 @@ void Graphics::destroy(void)
     delete this;
 }
 
+int Graphics::measure_string_longest_line(const char* str)
+{
+    // Unimplemented
+    return 0;
+}
+
+int Graphics::measure_string_line_count(const char* str)
+{
+    // Unimplemented
+    return 0;
+}
+
+int Graphics::measure_string_width(const char* str)
+{
+    return measure_string_longest_line(str) << 3;
+}
+
+int Graphics::measure_string_height(const char* str)
+{
+    return measure_string_line_count(str) * 12;
+}
+
 void Graphics::_draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b)
 {
     for (int yy = 0; yy < height; yy++) {

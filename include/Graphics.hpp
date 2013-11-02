@@ -130,6 +130,22 @@ public:
 
     // Destroys this graphics object
     void destroy(void);
+
+    // String related methods (save draw_string)
+    
+    // Returns the length of the longest line in a string
+    int measure_string_longest_line(const char* str);
+
+    // Returns the number of lines in a string
+    int measure_string_line_count(const char* str);
+
+    // Measure the width of the string on screen
+    // taking into account escape characters
+    int measure_string_width(const char* str);
+
+    // Measure the height of the string on screen
+    // taking into account escape characters
+    int measure_string_height(const char* str);
 private:
     Bitmap* bitmap;
 

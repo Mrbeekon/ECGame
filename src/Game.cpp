@@ -35,7 +35,9 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->draw_string(20, 10, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~", COL_YELLOW);
+    g->clear(0x80);
+    g->draw_string(20, 10, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                           "[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~", COL_WHITE);
     g->destroy();
 }
 

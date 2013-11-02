@@ -130,6 +130,7 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
 
 void Graphics::draw_string(int x, int y, const char* str, int c)
 {
+    byte b[12]; // Storage place for the current character's pixel bits
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
@@ -143,17 +144,18 @@ void Graphics::draw_string(int x, int y, const char* str, int c)
             j += TABSIZE - (j % TABSIZE);
             break;
         default:
-            byte b[12];
             memcpy(b, ASCIIFONT + (str[i] - 32) * 12, 12);
             for (int yy = 0; yy < 12; yy++) {
-                    for (int xx = 0; xx < 8; xx++) {
-                    set_pixel(xx + x + (j << 3), yy + y + k * 12, 
-                              ((b[yy] >> xx) & 0x1) == 0x1 ? c : 0);
+                for (int xx = 0; xx < 8; xx++) {
+                    if (((b[yy] >> xx) & 0x1) == 0x1) {
+                        set_pixel(xx + x + (j << 3), yy + y + k * 12, c);
+                    }
                 }
             }
             break;
         }
-    }
+    }    
+    delete b; // Clear up
 }
 
 void Graphics::destroy(void)

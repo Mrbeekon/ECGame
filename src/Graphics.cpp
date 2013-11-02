@@ -1,6 +1,7 @@
 #include "Graphics.hpp"
-#include "AsciiFont.hpp" // Included here so that it isn't included for any
-                         // includers of Graphics.hpp (many)
+#include "AsciiFont.hpp"
+// Included here so that it isn't included for any
+// includers of Graphics.hpp (many)
 
 /*** Graphics ***/
 

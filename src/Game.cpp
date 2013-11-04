@@ -35,14 +35,9 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->draw_string(20, 10, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, \n"
-                         "sed do eiusmod tempor incididunt ut labore et dolore magna \n"
-                         "aliqua. Ut enim ad minim veniam, quis nostrud exercitation \n"
-                         "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis \n"
-                         "aute irure dolor in reprehenderit in voluptate velit esse \n"
-                         "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat \n"
-                         "cupidatat non proident, sunt in culpa qui officia deserunt \n"
-                         "mollit anim id est laborum.", COL_YELLOW);
+    g->clear(0x80);
+    g->draw_string(20, 10, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                           "[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~", COL_WHITE);
     g->destroy();
 }
 

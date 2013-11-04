@@ -3,8 +3,6 @@
 // Included here so that it isn't included for any
 // includers of Graphics.hpp (many)
 
-/*** Graphics ***/
-
 Graphics::Graphics(Bitmap* b) 
 {
     bitmap = b;
@@ -117,20 +115,15 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
     case SCALETYPE_TILE: 
         _draw_bitmap__scaletype_tile(x, y, width, height, b);
         break;
-    case SCALETYPE_CENTRE:
-        _draw_bitmap__scaletype_centre(x, y, width, height, b); 
-        break;
     case SCALETYPE_STRETCH:
         _draw_bitmap__scaletype_stretch(x, y, width, height, b);
-        break;
-    case SCALETYPE_ZOOM: 
-        _draw_bitmap__scaletype_zoom(x, y, width, height, b);
         break;
     }
 }
 
 void Graphics::draw_string(int x, int y, const char* str, int c)
 {
+    byte b[12]; // Storage place for the current character's pixel bits
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
@@ -144,23 +137,93 @@ void Graphics::draw_string(int x, int y, const char* str, int c)
             j += TABSIZE - (j % TABSIZE);
             break;
         default:
-            byte b[12];
             memcpy(b, ASCIIFONT + (str[i] - 32) * 12, 12);
             for (int yy = 0; yy < 12; yy++) {
-                    for (int xx = 0; xx < 8; xx++) {
-                    set_pixel(xx + x + (j << 3), yy + y + k * 12, 
-                              ((b[yy] >> xx) & 0x1) == 0x1 ? c : 0);
+                for (int xx = 0; xx < 8; xx++) {
+                    if (((b[yy] >> xx) & 0x1) == 0x1) {
+                        set_pixel(xx + x + (j << 3), yy + y + k * 12, c);
+                    }
                 }
             }
             break;
         }
-    }
+    }    
 }
 
 void Graphics::destroy(void)
 {
     delete this;
 }
+
+/* String Related Functions */
+
+int Graphics::measure_string_longest_line(const char* str)
+{
+    // Unimplemented
+    return 0;
+}
+
+int Graphics::measure_string_line_count(const char* str)
+{
+    // Unimplemented
+    return 0;
+}
+
+int Graphics::measure_string_width(const char* str)
+{
+    return measure_string_longest_line(str) << 3;
+}
+
+int Graphics::measure_string_height(const char* str)
+{
+    return measure_string_line_count(str) * 12;
+}
+
+/* Static Functions */
+
+int Graphics::col_add(int c1, int c2)
+{
+    int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
+    return c | ((c >> 8) & 0x010101) * 0xFF;
+}
+
+void Graphics::col_add(int* c1, int c2)
+{
+    int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
+    *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
+}
+
+int Graphics::col_blh(int c1, int c2)
+{
+    return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
+}
+
+void Graphics::col_blh(int* c1, int c2)
+{
+    *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
+}
+
+int Graphics::col_bl(int c1, int c2, byte a)
+{
+    uint cc1 = (uint)c1;
+    uint cc2 = (uint)c2;
+    int uf = 256 - a;
+    return (int)
+            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+}
+
+void Graphics::col_bl(int* c1, int c2, byte a)
+{
+    uint cc1 = (uint)*c1;
+    uint cc2 = (uint)c2;
+    int uf = 256 - a;
+    *c1 = (int)
+            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
+}
+
+/* Private Functions */
 
 void Graphics::_draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b)
 {
@@ -180,61 +243,7 @@ void Graphics::_draw_bitmap__scaletype_tile(int x, int y, int width, int height,
     }
 }
 
-void Graphics::_draw_bitmap__scaletype_centre(int x, int y, int width, int height, Bitmap* b)
-{
-    // Unimplemented
-}
-
 void Graphics::_draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b)
 {
     // Unimplemented
-}
-
-void Graphics::_draw_bitmap__scaletype_zoom(int x, int y, int width, int height, Bitmap* b)
-{
-    // Unimplemented
-}
-
-/* Global Functions */
-
-int col_add(int c1, int c2)
-{
-    int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
-    return c | ((c >> 8) & 0x010101) * 0xFF;
-}
-
-void col_add(int* c1, int c2)
-{
-    int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
-    *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
-}
-
-int col_blh(int c1, int c2)
-{
-    return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
-}
-
-void col_blh(int* c1, int c2)
-{
-    *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
-}
-
-int col_bl(int c1, int c2, byte a)
-{
-    uint cc1 = (uint)c1;
-    uint cc2 = (uint)c2;
-    int uf = 256 - a;
-    return (int)
-            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
-}
-
-void col_bl(int* c1, int c2, byte a)
-{
-    uint cc1 = (uint)*c1;
-    uint cc2 = (uint)c2;
-    int uf = 256 - a;
-    *c1 = (int)
-            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
 }

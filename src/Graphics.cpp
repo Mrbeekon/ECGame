@@ -124,10 +124,12 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
 void Graphics::draw_string(int x, int y, const char* str, int c)
 {
     byte b[12]; // Storage place for the current character's pixel bits
+    uint strlenr = strlen(str); // Ensure we're not measuring the length of the
+                                // string with every itteration of the loop
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
-    for (uint i = 0, j = 0, k = 0; i < strlen(str); i++, j++) {
+    for (uint i = 0, j = 0, k = 0; i < strlenr; i++, j++) {
         switch (str[i]) {
         case '\n':  // newline
             j = -1; // will be incremented on the next loop cycle
@@ -159,14 +161,41 @@ void Graphics::destroy(void)
 
 int Graphics::measure_string_longest_line(const char* str)
 {
-    // Unimplemented
-    return 0;
+    ushort longest = 0;
+    uint strlenr = strlen(str); 
+    bool andescaped = false;
+    for (uint i = 0, j = 0; i < strlenr; i++) {
+        switch (str[i]) {
+        case '\n':
+            if (j > longest)
+                longest = j;
+            j = 0;
+            break;
+        case '\t':
+            j += TABSIZE - (j % TABSIZE);
+            break;
+        case '&':
+            if (str[++i] == '{')
+                andescaped = true;
+            break;
+        case '}':
+            if (andescaped) {
+                andescaped = false;
+                break; // Otherwise fall-through
+            }
+        default:
+            if (!andescaped)
+                j++;
+            break;
+        }
+    }
+    return longest;
 }
 
 int Graphics::measure_string_line_count(const char* str)
 {
-    // Unimplemented
-    return 0;
+    ushort count = 0;
+    return count;
 }
 
 int Graphics::measure_string_width(const char* str)

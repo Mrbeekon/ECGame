@@ -35,9 +35,16 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->clear(0x80);
-    g->draw_string(20, 10, " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                           "[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~", COL_WHITE);
+    g->clear(COL_BLACK);
+    const char* msg = "Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n"
+                      "sed do eiusmod tempor incididunt ut labore et dolore magna\n"
+                      "aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n"
+                      "ullamco laboris nisi ut aliquip ex ea commodo consequat.\n"
+                      "Duis aute irure dolor in reprehenderit in voluptate velit\n"
+                      "esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\n"
+                      "occaecat cupidatat non proident, sunt in culpa qui officia\n"
+                      "deserunt mollit anim id est laborum.";
+    g->draw_string((width - g->measure_string_width(msg)) >> 1, 0, msg, COL_DARKRED);
     g->destroy();
 }
 

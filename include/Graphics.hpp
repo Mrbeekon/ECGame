@@ -126,7 +126,7 @@ public:
     void draw_bitmap(int x, int y, int width, int height, Bitmap* b, ScaleType st);
     
     // Draw a string of text to the screen
-    void draw_string(int x, int y, const char* str, int c);
+    void draw_string(int x, int y, std::string str, int c);
 
     // Destroys this graphics object
     void destroy(void);
@@ -134,18 +134,18 @@ public:
     /* String Related Functions */
     
     // Returns the length of the longest line in a string
-    int measure_string_longest_line(const char* str);
+    int measure_string_longest_line(std::string str);
 
     // Returns the number of lines in a string
-    int measure_string_line_count(const char* str);
+    int measure_string_line_count(std::string str);
 
     // Measure the width of the string on screen
     // taking into account escape characters
-    int measure_string_width(const char* str);
+    int measure_string_width(std::string str);
 
     // Measure the height of the string on screen
     // taking into account escape characters
-    int measure_string_height(const char* str);
+    int measure_string_height(std::string str);
 
     /* Static Functions */
 

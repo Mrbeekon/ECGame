@@ -36,7 +36,7 @@ void Game::stop()
 void Game::_render(Graphics* g)
 {
     g->clear(COL_BLACK);
-    const char* msg = "Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n"
+    std::string msg = "Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n"
                       "sed do eiusmod tempor incididunt ut labore et dolore magna\n"
                       "aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n"
                       "ullamco laboris nisi ut aliquip ex ea commodo consequat.\n"

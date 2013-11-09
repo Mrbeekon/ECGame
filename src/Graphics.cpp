@@ -121,15 +121,15 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
     }
 }
 
-void Graphics::draw_string(int x, int y, const char* str, int c)
+void Graphics::draw_string(int x, int y, std::string str, int c)
 {
     byte b[12]; // Storage place for the current character's pixel bits
-    uint strlenr = strlen(str); // Ensure we're not measuring the length of the
-                                // string with every itteration of the loop
+    uint len = str.length(); // Ensure we're not measuring the length of the
+                           // string with every itteration of the loop
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
-    for (uint i = 0, j = 0, k = 0; i < strlenr; i++, j++) {
+    for (uint i = 0, j = 0, k = 0; i < len; i++, j++) {
         switch (str[i]) {
         case '\n':  // newline
             j = -1; // will be incremented on the next loop cycle
@@ -159,12 +159,12 @@ void Graphics::destroy(void)
 
 /* String Related Functions */
 
-int Graphics::measure_string_longest_line(const char* str)
+int Graphics::measure_string_longest_line(std::string str)
 {
     ushort longest = 0;
-    uint strlenr = strlen(str); 
+    uint len = str.length();
     bool andescaped = false;
-    for (uint i = 0, j = 0; i < strlenr; i++) {
+    for (uint i = 0, j = 0; i < len; i++) {
         switch (str[i]) {
         case '\n':
             if (j > longest)
@@ -192,23 +192,23 @@ int Graphics::measure_string_longest_line(const char* str)
     return longest;
 }
 
-int Graphics::measure_string_line_count(const char* str)
+int Graphics::measure_string_line_count(std::string str)
 {
     ushort count = 0;
-    uint strlenr = strlen(str); 
-    for (uint i = 0, j = 0; i < strlenr; i++) {
+    uint len = str.length(); 
+    for (uint i = 0; i < len; i++) {
         if (str[i] == '\n')
             count++;
     }
     return count;
 }
 
-int Graphics::measure_string_width(const char* str)
+int Graphics::measure_string_width(std::string str)
 {
     return measure_string_longest_line(str) << 3;
 }
 
-int Graphics::measure_string_height(const char* str)
+int Graphics::measure_string_height(std::string str)
 {
     return measure_string_line_count(str) * 12;
 }

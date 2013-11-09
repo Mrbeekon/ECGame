@@ -44,7 +44,7 @@ void Game::_render(Graphics* g)
                       "esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\n"
                       "occaecat cupidatat non proident, sunt in culpa qui officia\n"
                       "deserunt mollit anim id est laborum.";
-    g->draw_string((width - g->measure_string_width(msg)) >> 1, 0, msg, COL_DARKRED);
+    g->draw_string((width - g->measure_string_width(msg)) >> 1, (height - g->measure_string_height(msg)) >> 1, msg, COL_DARKRED);
     g->destroy();
 }
 

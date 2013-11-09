@@ -195,6 +195,11 @@ int Graphics::measure_string_longest_line(const char* str)
 int Graphics::measure_string_line_count(const char* str)
 {
     ushort count = 0;
+    uint strlenr = strlen(str); 
+    for (uint i = 0, j = 0; i < strlenr; i++) {
+        if (str[i] == '\n')
+            count++;
+    }
     return count;
 }
 

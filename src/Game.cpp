@@ -44,7 +44,8 @@ void Game::_render(Graphics* g)
                     "esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\n"
                     "occaecat cupidatat non proident, sunt in culpa qui officia\n"
                     "deserunt mollit anim id est laborum.");
-    g->draw_string((width - Graphics::measure_string_width(msg)) >> 1, (height - Graphics::measure_string_height(msg)) >> 1, msg, COL_DARKRED);
+    g->draw_string((width - Graphics::measure_string_width(msg)) >> 1, 
+                   (height - Graphics::measure_string_height(msg)) >> 1, msg, COL_DARKRED);
     g->destroy();
 }
 
@@ -89,11 +90,4 @@ void Game::_run()
         }
     }
     SDL_Quit();
-}
-
-int main(int argc, char** argv)
-{
-    Game* g = new Game();
-    g->start();
-    return EXIT_SUCCESS;
 }

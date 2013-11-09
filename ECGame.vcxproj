@@ -20,6 +20,7 @@
     <ClInclude Include="include\Random.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\InputMan.cpp" />

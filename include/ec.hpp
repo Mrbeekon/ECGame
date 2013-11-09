@@ -1,9 +1,18 @@
 #pragma once
 #ifndef EC_H
 #define EC_H
+
 #ifndef __cplusplus__
 #define __cplusplus__
 #endif
+
+/* Global External Includes */
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+
+#include "SDL/SDL.h"
 
 /* Type Definitions */
 typedef unsigned char       byte;       // Unsigned Byte
@@ -24,14 +33,6 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 #define FPS         60
 
 #define TITLE       "ECGame"
-
-/* Global External Includes */
-#include <iostream>
-#include <cmath>
-#include <string>
-#include <vector>
-
-#include "SDL/SDL.h"
 
 /* Other Types */
 // Tick Attributes

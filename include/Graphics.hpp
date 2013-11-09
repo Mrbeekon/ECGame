@@ -131,23 +131,25 @@ public:
     // Destroys this graphics object
     void destroy(void);
 
-    /* String Related Functions */
+    /* Static Functions */
     
     // Returns the length of the longest line in a string
+    static
     int measure_string_longest_line(std::string str);
 
     // Returns the number of lines in a string
+    static
     int measure_string_line_count(std::string str);
 
     // Measure the width of the string on screen
     // taking into account escape characters
+    static
     int measure_string_width(std::string str);
 
     // Measure the height of the string on screen
     // taking into account escape characters
+    static
     int measure_string_height(std::string str);
-
-    /* Static Functions */
 
     // Return the additional blend of two colours
     static 

@@ -36,15 +36,15 @@ void Game::stop()
 void Game::_render(Graphics* g)
 {
     g->clear(COL_BLACK);
-    std::string msg = "Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n"
-                      "sed do eiusmod tempor incididunt ut labore et dolore magna\n"
-                      "aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n"
-                      "ullamco laboris nisi ut aliquip ex ea commodo consequat.\n"
-                      "Duis aute irure dolor in reprehenderit in voluptate velit\n"
-                      "esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\n"
-                      "occaecat cupidatat non proident, sunt in culpa qui officia\n"
-                      "deserunt mollit anim id est laborum.";
-    g->draw_string((width - g->measure_string_width(msg)) >> 1, (height - g->measure_string_height(msg)) >> 1, msg, COL_DARKRED);
+    std::string msg("Lorem ipsum dolor sit amet, consectetur adipisicing elit,\n"
+                    "sed do eiusmod tempor incididunt ut labore et dolore magna\n"
+                    "aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n"
+                    "ullamco laboris nisi ut aliquip ex ea commodo consequat.\n"
+                    "Duis aute irure dolor in reprehenderit in voluptate velit\n"
+                    "esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\n"
+                    "occaecat cupidatat non proident, sunt in culpa qui officia\n"
+                    "deserunt mollit anim id est laborum.");
+    g->draw_string((width - Graphics::measure_string_width(msg)) >> 1, (height - Graphics::measure_string_height(msg)) >> 1, msg, COL_DARKRED);
     g->destroy();
 }
 

@@ -164,8 +164,9 @@ int Graphics::measure_string_longest_line(std::string str)
     ushort longest = 0;
     uint len = str.length();
     bool andescaped = false;
-    for (uint i = 0, j = 0; i < len; i++) {
+    for (uint i = 0, j = 0; i <= len; i++) {
         switch (str[i]) {
+        case '\0':
         case '\n':
             if (j > longest)
                 longest = j;
@@ -197,7 +198,7 @@ int Graphics::measure_string_line_count(std::string str)
     ushort count = 0;
     uint len = str.length(); 
     for (uint i = 0; i < len; i++) {
-        if (str[i] == '\n')
+        if (str[i] == '\n' || str[i] == '\0')
             count++;
     }
     return count;

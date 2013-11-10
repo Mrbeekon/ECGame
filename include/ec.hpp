@@ -11,6 +11,7 @@
 #include <cmath>
 #include <string>
 #include <vector>
+#include <sstream>
 
 #include "SDL/SDL.h"
 
@@ -43,5 +44,19 @@ struct TickAtt
     // Time (in milliseconds) since the last tick. (Roughly 1000 / FPS)
     uint last;
 };
+
+// For useful utility and helper methods
+namespace utils
+{
+    // Converts a character string representing a hexadecimal number, eg "0xfe",
+    // to an integer type of that number
+    inline int hex_str_to_int(std::string str)
+    {
+        std::stringstream converter(str);
+        int i;
+        converter >> std::hex >> i;
+        return i;
+    }
+}
 
 #endif

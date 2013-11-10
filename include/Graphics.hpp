@@ -52,23 +52,24 @@ class Bitmap;
 #define COL_YELLOW      0xFFFF00
 #define COL_WHITE       0xFFFFFF
 
-const int COL[16] = { // Allows for the basic colours to be acquired via an index number
-    COL_BLACK,
-    COL_DARKBLUE,
-    COL_DARKGREEN,  
-    COL_DARKCYAN,   
-    COL_DARKRED,    
-    COL_DARKMAGENTA,
-    COL_DARKYELLOW, 
-    COL_GREY,       
-    COL_DARKGREY,   
-    COL_BLUE,       
-    COL_GREEN,      
-    COL_CYAN,       
-    COL_RED,        
-    COL_MAGENTA,    
-    COL_YELLOW,     
-    COL_WHITE,      
+// Allows for the basic colours to be acquired via an index number
+const int COL[16] = { // Index Number:
+    COL_BLACK,        // 0
+    COL_DARKBLUE,     // 1
+    COL_DARKGREEN,    // 2    
+    COL_DARKCYAN,     // 3
+    COL_DARKRED,      // 4
+    COL_DARKMAGENTA,  // 5
+    COL_DARKYELLOW,   // 6
+    COL_GREY,         // 7
+    COL_DARKGREY,     // 8
+    COL_BLUE,         // 9
+    COL_GREEN,        // A
+    COL_CYAN,         // B
+    COL_RED,          // C
+    COL_MAGENTA,      // D
+    COL_YELLOW,       // E
+    COL_WHITE,        // F
 };
 
 // Bitmap drawing scale type
@@ -78,6 +79,14 @@ typedef enum
     SCALETYPE_TILE,    // Fills the region with a tile arrangement of the drawn bitmap
     SCALETYPE_STRETCH, // Stretches the bitmap to fill the region [Unimplemented]
 } ScaleType;
+
+// Font glyph drawing attributes
+typedef struct
+{
+    int col;
+    bool bold,
+         italic;
+} GlyphAtt;
 
 class Graphics
 {
@@ -124,6 +133,12 @@ public:
 
     // Draw a bitmap with the specified scale type
     void draw_bitmap(int x, int y, int width, int height, Bitmap* b, ScaleType st);
+
+    // Draw a font glyph
+    void draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff);
+
+    // Draw a font glyph, predefined buffer
+    void draw_font_glyph(int x, int y, char ch, GlyphAtt ga);
     
     // Draw a string of text to the screen
     void draw_string(int x, int y, std::string str, int c);

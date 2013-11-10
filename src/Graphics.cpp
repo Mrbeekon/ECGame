@@ -121,32 +121,57 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
     }
 }
 
+void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff)
+{
+    memcpy(buff, ASCIIFONT + (ch - 32) * 12, 12);
+    for (int yy = 0; yy < 12; yy++) {
+        for (int xx = 0; xx < 8; xx++) {
+            if (((buff[yy] >> xx) & 0x1) == 0x1) {
+                set_pixel(xx + x, yy + y, ga.col);
+            }
+        }
+    }
+}
+
+void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga)
+{
+    byte b[12];
+    draw_font_glyph(x, y, ch, ga, b);
+}
+
 void Graphics::draw_string(int x, int y, std::string str, int c)
 {
     byte b[12]; // Storage place for the current character's pixel bits
     uint len = str.length(); // Ensure we're not measuring the length of the
-                           // string with every itteration of the loop
+                             // string with every itteration of the loop
+    GlyphAtt ga;
+    ga.col = c;
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
-    for (uint i = 0, j = 0, k = 0; i < len; i++, j++) {
+    for (uint i = 0, j = 0, k = 0; i < len; i++) {
         switch (str[i]) {
         case '\n':  // newline
-            j = -1; // will be incremented on the next loop cycle
+            j = 0;
             k++;
             break;
         case '\t':  // tab
             j += TABSIZE - (j % TABSIZE);
             break;
-        default:
-            memcpy(b, ASCIIFONT + (str[i] - 32) * 12, 12);
-            for (int yy = 0; yy < 12; yy++) {
-                for (int xx = 0; xx < 8; xx++) {
-                    if (((b[yy] >> xx) & 0x1) == 0x1) {
-                        set_pixel(xx + x + (j << 3), yy + y + k * 12, c);
-                    }
+        case '&':
+            if (str[++i] == '{') {
+                std::string andescstr; // Store and-escape contents
+                while (str[++i] != '}') {
+                    andescstr.append(&str[i], &str[i+1]);
                 }
+                if (andescstr[0] == '0')
+                    ga.col = COL[utils::hex_str_to_int(andescstr)];
+                break;
             }
+            else i--;
+        default:
+            draw_font_glyph(x + (j << 3), y + k * 12, str[i], ga, b);
+            j++;
             break;
         }
     }    
@@ -175,14 +200,15 @@ int Graphics::measure_string_longest_line(std::string str)
         case '\t':
             j += TABSIZE - (j % TABSIZE);
             break;
-        case '&':
-            if (str[++i] == '{')
-                andescaped = true;
-            break;
         case '}':
             if (andescaped) {
                 andescaped = false;
-                break; // Otherwise fall-through
+                break; 
+            }
+        case '&':
+            if (str[i + 1] == '{') {
+                andescaped = true;
+                break;
             }
         default:
             if (!andescaped)

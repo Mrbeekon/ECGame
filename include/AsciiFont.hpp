@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ASCIIFONT_H
 #define ASCIIFONT_H
 

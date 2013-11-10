@@ -1,4 +1,3 @@
-#pragma once
 #ifndef INPUTMAN_H
 #define INPUTMAN_H
 

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef SCREEN_H
 #define SCREEN_H
 

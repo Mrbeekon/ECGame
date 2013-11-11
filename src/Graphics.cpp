@@ -141,10 +141,9 @@ void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga)
 
 void Graphics::draw_string(int x, int y, std::string str, int c)
 {
-    byte b[12]; // Storage place for the current character's pixel bits
-    uint len = str.length(); // Ensure we're not measuring the length of the
-                             // string with every itteration of the loop
-    GlyphAtt ga;
+    byte b[12];                 // Storage place for the current character's pixel bits
+    uint len = str.length();    // Length of string, str
+    GlyphAtt ga;                //Attributes for glyph drawing to pass to draw_font_glyph
     ga.col = c;
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
@@ -160,12 +159,10 @@ void Graphics::draw_string(int x, int y, std::string str, int c)
             break;
         case '&':
             if (str[++i] == '{') {
-                std::string andescstr; // Store and-escape contents
-                while (str[++i] != '}') {
+                std::string andescstr;
+                while (str[++i] != '}')
                     andescstr.append(&str[i], &str[i+1]);
-                }
-                if (andescstr[0] == '0')
-                    ga.col = COL[utils::hex_str_to_int(andescstr)];
+                _andescproc(andescstr, &ga);
                 break;
             }
             else i--;
@@ -182,7 +179,7 @@ void Graphics::destroy(void)
     delete this;
 }
 
-/* String Related Functions */
+/* Static Functions */
 
 int Graphics::measure_string_longest_line(std::string str)
 {
@@ -239,8 +236,6 @@ int Graphics::measure_string_height(std::string str)
 {
     return measure_string_line_count(str) * 12;
 }
-
-/* Static Functions */
 
 int Graphics::col_add(int c1, int c2)
 {
@@ -307,4 +302,10 @@ void Graphics::_draw_bitmap__scaletype_tile(int x, int y, int width, int height,
 void Graphics::_draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b)
 {
     // Unimplemented
+}
+
+void Graphics::_andescproc(std::string andescstr, GlyphAtt* ga)
+{
+    if (andescstr[0] == '0')
+        ga->col = COL[utils::hex_str_to_int(andescstr)];
 }

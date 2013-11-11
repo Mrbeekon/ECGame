@@ -191,15 +191,14 @@ public:
     // two colours, with a specified degree of blending
     static
     void col_bl(int* c1, int c2, byte a);
+
 private:
     Bitmap* bitmap;
 
-    // Not a duplicated of Graphics::draw_bitmap_unscaled -- this allows for clipping
     void _draw_bitmap__scaletype_none(int x, int y, int width, int height, Bitmap* b);
-
     void _draw_bitmap__scaletype_tile(int x, int y, int width, int height, Bitmap* b);
-
     void _draw_bitmap__scaletype_stretch(int x, int y, int width, int height, Bitmap* b);
+    void _andescproc(std::string andescstr, GlyphAtt* ga);
 };
 
 #endif

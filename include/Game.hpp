@@ -16,7 +16,7 @@ public:
     void start();
     void stop();
 private:
-    int width, height;
+    uint width, height;
     unsigned long long uptime;
     bool running;
     SDL_Surface* surface;

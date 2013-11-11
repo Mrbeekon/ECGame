@@ -35,10 +35,11 @@ void Game::stop()
 
 void Game::_render(Graphics* g)
 {
-    g->clear(COL_BLACK);
-    std::string msg("&{0x5}Hello &{0xA}World&{0xE}!");
-    g->draw_string((width - Graphics::measure_string_width(msg)) >> 1, 
-                   (height - Graphics::measure_string_height(msg)) >> 1, msg, 0);
+    int col = RGBINT((byte)abs(sin(uptime / 50.0) * 255),
+                     (byte)abs(sin(uptime / 50.0 + PI / 3 * 2) * 255),
+                     (byte)abs(sin(uptime / 50.0 + PI / 3 * 4) * 255));
+    g->fill_rectangle(width >> 3, height >> 3, width - (width >> 2), height - (height >> 2), col);
+    g->draw_rectangle(width >> 3, height >> 3, width - (width >> 2), height - (height >> 2), Graphics::col_blh(col, 0), 20);
     g->destroy();
 }
 

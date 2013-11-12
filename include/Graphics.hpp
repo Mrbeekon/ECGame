@@ -83,8 +83,11 @@ typedef enum
 typedef struct
 {
     int col;
-    bool bold,
-         italic;
+    bool bold;
+    bool italic;
+    bool strike;
+    bool underline;
+    bool shadow;
 } GlyphAtt;
 
 class Graphics
@@ -135,9 +138,6 @@ public:
 
     // Draw a font glyph
     void draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff);
-
-    // Draw a font glyph, predefined buffer
-    void draw_font_glyph(int x, int y, char ch, GlyphAtt ga);
     
     // Draw a string of text to the screen
     void draw_string(int x, int y, std::string str, int c);
@@ -145,7 +145,7 @@ public:
     // Destroys this graphics object
     void destroy(void);
 
-    /* Static Functions */
+/* Static */
     
     // Returns the length of the longest line in a string
     static

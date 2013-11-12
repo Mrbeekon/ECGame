@@ -7,10 +7,11 @@
 
 /* Global External Includes */
 #include <iostream>
-#include <cmath>
 #include <string>
-#include <vector>
 #include <sstream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
 
 #include "SDL/SDL.h"
 
@@ -55,6 +56,14 @@ namespace utils
         int i;
         converter >> std::hex >> i;
         return i;
+    }
+
+    // Converts an integer to a string (until std::to_string() gets fixed (soonish))
+    inline std::string int_to_string(int i)
+    {
+        std::stringstream converter;
+        converter << i;
+        return converter.str();
     }
 }
 

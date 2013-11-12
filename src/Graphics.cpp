@@ -124,7 +124,11 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
 void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff)
 {
     memcpy(buff, ASCIIFONT + (ch - 32) * 12, 12);
+    if (ga.strike)
+        buff[6] = 255;
     for (int yy = 0; yy < 12; yy++) {
+        if (ga.italic)
+            x -= yy % 2 == 0 ? 1 : 0;
         for (int xx = 0; xx < 8; xx++) {
             if (((buff[yy] >> xx) & 0x1) == 0x1) {
                 set_pixel(xx + x, yy + y, ga.col);
@@ -133,18 +137,14 @@ void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff)
     }
 }
 
-void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga)
-{
-    byte b[12];
-    draw_font_glyph(x, y, ch, ga, b);
-}
-
 void Graphics::draw_string(int x, int y, std::string str, int c)
 {
     byte b[12];                 // Storage place for the current character's pixel bits
     uint len = str.length();    // Length of string, str
     GlyphAtt ga;                //Attributes for glyph drawing to pass to draw_font_glyph
     ga.col = c;
+    ga.strike = false;
+    ga.italic = false;
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen
@@ -308,4 +308,14 @@ void Graphics::_andescproc(std::string andescstr, GlyphAtt* ga)
 {
     if (andescstr[0] == '0')
         ga->col = COL[utils::hex_str_to_int(andescstr)];
+    else if (andescstr[0] == 'b')
+        ga->bold = !ga->bold;
+    else if (andescstr[0] == 'i')
+        ga->italic = !ga->italic;
+    else if (andescstr[0] == 'k')
+        ga->strike = !ga->strike;
+    else if (andescstr[0] == 'u')
+        ga->underline = !ga->underline;
+    else if (andescstr[0] == 's')
+        ga->shadow = !ga->shadow;
 }

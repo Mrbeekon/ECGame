@@ -27,7 +27,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 
 /* Definitions */
 
-#define PI          3.1415926535897
+#define PI          M_PI  // from cmath
 
 #define DEFWIDTH    1024
 #define DEFHEIGHT   768

@@ -48,8 +48,8 @@ struct TickAtt
 // For useful utility and helper methods
 namespace utils
 {
-    // Converts a character string representing a hexadecimal number, eg "0xfe",
-    // to an integer type of that number
+    // Converts a character string representing a hexadecimal number,
+    // eg "0xfe", to an integer type of that number
     inline int hex_str_to_int(std::string str)
     {
         std::stringstream converter(str);
@@ -58,7 +58,8 @@ namespace utils
         return i;
     }
 
-    // Converts an integer to a string (until std::to_string() gets fixed (soonish))
+    // Converts an integer to a string
+    // (until std::to_string() gets fixed (soonish))
     inline std::string int_to_string(int i)
     {
         std::stringstream converter;

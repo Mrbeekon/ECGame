@@ -5,7 +5,6 @@ Bitmap::Bitmap(uint width, uint height)
     this->width = width;
     this->height = height;
     this->pixels = (void*)(new int[width * height]);
-    this->create_graphics()->clear(0);
 }
 
 Bitmap::Bitmap(uint width, uint height, void* pixels)

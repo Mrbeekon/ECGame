@@ -123,6 +123,8 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
 
 void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff)
 {
+    bool i = 2;
+    if (i)
     memcpy(buff, ASCIIFONT + (ch - 32) * 12, 12);
     if (ga.strike)
         buff[6] = 255;
@@ -143,8 +145,6 @@ void Graphics::draw_string(int x, int y, std::string str, int c)
     uint len = str.length();    // Length of string, str
     GlyphAtt ga;                //Attributes for glyph drawing to pass to draw_font_glyph
     ga.col = c;
-    ga.strike = false;
-    ga.italic = false;
     // i is the index of the current character in the string,
     // j is the horizontal position of the current character on screen
     // k is the vertical position of the current character on screen

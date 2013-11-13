@@ -82,12 +82,13 @@ typedef enum
 // Font glyph drawing attributes
 typedef struct
 {
-    int col;
-    bool bold;
-    bool italic;
-    bool strike;
-    bool underline;
-    bool shadow;
+    int col = 0;
+    bool bold = false;
+    bool italic = false;
+    bool strike = false;
+    bool underline = false;
+    bool shadow = false;
+    bool punched = false;
 } GlyphAtt;
 
 class Graphics

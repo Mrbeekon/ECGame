@@ -123,14 +123,16 @@ void Graphics::draw_bitmap(int x, int y, int width, int height, Bitmap* b, Scale
 
 void Graphics::draw_font_glyph(int x, int y, char ch, GlyphAtt ga, byte* buff)
 {
-    bool i = 2;
-    if (i)
     memcpy(buff, ASCIIFONT + (ch - 32) * 12, 12);
     if (ga.strike)
         buff[6] = 255;
+    if (ga.underline)
+        buff[10] = 255;
     for (int yy = 0; yy < 12; yy++) {
         if (ga.italic)
             x -= yy % 2 == 0 ? 1 : 0;
+        if (ga.punched)
+            buff[yy] = ~buff[yy];
         for (int xx = 0; xx < 8; xx++) {
             if (((buff[yy] >> xx) & 0x1) == 0x1) {
                 set_pixel(xx + x, yy + y, ga.col);
@@ -156,6 +158,9 @@ void Graphics::draw_string(int x, int y, std::string str, int c)
             break;
         case '\t':  // tab
             j += TABSIZE - (j % TABSIZE);
+            break;
+        case '\b': // backspace
+            j--;
             break;
         case '&':
             if (str[++i] == '{') {
@@ -196,6 +201,9 @@ int Graphics::measure_string_longest_line(std::string str)
             break;
         case '\t':
             j += TABSIZE - (j % TABSIZE);
+            break;
+        case '\b':
+            j--;
             break;
         case '}':
             if (andescaped) {
@@ -306,16 +314,27 @@ void Graphics::_draw_bitmap__scaletype_stretch(int x, int y, int width, int heig
 
 void Graphics::_andescproc(std::string andescstr, GlyphAtt* ga)
 {
-    if (andescstr[0] == '0')
+    switch (andescstr[0]) {
+    case '0':
         ga->col = COL[utils::hex_str_to_int(andescstr)];
-    else if (andescstr[0] == 'b')
+        break;
+    case 'b':
         ga->bold = !ga->bold;
-    else if (andescstr[0] == 'i')
+        break;
+    case 'i':
         ga->italic = !ga->italic;
-    else if (andescstr[0] == 'k')
+        break;
+    case 'k':
         ga->strike = !ga->strike;
-    else if (andescstr[0] == 'u')
+        break;
+    case 'u':
         ga->underline = !ga->underline;
-    else if (andescstr[0] == 's')
-        ga->shadow = !ga->shadow;
+        break;
+    case 's':
+        ga->shadow = !ga->shadow;        
+        break;
+    case 'p':
+        ga->punched = !ga->punched;
+        break;
+    }
 }

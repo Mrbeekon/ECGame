@@ -83,11 +83,11 @@ typedef enum
 typedef struct
 {
     int col = 0;
-    bool bold = false;
+    bool bold = false;      // Unimplemented
     bool italic = false;
     bool strike = false;
     bool underline = false;
-    bool shadow = false;
+    bool shadow = false;    // Unimplemented
     bool punched = false;
 } GlyphAtt;
 

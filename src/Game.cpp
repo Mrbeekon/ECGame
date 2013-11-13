@@ -38,7 +38,7 @@ void Game::_render(Graphics* g)
     int col = RGBINT((byte)abs(sin(uptime / 50.0) * 255),
                      (byte)abs(sin(uptime / 50.0 + PI / 3 * 1) * 255),
                      (byte)abs(sin(uptime / 50.0 + PI / 3 * 2) * 255));
-    std::string msg("I declare this text formatting to be &{k}good&{k} &{i} excellent.");
+    std::string msg("I &{u}declare&{u} that this text formatting is &{k}good&{k} &{i} excellent.");
     g->draw_string((width - Graphics::measure_string_width(msg)) >> 1,
                    (height - Graphics::measure_string_height(msg)) >> 1,
                    msg, col);

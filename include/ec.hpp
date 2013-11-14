@@ -26,12 +26,7 @@ typedef uint                DWORD;      // A 32-bit Word
 typedef unsigned long long  QWORD;      // A 64-bit Word
 
 /* Definitions */
-
-#ifndef M_PI // Would be in cmath
-#define M_PI        3.14159265358979323846264338327
-#endif
-
-#define PI          M_PI
+#define PI          3.14159265358979323846264338327
 
 #define DEFWIDTH    1024
 #define DEFHEIGHT   768

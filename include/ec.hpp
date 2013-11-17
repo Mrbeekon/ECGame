@@ -1,8 +1,8 @@
 #ifndef EC_H
 #define EC_H
 
-#ifndef __cplusplus__
-#define __cplusplus__
+#ifndef __cplusplus
+#define __cplusplus
 #endif
 
 /* Global External Includes */

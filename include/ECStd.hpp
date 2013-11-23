@@ -1,5 +1,5 @@
-#ifndef EC_H
-#define EC_H
+#ifndef ECSTD_H
+#define ECSTD_H
 
 #ifndef __cplusplus
 #define __cplusplus
@@ -12,8 +12,12 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <functional>
 
 #include "SDL/SDL.h"
+
+/* Events shall be global */
+#include "SEvent.hpp"
 
 /* Type Definitions */
 typedef unsigned char       byte;       // Unsigned Byte
@@ -28,21 +32,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 /* Definitions */
 #define PI          3.14159265358979323846264338327
 
-#define DEFWIDTH    1024
-#define DEFHEIGHT   768
-#define FPS         60
-
 #define TITLE       "ECGame"
-
-/* Other Types */
-// Tick Attributes
-struct TickAtt
-{
-    // The current tick. Never resets, so also a measure of up-time.
-    ulong tick;
-    // Time (in milliseconds) since the last tick. (Roughly 1000 / FPS)
-    uint last;
-};
 
 // For useful utility and helper methods
 namespace utils

@@ -1,7 +1,7 @@
 #ifndef INPUTMAN_H
 #define INPUTMAN_H
 
-#include "ec.hpp"
+#include "ECStd.hpp"
 
 class InputMan
 {

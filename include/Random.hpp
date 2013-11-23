@@ -1,7 +1,7 @@
 #ifndef RANDOM_H
 #define RANDOM_H
 
-#include "ec.hpp"
+#include "ECStd.hpp"
 #include <stdlib.h>
 #include <time.h>
 

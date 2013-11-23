@@ -1,7 +1,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include "ec.hpp"
+#include "ECStd.hpp"
 #include "Bitmap.hpp"
 
 // Forward declare the Bitmap class
@@ -172,7 +172,7 @@ public:
 
     // The first colour becomes the additional blend of the two colours
     static 
-    void col_add(int* c1, int c2);
+    void col_add(int& c1, int c2);
 
     // Returns the alpha blend of two colours, with a blend degree of 50%
     static
@@ -181,7 +181,7 @@ public:
     // The first colour becomes the alpha blend of the two colours, 
     // with a blend degree of 50%
     static
-    void col_blh(int* c1, int c2);
+    void col_blh(int& c1, int c2);
 
     // Returns the alpha blend of two colours, with a
     // specified degree of blending
@@ -191,7 +191,7 @@ public:
     // The first colour becomes the alpha blend of the
     // two colours, with a specified degree of blending
     static
-    void col_bl(int* c1, int c2, byte a);
+    void col_bl(int& c1, int c2, byte a);
 
 private:
     Bitmap* bitmap;

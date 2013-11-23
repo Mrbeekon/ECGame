@@ -13,13 +13,18 @@
   <ItemGroup>
     <ClInclude Include="include\AsciiFont.hpp" />
     <ClInclude Include="include\Bitmap.hpp" />
-    <ClInclude Include="include\ec.hpp" />
+    <ClInclude Include="include\ECStd.hpp" />
     <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Graphics.hpp" />
     <ClInclude Include="include\InputMan.hpp" />
+    <ClInclude Include="include\Instance.hpp" />
+    <ClInclude Include="include\InstanceMan.hpp" />
     <ClInclude Include="include\Random.hpp" />
+    <ClInclude Include="include\SEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Instance.cpp" />
+    <ClCompile Include="src\InstanceMan.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\Game.cpp" />

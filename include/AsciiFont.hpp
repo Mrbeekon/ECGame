@@ -1,7 +1,7 @@
 #ifndef ASCIIFONT_H
 #define ASCIIFONT_H
 
-#include "ec.hpp"
+#include "ECStd.hpp"
 
 //  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 const byte ASCIIFONT[12 * 95] = {

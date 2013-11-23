@@ -251,10 +251,10 @@ int Graphics::col_add(int c1, int c2)
     return c | ((c >> 8) & 0x010101) * 0xFF;
 }
 
-void Graphics::col_add(int* c1, int c2)
+void Graphics::col_add(int& c1, int c2)
 {
-    int c = (*c1 & 0xfefefe) + (c2 & 0xfefefe);
-    *c1 = c | ((c >> 8) & 0x010101) * 0xFF;
+    int c = (c1 & 0xfefefe) + (c2 & 0xfefefe);
+    c1 = c | ((c >> 8) & 0x010101) * 0xFF;
 }
 
 int Graphics::col_blh(int c1, int c2)
@@ -262,9 +262,9 @@ int Graphics::col_blh(int c1, int c2)
     return ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
 }
 
-void Graphics::col_blh(int* c1, int c2)
+void Graphics::col_blh(int& c1, int c2)
 {
-    *c1 = ((*c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
+    c1 = ((c1 & 0xfefefe) + (c2 & 0xfefefe)) >> 1;
 }
 
 int Graphics::col_bl(int c1, int c2, byte a)
@@ -273,18 +273,18 @@ int Graphics::col_bl(int c1, int c2, byte a)
     uint cc2 = (uint)c2;
     int uf = 256 - a;
     return (int)
-            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
+           ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+           (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >> 8;
 }
 
-void Graphics::col_bl(int* c1, int c2, byte a)
+void Graphics::col_bl(int& c1, int c2, byte a)
 {
-    uint cc1 = (uint)*c1;
+    uint cc1 = (uint)c1;
     uint cc2 = (uint)c2;
     int uf = 256 - a;
-    *c1 = (int)
-            ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
-            (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
+    c1 = (int)
+         ((((cc1 & 0xff00ff) * uf + (cc2 & 0xff00ff) * a) & 0xff00ff00) |
+         (((cc1 & 0x00ff00) * uf + (cc2 & 0x00ff00) * a) & 0x00ff0000)) >>8;
 }
 
 /* Private Functions */

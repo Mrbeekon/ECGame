@@ -1,7 +1,7 @@
 #ifndef BITMAP_H
 #define BITMAP_H
 
-#include "ec.hpp"
+#include "ECStd.hpp"
 #include "Graphics.hpp"
 
 // Forward declare the Graphics class

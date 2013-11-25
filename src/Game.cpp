@@ -20,7 +20,7 @@ void Game::on_stop()
 
 void Game::render(Graphics* g)
 {
-    g->clear(0xff);
+    g->test();
 }
 
 void Game::tick()

@@ -16,9 +16,6 @@
 
 #include "SDL/SDL.h"
 
-/* Events shall be global */
-#include "SEvent.hpp"
-
 /* Type Definitions */
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed Byte
@@ -29,10 +26,7 @@ typedef ushort              WORD;       // A 16-bit Word
 typedef uint                DWORD;      // A 32-bit Word
 typedef unsigned long long  QWORD;      // A 64-bit Word
 
-/* Definitions */
 #define PI          3.14159265358979323846264338327
-
-#define TITLE       "ECGame"
 
 // For useful utility and helper methods
 namespace utils

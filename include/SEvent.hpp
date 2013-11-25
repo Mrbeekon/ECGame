@@ -3,10 +3,6 @@
 
 #include "ECStd.hpp"
 
-struct EventArgs
-{
-};
-
 template <typename _ArgT>
 class SEvent
 {
@@ -29,7 +25,8 @@ public:
 
     SEvent& operator()(_ArgT& e)
     {
-        for(typename _funcv_t::iterator it = _funcs.begin(); it != _funcs.end(); ++it) {
+        for(typename _funcv_t::iterator it = _funcs.begin();
+            it != _funcs.end(); ++it) {
             _caller(*it, e);
         }
         return *this;

@@ -2,28 +2,18 @@
 #define GAME_H
 
 #include "ECStd.hpp"
-#include "InputMan.hpp"
-#include "Random.hpp"
-#include "Graphics.hpp"
+#include "Instance.hpp"
 
-class Game
+class Game : public Instance
 {
 public:
-    const int FPS = 60;
-    InputMan* in;
-    Random* rand;
+    const char* TITLE = "ECGame";
     Game();
     ~Game();
-    void start();
-    void stop();
-private:
-    uint width, height;
-    bool running;
-    SDL_Surface* surface;
-    Bitmap* screen;
-    void _render(Graphics* g);
-    void _tick();
-    void _run();
+    bool init(void);
+    void on_stop(void);
+    void render(Graphics* g);
+    void tick(void);
 };
 
 #endif

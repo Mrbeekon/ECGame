@@ -179,6 +179,15 @@ void Graphics::draw_string(int x, int y, std::string str, int c)
     }    
 }
 
+void Graphics::test(void)
+{
+    for (uint y = 0; y < bitmap->height; y++) {
+        for (uint x = 0; x < bitmap->width; x++) {
+            set_pixel(x, y, x * 255 / bitmap->width | y * 255 / bitmap->height << 8);
+        }
+    }
+}
+
 void Graphics::destroy(void)
 {
     delete this;

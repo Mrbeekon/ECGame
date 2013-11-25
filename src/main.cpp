@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv)
 {
-    Game* g = new Game();
-    g->start();
+    Game* game = new Game();
+    InstanceMan::run(game);
     return EXIT_SUCCESS;
 }

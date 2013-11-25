@@ -143,55 +143,55 @@ public:
     // Draw a string of text to the screen
     void draw_string(int x, int y, std::string str, int c);
 
+    // Draw a reference/test image for use as a quick placeholder or
+    // render test.
+    // Correct Test Results:
+    // Bitmap should be filled with a green/blue two-way gradient.
+    // It should go from black/green to blue/cyan horizontally,
+    // and black/blue to green/cyan vertically.
+    // Values for green and/or blue should be 255 on the bottom and/or
+    // right respectively.
+    void test(void);
+
     // Destroys this graphics object
     void destroy(void);
 
 /* Static */
     
     // Returns the length of the longest line in a string
-    static
-    int measure_string_longest_line(std::string str);
+    static int measure_string_longest_line(std::string str);
 
     // Returns the number of lines in a string
-    static
-    int measure_string_line_count(std::string str);
+    static int measure_string_line_count(std::string str);
 
     // Measure the width of the string on screen
     // taking into account escape characters
-    static
-    int measure_string_width(std::string str);
+    static int measure_string_width(std::string str);
 
     // Measure the height of the string on screen
     // taking into account escape characters
-    static
-    int measure_string_height(std::string str);
+    static int measure_string_height(std::string str);
 
     // Return the additional blend of two colours
-    static 
-    int col_add(int c1, int c2);
+    static int col_add(int c1, int c2);
 
     // The first colour becomes the additional blend of the two colours
-    static 
-    void col_add(int& c1, int c2);
+    static void col_add(int& c1, int c2);
 
     // Returns the alpha blend of two colours, with a blend degree of 50%
-    static
-    int col_blh(int c1, int c2);
+    static int col_blh(int c1, int c2);
 
     // The first colour becomes the alpha blend of the two colours, 
     // with a blend degree of 50%
-    static
-    void col_blh(int& c1, int c2);
+    static void col_blh(int& c1, int c2);
 
     // Returns the alpha blend of two colours, with a
     // specified degree of blending
-    static 
-    int col_bl(int c1, int c2, byte a);
+    static int col_bl(int c1, int c2, byte a);
 
     // The first colour becomes the alpha blend of the
     // two colours, with a specified degree of blending
-    static
-    void col_bl(int& c1, int c2, byte a);
+    static void col_bl(int& c1, int c2, byte a);
 
 private:
     Bitmap* bitmap;

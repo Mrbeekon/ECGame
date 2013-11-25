@@ -143,10 +143,14 @@ public:
     // Draw a string of text to the screen
     void draw_string(int x, int y, std::string str, int c);
 
+    // Draw a reference/test image for use as a quick placeholder or
+    // render test.
     // Correct Test Results:
     // Bitmap should be filled with a green/blue two-way gradient.
     // It should go from black/green to blue/cyan horizontally,
-    // and black/blue to green/cyan vertically
+    // and black/blue to green/cyan vertically.
+    // Values for green and/or blue should be 255 on the bottom and/or
+    // right respectively.
     void test(void);
 
     // Destroys this graphics object

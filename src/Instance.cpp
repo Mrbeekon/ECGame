@@ -4,6 +4,8 @@
 
 Instance::Instance()
 {    
+    _running = false;
+
     surface = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_SWSURFACE);
     screen = new Bitmap(WIDTH, HEIGHT);
     in = new InputMan();
@@ -16,54 +18,47 @@ Instance::~Instance()
     delete screen;
 }
 
-/* InstanceMan */
-
-bool InstanceMan::running;
-
-Instance* InstanceMan::inst;
-
-bool InstanceMan::run(Instance* inst_)
+void Instance::stop(void)
 {
-    inst = inst_;
-    if (!inst->init())
+    this->on_stop();
+    _running = false;
+}
+
+bool Instance::run(void)
+{
+    if (!this->init())
         return false;
+
     SDL_Init(SDL_INIT_EVERYTHING);
-    running = true;
+    _running = true;
+
     Graphics* g;
     SDL_Event evnt;
-    while (running) {
-        inst->tick();
-        g = inst->screen->create_graphics();
-        inst->render(g);
-        g->destroy();  
 
+    while (_running) {
         while (SDL_PollEvent(&evnt)) {
             switch (evnt.type) {
             case SDL_QUIT:
                 stop();
                 break;
             default:
-                inst->in->event_proc(evnt);
+                this->in->event_proc(evnt);
                 break;
             }
         }
-        SDL_LockSurface(inst->surface);
-        memcpy(inst->surface->pixels, inst->screen->get_pixels(),
-              (inst->WIDTH * inst->HEIGHT) << 2);
-        SDL_UnlockSurface(inst->surface);
-        SDL_Flip(inst->surface);
+        this->tick();
+
+        g = this->screen->create_graphics();
+        this->render(g);
+        g->destroy();  
+        SDL_LockSurface(this->surface);
+        memcpy(this->surface->pixels, this->screen->get_pixels(),
+              (this->WIDTH * this->HEIGHT) << 2);
+        SDL_UnlockSurface(this->surface);
+        SDL_Flip(this->surface);
     }
-    _stopped();
-    return true;
-}
 
-void InstanceMan::_stopped(void)
-{
     SDL_Quit();
-}
 
-void InstanceMan::stop(void)
-{
-    inst->on_stop();
-    running = false;
+    return true;
 }

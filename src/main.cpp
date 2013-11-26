@@ -3,6 +3,6 @@
 int main(int argc, char** argv)
 {
     Game* game = new Game();
-    InstanceMan::run(game);
+    game->run();
     return EXIT_SUCCESS;
 }

@@ -27,6 +27,7 @@ bool InstanceMan::run(Instance* inst_)
     inst = inst_;
     if (!inst->init())
         return false;
+    SDL_Init(SDL_INIT_EVERYTHING);
     running = true;
     Graphics* g;
     SDL_Event evnt;

@@ -10,7 +10,6 @@ Game::~Game()
 
 bool Game::init()
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
     SDL_WM_SetCaption(TITLE, NULL);
     return true;
 }

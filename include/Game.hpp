@@ -7,7 +7,6 @@
 class Game : public Instance
 {
 public:
-    const char* TITLE = "ECGame";
     Game();
     ~Game();
     bool init(void);

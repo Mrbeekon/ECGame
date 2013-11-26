@@ -1,7 +1,5 @@
 #include "Instance.hpp"
 
-/* Instance */
-
 Instance::Instance()
 {    
     _running = false;

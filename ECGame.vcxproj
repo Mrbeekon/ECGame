@@ -14,7 +14,6 @@
     <ClInclude Include="include\AsciiFont.hpp" />
     <ClInclude Include="include\Bitmap.hpp" />
     <ClInclude Include="include\ECStd.hpp" />
-    <ClInclude Include="include\Game.hpp" />
     <ClInclude Include="include\Graphics.hpp" />
     <ClInclude Include="include\InputMan.hpp" />
     <ClInclude Include="include\Instance.hpp" />
@@ -25,7 +24,6 @@
     <ClCompile Include="src\Instance.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Bitmap.cpp" />
-    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\InputMan.cpp" />
     <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\Graphics.cpp" />

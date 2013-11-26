@@ -1,5 +1,5 @@
-#ifndef ENGINEINSTANCE_H
-#define ENGINEINSTANCE_H
+#ifndef INSTANCE_H
+#define INSTANCE_H
 
 #include "ECStd.hpp"
 #include "Graphics.hpp"

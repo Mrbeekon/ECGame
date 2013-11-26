@@ -25,6 +25,5 @@ void Game::render(Graphics* g)
 void Game::tick()
 {
     if (in->get_key(SDLK_ESCAPE))
-        this->stop();
-    
+        this->stop();    
 }

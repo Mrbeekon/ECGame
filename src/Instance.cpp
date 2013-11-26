@@ -24,7 +24,7 @@ void Instance::stop(void)
 
 bool Instance::run(void)
 {
-    if (!this->init())
+    if (!this->on_start())
         return false;
 
     SDL_Init(SDL_INIT_EVERYTHING);

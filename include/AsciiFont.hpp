@@ -3,6 +3,8 @@
 
 #include "ECStd.hpp"
 
+// DO NOT MODIFY -- you might break it! (bad)
+
 //  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 const byte ASCIIFONT[12 * 95] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

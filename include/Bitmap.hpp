@@ -12,7 +12,10 @@ class Bitmap
 public:
     uint width, height;
 
+    // Create an empty bitmap of the specified width and height
     Bitmap(uint width, uint height);
+
+    // Specify an existing pixel array to create the bitmap from
     Bitmap(uint width, uint height, void* pixels);
     
     // Get the pixels of the bitmap

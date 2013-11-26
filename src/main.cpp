@@ -12,7 +12,7 @@ public:
     {
     }
 
-    bool init(void)
+    bool on_start(void)
     {
         SDL_WM_SetCaption(TITLE, NULL);
         return true;

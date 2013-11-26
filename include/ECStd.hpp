@@ -16,9 +16,6 @@
 
 #include "SDL/SDL.h"
 
-/* Events shall be global */
-#include "SEvent.hpp"
-
 /* Type Definitions */
 typedef unsigned char       byte;       // Unsigned Byte
 typedef char                sbyte;      // Signed Byte
@@ -57,7 +54,7 @@ typedef unsigned long long  QWORD;      // A 64-bit Word
 #define M_SQRT2l    1.4142135623730950488016887242096981L   /* sqrt(2) */
 #define M_SQRT1_2l  0.7071067811865475244008443621048490L   /* 1/sqrt(2) */
 
-#define PI          M_PI    // Because 'M_' is too much to bare
+#define PI          M_PI    // Because 'M_' is too much to bear
 
 /* Miscellaneous Definitions */
 #define TITLE       "ECGame"
